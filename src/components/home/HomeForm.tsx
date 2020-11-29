@@ -1,19 +1,19 @@
 import React from "react";
+import Card from "@material-ui/core/Card";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
 
-import {
-  Card,
-  FormControl,
-  InputLabel,
-  makeStyles,
-  MenuItem,
-  Button,
-} from "@material-ui/core";
 import { Field, Form, Formik } from "formik";
 import { Select, TextField } from "formik-material-ui";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     display: "flex",
+    flexDirection: "column",
+    marginTop: "2rem",
   },
   formContainer: {
     margin: "0 auto",
@@ -44,13 +44,14 @@ export const HomeForm: React.FC = () => {
       >
         <Form className={classes.form}>
           <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="projectName">Project Name</InputLabel>
             <Field
               type="text"
               name="projectName"
+              label="Project Name"
               component={TextField}
               inputProps={{
                 id: "projectName",
+                "data-testid": "projectName",
               }}
             />
           </FormControl>
