@@ -1,12 +1,19 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from "react";
+import { render } from "react-dom";
 
-const mainElement = document.createElement('div');
-mainElement.setAttribute('id', 'root');
+import { Container } from "@material-ui/core";
+import { Home } from "./pages";
+
+const mainElement = document.createElement("div");
+mainElement.setAttribute("id", "root");
 document.body.appendChild(mainElement);
 
 const App = () => {
-  return <div>Hello World</div>;
+  return (
+    <Container>
+      <Home />
+    </Container>
+  );
 };
 
 render(<App />, mainElement);
