@@ -40,7 +40,10 @@
     "@types/jest": "^26.0.3",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
     "cross-env": "^7.0.2",
     "electron": "^8.2.2",
     "electron-builder": "^22.7.0",
@@ -60,10 +63,13 @@
     "typescript": "^3.9.5",
     "wait-on": "^5.0.1",
     "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.1",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "formik": "^2.2.5",
     "formik-material-ui": "^3.0.0",
     "react": "^16.13.1",
@@ -71,7 +77,6 @@
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "pre-commit": "lint-staged"
     }
   },
