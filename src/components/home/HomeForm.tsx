@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Card from "@material-ui/core/Card";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
@@ -60,6 +61,7 @@ const handleChange = (push: (element: EplanTag) => void) => (
 
 export const HomeForm: React.FC<HomeFormProps> = (props) => {
   const { handleSubmit } = props;
+  const { t } = useTranslation();
   const classes = useStyles();
 
   return (
@@ -71,7 +73,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
               <Field
                 type="text"
                 name="projectName"
-                label="Project Name"
+                label={t("home.homeForm.projectName")}
                 component={TextFieldFormik}
                 inputProps={{
                   id: "projectName",
@@ -96,7 +98,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                         variant="contained"
                         component="span"
                       >
-                        Upload button
+                        {t("home.homeForm.uploadButton")}
                       </Button>
                     </label>
                   </FormControl>
@@ -126,7 +128,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
               variant="contained"
               disabled={isDisabled(formik.values)}
             >
-              Create
+              {t("home.homeForm.createButton")}
             </Button>
           </Form>
         )}

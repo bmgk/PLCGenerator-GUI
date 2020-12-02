@@ -74,8 +74,10 @@
     "@material-ui/lab": "^4.0.0-alpha.56",
     "formik": "^2.2.5",
     "formik-material-ui": "^3.0.0",
+    "i18next": "^19.8.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.7.4",
     "react-router-dom": "^5.2.0"
   },
   "husky": {

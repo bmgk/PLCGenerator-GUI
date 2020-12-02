@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
 import { DashboardTable } from "../components/dashboard";
-import { HomeFormReponse } from "../types";
 
 const useStyles = makeStyles((theme) => ({
   container: {
