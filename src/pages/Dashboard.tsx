@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 
-import { DashboardTable } from "../components/dashboard";
+import { DashboardTable, DashboardTree } from "../components/dashboard";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -10,16 +10,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home: React.FC<RouteComponentProps> = (props) => {
+const Dashboard: React.FC<RouteComponentProps> = (props) => {
   const state = props.location.state;
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
       {/*//@ts-ignore */}
-      <DashboardTable rows={state} />
+      <DashboardTree tree={state.tree[0]} />
+      {/*//@ts-ignore */}
+      <DashboardTable rows={state.rows} />
     </div>
   );
 };
 
-export default withRouter(Home);
+export default withRouter(Dashboard);

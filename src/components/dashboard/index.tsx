@@ -1,3 +1,4 @@
 import { DashboardTable } from "./DashboardTable";
+import { DashboardTree } from "./DashboardTree";
 
-export { DashboardTable };
+export { DashboardTable, DashboardTree };

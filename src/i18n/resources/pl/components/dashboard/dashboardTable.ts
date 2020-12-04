@@ -1,5 +1,6 @@
 export const dashboardTableTranslations = {
   "dashboard.dashboardTable.header.ID": "ID",
+  "dashboard.dashboardTable.header.operandIdentifier": "Identyfikator Operanda",
   "dashboard.dashboardTable.header.address": "Adres",
   "dashboard.dashboardTable.header.name": "Nazwa",
   "dashboard.dashboardTable.header.dataType": "Typ danej",

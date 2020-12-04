@@ -18,42 +18,42 @@ const columns = (t: TFunction) => [
   },
   {
     field: "operandIdentifier",
-    headerName: "dashboard.dashboardTable.header.operandIdentifier",
+    headerName: t("dashboard.dashboardTable.header.operandIdentifier"),
     width: SMALL_SIZE,
   },
   {
     field: "address",
-    headerName: "dashboard.dashboardTable.header.address",
+    headerName: t("dashboard.dashboardTable.header.address"),
     width: SMALL_SIZE,
   },
   {
     field: "name",
-    headerName: "dashboard.dashboardTable.header.name",
+    headerName: t("dashboard.dashboardTable.header.name"),
     width: LARGE_SIZE,
   },
   {
     field: "dataType",
-    headerName: "dashboard.dashboardTable.header.dataType",
+    headerName: t("dashboard.dashboardTable.header.dataType"),
     width: SMALL_SIZE,
   },
   {
     field: "comment",
-    headerName: "dashboard.dashboardTable.header.comment",
+    headerName: t("dashboard.dashboardTable.header.comment"),
     width: LARGE_SIZE,
   },
   {
     field: "accessibleFromHmi",
-    headerName: "dashboard.dashboardTable.header.accessibleFromHmi",
+    headerName: t("dashboard.dashboardTable.header.accessibleFromHmi"),
     width: SMALL_SIZE,
   },
   {
     field: "visibleInHmiEngineering",
-    headerName: "dashboard.dashboardTable.header.visibleInHmiEngineering",
+    headerName: t("dashboard.dashboardTable.header.visibleInHmiEngineering"),
     width: SMALL_SIZE,
   },
   {
     field: "writableFromHmi",
-    headerName: "dashboard.dashboardTable.header.writableFromHmi",
+    headerName: t("dashboard.dashboardTable.header.writableFromHmi"),
     width: SMALL_SIZE,
   },
 ];
