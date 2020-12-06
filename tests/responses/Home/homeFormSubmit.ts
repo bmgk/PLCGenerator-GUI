@@ -3463,12 +3463,12 @@ export const homeFormSubmitTree: HomeFormTreeResponse = {
                           name: "Positions",
                           value: [
                             {
-                              index: 1,
-                              sensorName: "BGE01",
+                              Index: 1,
+                              SensorName: "BGE01",
                             },
                             {
-                              index: 2,
-                              sensorName: "BGE02",
+                              Index: 2,
+                              SensorName: "BGE02",
                             },
                           ],
                           availableValues: [

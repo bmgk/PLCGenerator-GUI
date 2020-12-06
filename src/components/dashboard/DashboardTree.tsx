@@ -15,11 +15,9 @@ import {
 } from "types";
 
 const useStyles = makeStyles({
-  treeRoot: {
-    height: 110,
-  },
+  treeRoot: { height: 110 },
   treeContainer: { height: "90vh", overflowY: "scroll", flex: 2 },
-  container: { width: "80%", margin: "0 auto", display: "flex" },
+  container: { width: "100vw", margin: "0 auto", display: "flex" },
 });
 
 const createLeaf = (nodes: HomeResponseTreeChildren) => ({
@@ -34,8 +32,8 @@ const getIdTree = (
   ids.push(nodes.name);
   Array.isArray(nodes.children)
     ? nodes.children.map((node: HomeResponseTreeChildren) =>
-        getIdTree(node, ids)
-      )
+      getIdTree(node, ids)
+    )
     : null;
   return ids;
 };
@@ -53,11 +51,12 @@ export const DashboardTree: React.FC<DashboardTreeProps> = (props) => {
         nodeId={`${nodes.name}`}
         label={nodes.name}
         onClick={() => dispatch(setLeaf(null))}
+        style={{ color: 'green' }}
       >
         {Array.isArray(nodes.children)
           ? nodes.children.map((node: HomeResponseTreeChildren) =>
-              renderTree(node)
-            )
+            renderTree(node)
+          )
           : null}
       </TreeItem>
     );
@@ -69,12 +68,13 @@ export const DashboardTree: React.FC<DashboardTreeProps> = (props) => {
         key={nodes.name}
         nodeId={`${nodes.name}`}
         label={nodes.name}
-        onClick={() => dispatch(setLeaf(createLeaf(nodes)))}
+        onClick={() => dispatch(setLeaf(createLeaf(JSON.parse(JSON.stringify(nodes)))))}
+        style={{ color: nodes.parameters.length === 0 ? 'green' : 'red' }}
       >
         {Array.isArray(nodes.children)
           ? nodes.children.map((node: HomeResponseTreeChildren) =>
-              renderTree(node)
-            )
+            renderTree(node)
+          )
           : null}
       </TreeItem>
     );

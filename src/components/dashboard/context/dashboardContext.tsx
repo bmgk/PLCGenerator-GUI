@@ -11,6 +11,7 @@ const DashboardDispatchContext = React.createContext<
 
 const initial: DashboardState = {
   tree: { name: "", children: [] },
+  workingTree: { name: "", children: [] },
   rows: [],
   selectedLeaf: null,
 };

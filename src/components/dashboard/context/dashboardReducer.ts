@@ -1,18 +1,18 @@
 import { DashboardState, DashboardAction } from ".";
-import { SET_SELECTED_LEAFT, SET_TABLE, SET_TREE } from "./dashboardActions";
+import { SET_SELECTED_LEAF, SET_TABLE, SET_TREE } from "./dashboardActions";
 
 export const dashboardReducer = (
   state: DashboardState,
   action: DashboardAction
-) => {
+): DashboardState => {
   switch (action.type) {
     case SET_TREE: {
-      return { ...state, tree: action.tree };
+      return { ...state, tree: action.tree, workingTree: action.tree };
     }
     case SET_TABLE: {
       return { ...state, rows: action.rows };
     }
-    case SET_SELECTED_LEAFT: {
+    case SET_SELECTED_LEAF: {
       return { ...state, selectedLeaf: action.selectedLeaf };
     }
     default: {
