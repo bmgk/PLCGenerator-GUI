@@ -11,3 +11,27 @@ export type HomeFormReponseSingleElement = {
 };
 
 export type HomeFormReponse = HomeFormReponseSingleElement[];
+
+type HomeResponseTreeAvailableValues = {
+  name: string;
+  type: string;
+  multiSelect: boolean;
+  value: string[] | number[] | any;
+};
+
+type HomeResponseTreeParameters = {
+  name: string;
+  value: any[] | any;
+  availableValues: HomeResponseTreeAvailableValues[];
+};
+
+type HomeResponseTreeChildren = {
+  parameters: HomeResponseTreeParameters[];
+  children: HomeResponseTreeChildren[];
+  name: string;
+};
+
+export type HomeFormTreeResponse = {
+  name: string;
+  children: HomeResponseTreeChildren[];
+};

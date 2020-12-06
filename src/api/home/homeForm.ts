@@ -1,6 +1,9 @@
-import { homeFormSubmitWithIds, homeFormSubmitTree } from "../../../tests/responses";
+import {
+  homeFormSubmitWithIds,
+  homeFormSubmitTree,
+} from "../../../tests/responses";
 
-import { HomeFormValues, HomeFormReponse } from "../../types";
+import { HomeFormValues, HomeFormReponse, HomeFormTreeResponse } from "types";
 
 export const submitHomeForm = (
   form: HomeFormValues
@@ -10,6 +13,6 @@ export const submitHomeForm = (
 
 export const submitHomeFormTree = (
   form: HomeFormValues
-): Promise<any> => {
+): Promise<HomeFormTreeResponse> => {
   return Promise.resolve(homeFormSubmitTree);
-}
+};

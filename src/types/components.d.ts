@@ -1,6 +1,6 @@
 import { FormikHelpers } from "formik";
 import { HomeFormValues } from "./forms";
-import { HomeFormReponse } from "./responses";
+import { HomeFormReponse, HomeFormTreeResponse } from "./responses";
 
 export type HomeFormProps = {
   handleSubmit: (
@@ -11,4 +11,13 @@ export type HomeFormProps = {
 
 export type DashboardTableProps = {
   rows: HomeFormReponse;
+};
+
+export type DashboardProps = {
+  tree: HomeFormTreeResponse;
+  rows: HomeFormReponse;
+};
+
+export type DashboardTreeProps = {
+  tree: HomeFormTreeResponse;
 };
