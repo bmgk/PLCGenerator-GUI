@@ -3506,7 +3506,7 @@ export const homeFormSubmitTree: HomeFormTreeResponse = {
                         {
                           name: "Controller",
                           value: {
-                            type: 0,
+                            Type: 0,
                           },
                           availableValues: [
                             {

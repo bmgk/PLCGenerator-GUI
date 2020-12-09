@@ -6,10 +6,9 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import TreeItem from "@material-ui/lab/TreeItem";
 
 import DashboardTreePanel from "./DashboardTreePanel";
-import { setLeaf, useDashboardDispatch } from "./context";
+import { setLeaf, useDashboardDispatch, useDashboardStore } from "./context";
 
 import {
-  DashboardTreeProps,
   HomeResponseTreeChildren,
   HomeFormTreeResponse,
 } from "types";
@@ -38,8 +37,8 @@ const getIdTree = (
   return ids;
 };
 
-export const DashboardTree: React.FC<DashboardTreeProps> = (props) => {
-  const { tree } = props;
+export const DashboardTree: React.FC = () => {
+  const { tree } = useDashboardStore();
   const dispatch = useDashboardDispatch();
   const classes = useStyles();
   const expanded = useMemo(() => getIdTree(tree, []), [tree]);

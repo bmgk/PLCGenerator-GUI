@@ -4,7 +4,7 @@ import { DataGrid } from "@material-ui/data-grid";
 import { TFunction } from "i18next";
 import { useTranslation } from "react-i18next";
 
-import { DashboardTableProps } from "types";
+import { useDashboardStore } from "./context";
 
 const ID_SIZE = 50;
 const SMALL_SIZE = 100;
@@ -62,10 +62,10 @@ const useStyles = makeStyles(() => ({
   tableContainer: { height: "40rem", width: "80%", margin: "0 auto" },
 }));
 
-export const DashboardTable: React.FC<DashboardTableProps> = (props) => {
-  const { rows } = props;
+export const DashboardTable: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
+  const { rows } = useDashboardStore();
 
   return (
     <div className={classes.tableContainer}>

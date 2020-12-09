@@ -4,16 +4,12 @@ import {
   HomeFormReponse,
   HomeResponseTreeParameters,
 } from "types";
-import { SET_TREE, SET_TABLE, SET_SELECTED_LEAF, SET_WORKING_TREE, } from "..";
+import { SET_TREE, SET_TABLE, SET_SELECTED_LEAF, SET_WORKING_TREE, REPLACE_LEAF_IN_TREE } from "..";
 
 export * from "./dashboardActions";
 export * from "./dashboardReducer";
 export * from "./dashboardContext";
 
-export type DashboardSetWorkingTreeAction = {
-  type: typeof SET_WORKING_TREE;
-  tree: HomeFormTreeResponse;
-};
 export type DashboardSetTreeAction = {
   type: typeof SET_TREE;
   tree: HomeFormTreeResponse;
@@ -29,20 +25,23 @@ export type DashboardSetLeaf = {
   selectedLeaf: SelectedLeaf | null;
 };
 
+export type DashboardReplaceLeaf = {
+  type: typeof REPLACE_LEAF_IN_TREE;
+};
+
 export type DashboardAction =
-  | DashboardSetWorkingTreeAction
   | DashboardSetTreeAction
   | DashboardSetRowsAction
-  | DashboardSetLeaf;
+  | DashboardSetLeaf
+  | DashboardReplaceLeaf
 
 export type DashboardDispatch = (action: DashboardAction) => void;
 export type DashboardState = {
   tree: HomeFormTreeResponse;
-  workingTree: HomeFormTreeResponse;
   rows: HomeFormReponse;
   selectedLeaf: SelectedLeaf | null;
 };
-export type DashboardProviderProps = { children: React.ReactNode };
+export type DashboardProviderProps = { children: React.ReactNode, initial?: DashboardState };
 
 export type SelectedLeaf = {
   parameters: HomeResponseTreeParameters[];

@@ -10,18 +10,11 @@ export type HomeFormProps = {
   ) => void;
 };
 
-export type DashboardTableProps = {
-  rows: HomeFormReponse;
-};
-
 export type DashboardProps = {
   tree: HomeFormTreeResponse;
   rows: HomeFormReponse;
 };
 
-export type DashboardTreeProps = {
-  tree: HomeFormTreeResponse;
-};
 export type DashboardTreePanelCreateTableBody = { carousele: number, selectedLeaf: SelectedLeaf }
 export type DashboardTreePanelTableBody = { initialValues: any, carousele: number, index: number, selectedLeaf: SelectedLeaf }
 export type DashboardTreePanelHeader = { selectedLeaf: SelectedLeaf, index: number, setIndex: React.Dispatch<React.SetStateAction<number>> }

@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { DashboardTable, DashboardTree } from "../components/dashboard";
-import { DashboardProps } from "types";
 import Paper from "@material-ui/core/Paper/Paper";
 import Tabs from "@material-ui/core/Tabs/Tabs";
 import Tab from "@material-ui/core/Tab/Tab";
+
+import { DashboardTable, DashboardTree } from "../components/dashboard";
+import { setRows, setTree, useDashboardDispatch } from "../components/dashboard/context";
+import { DashboardProps } from "types";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -23,6 +25,12 @@ const Dashboard: React.FC<RouteComponentProps<any, any, DashboardProps>> = (
   const state = props.location.state;
   const [value, setValue] = React.useState(0);
   const classes = useStyles();
+  const dispatch = useDashboardDispatch();
+
+  useEffect(() => {
+    dispatch(setTree(state.tree))
+    dispatch(setRows(state.rows))
+  }, [])
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -42,8 +50,8 @@ const Dashboard: React.FC<RouteComponentProps<any, any, DashboardProps>> = (
           <Tab label="Tree" />
         </Tabs>
       </Paper>
-      {value === 0 ? <DashboardTable rows={state.rows} /> : null}
-      {value === 1 ? <DashboardTree tree={state.tree} /> : null}
+      {value === 0 ? <DashboardTable /> : null}
+      {value === 1 ? <DashboardTree /> : null}
     </div>
   );
 };

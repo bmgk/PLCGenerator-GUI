@@ -9,14 +9,13 @@ const DashboardDispatchContext = React.createContext<
   DashboardDispatch | undefined
 >(undefined);
 
-const initial: DashboardState = {
+const initialDefault: DashboardState = {
   tree: { name: "", children: [] },
-  workingTree: { name: "", children: [] },
   rows: [],
   selectedLeaf: null,
 };
 
-const DashboardProvider = ({ children }: DashboardProviderProps) => {
+const DashboardProvider = ({ children, initial = initialDefault }: DashboardProviderProps) => {
   const [state, dispatch] = React.useReducer(dashboardReducer, initial);
 
   return (
