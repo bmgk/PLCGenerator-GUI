@@ -16,5 +16,6 @@ export type DashboardProps = {
 };
 
 export type DashboardTreePanelCreateTableBody = { carousele: number, selectedLeaf: SelectedLeaf }
-export type DashboardTreePanelTableBody = { initialValues: any, carousele: number, index: number, selectedLeaf: SelectedLeaf }
+export type DashboardParameterArrayTableBodyBody = { initialValues: any, carousele: number, index: number, selectedLeaf: SelectedLeaf }
+export type DashboardParameterSingleTableBodyBody = { initialValues: any, carousele: number, selectedLeaf: SelectedLeaf }
 export type DashboardTreePanelHeader = { selectedLeaf: SelectedLeaf, index: number, setIndex: React.Dispatch<React.SetStateAction<number>> }

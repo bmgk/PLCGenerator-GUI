@@ -9,12 +9,12 @@ import { homeFormSubmitTree } from "../../../../tests/responses";
 import { HomeFormTreeResponse, HomeResponseTreeChildren } from "types";
 
 const getNames = (
-  nodes: HomeFormTreeResponse | HomeFormTreeResponse,
+  nodes: HomeFormTreeResponse | HomeResponseTreeChildren,
   names: string[]
 ) => {
-  names.push(nodes.name);
-  Array.isArray(nodes.children)
-    ? nodes.children.map((node: HomeResponseTreeChildren) =>
+  names.push(nodes.Name);
+  Array.isArray(nodes.Children)
+    ? nodes.Children.map((node: HomeResponseTreeChildren) =>
       getNames(node, names)
     )
     : null;
@@ -23,9 +23,14 @@ const getNames = (
 
 describe("DashboardTree", () => {
   beforeEach(() => {
+    const initial = {
+      tree: homeFormSubmitTree,
+      rows: [],
+      selectedLeaf: null,
+    }
     return render(
-      <DashboardProvider>
-        <DashboardTree tree={homeFormSubmitTree} />
+      <DashboardProvider initial={initial}>
+        <DashboardTree />
       </DashboardProvider>
     );
   });

@@ -10,7 +10,7 @@ const DashboardDispatchContext = React.createContext<
 >(undefined);
 
 const initialDefault: DashboardState = {
-  tree: { name: "", children: [] },
+  tree: { Name: "", Children: [] },
   rows: [],
   selectedLeaf: null,
 };

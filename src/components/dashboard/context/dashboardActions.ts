@@ -1,11 +1,11 @@
-import { DashboardReplaceLeaf } from './index';
 import React from "react";
-import { HomeFormTreeResponse, HomeFormReponse, HomeResponseTreeParameters } from "types";
+import { HomeFormTreeResponse, HomeFormReponse } from "types";
 import {
   DashboardSetTreeAction,
   DashboardSetRowsAction,
   SelectedLeaf,
   DashboardSetLeaf,
+  DashboardReplaceLeaf
 } from ".";
 
 export const SET_TREE = "SET_TREE";

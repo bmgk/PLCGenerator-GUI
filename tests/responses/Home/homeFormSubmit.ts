@@ -1,4246 +1,3495 @@
 import { HomeFormReponse, HomeFormTreeResponse } from "types";
 
 export const homeFormSubmitTree: HomeFormTreeResponse = {
-  name: "KGBHTS",
-  children: [
+  "Children": [
     {
-      parameters: [
+      "Parameters": [
         {
-          name: "Interlocks",
-          value: [],
-          availableValues: [
+          "Name": "Interlocks",
+          "Value": [],
+          "AvailableValues": [
             {
-              name: "Robot1",
-              type: "String",
-              multiSelect: false,
-              value: [
-                "111010R01",
-                "111020R01",
-                "111025R01",
-                "111030R01",
-                "111030R02",
-                "111040R01",
-                "111045R01",
-                "121060R01",
-              ],
+              "Name": "Index",
+              "Type": "UInt16",
+              "MultiSelect": false,
+              "Value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
             },
             {
-              name: "Robot2",
-              type: "String",
-              multiSelect: false,
-              value: [
-                "111010R01",
-                "111020R01",
-                "111025R01",
-                "111030R01",
-                "111030R02",
-                "111040R01",
-                "111045R01",
-                "121060R01",
-              ],
+              "Name": "Robot1",
+              "Type": "String",
+              "MultiSelect": false,
+              "Value": ["111010R01", "111020R01", "111025R01", "111030R01", "111030R02", "111040R01", "111045R01", "121060R01"]
             },
-          ],
-        },
+            {
+              "Name": "Robot2",
+              "Type": "String",
+              "MultiSelect": false,
+              "Value": ["111010R01", "111020R01", "111025R01", "111030R01", "111030R02", "111040R01", "111045R01", "121060R01"]
+            }
+          ]
+        }
       ],
-      children: [
+      "Children": [
         {
-          parameters: [],
-          children: [
+          "Parameters": [],
+          "Children": [
             {
-              parameters: [],
-              children: [],
-              name: "11HP",
+              "Parameters": [],
+              "Children": [],
+              "Name": "11HP"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "Tools",
-                      value: [],
-                      availableValues: [
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "AddressPosition",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         },
                         {
-                          name: "ToolName",
-                          type: "String",
-                          multiSelect: false,
-                          value: [
-                            "CapChanger",
-                            "Gluer",
-                            "Gripper",
-                            "Welder",
-                            "WelderBox",
-                          ],
-                        },
-                      ],
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
                     },
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
                     },
                     {
-                      name: "WerkzeugFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Profilfrei", "InPositionPOT", "InPosition"],
-                        },
-                      ],
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
                     },
                     {
-                      name: "StellungFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Freigabe", "Frei", "Belegt"],
-                        },
-                      ],
-                    },
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
                   ],
-                  children: [],
-                  name: "111010R01",
-                },
+                  "Children": [],
+                  "Name": "111010R01"
+                }
               ],
-              name: "111010",
+              "Name": "111010"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111011BH1VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111011BH1VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111011BH1VI1KKP11",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111011BH1VI1KKP11"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111011BH1VI1KKP12",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111011BH1VI1KKP12"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111011BH1VI1KKP13",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111011BH1VI1KKP13"
+                        }
                       ],
-                      name: "111011BH1VI1",
+                      "Name": "111011BH1VI1"
                     },
                     {
-                      parameters: [],
-                      children: [],
-                      name: "111011BH1SFN1",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111011BH1SFN1"
+                    }
                   ],
-                  name: "111011BH1",
-                },
+                  "Name": "111011BH1"
+                }
               ],
-              name: "111011",
+              "Name": "111011"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111012BH1VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111012BH1VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111012BH1VI1KKP11",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111012BH1VI1KKP11"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111012BH1VI1KKP12",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111012BH1VI1KKP12"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111012BH1VI1KKP13",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111012BH1VI1KKP13"
+                        }
                       ],
-                      name: "111012BH1VI1",
+                      "Name": "111012BH1VI1"
                     },
                     {
-                      parameters: [],
-                      children: [],
-                      name: "111012BH1SFN1",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111012BH1SFN1"
+                    }
                   ],
-                  name: "111012BH1",
-                },
+                  "Name": "111012BH1"
+                }
               ],
-              name: "111012",
+              "Name": "111012"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111013BH1VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111013BH1VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111013BH1VI1KKP11",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111013BH1VI1KKP11"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111013BH1VI1KKP12",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111013BH1VI1KKP12"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111013BH1VI1KKP13",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111013BH1VI1KKP13"
+                        }
                       ],
-                      name: "111013BH1VI1",
+                      "Name": "111013BH1VI1"
                     },
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111013BH1VI2KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111013BH1VI2KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111013BH1VI2KKP13",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111013BH1VI2KKP13"
+                        }
                       ],
-                      name: "111013BH1VI2",
+                      "Name": "111013BH1VI2"
                     },
                     {
-                      parameters: [],
-                      children: [],
-                      name: "111013BH1SFN1",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111013BH1SFN1"
+                    }
                   ],
-                  name: "111013BH1",
-                },
+                  "Name": "111013BH1"
+                }
               ],
-              name: "111013",
+              "Name": "111013"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [],
-                      name: "111015BH1VI1",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111015BH1VI1"
+                    }
                   ],
-                  name: "111015BH1",
+                  "Name": "111015BH1"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [],
-                      name: "111015BH2VI1",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111015BH2VI1"
+                    }
                   ],
-                  name: "111015BH2",
-                },
+                  "Name": "111015BH2"
+                }
               ],
-              name: "111015",
+              "Name": "111015"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "Tools",
-                      value: [],
-                      availableValues: [
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "AddressPosition",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         },
                         {
-                          name: "ToolName",
-                          type: "String",
-                          multiSelect: false,
-                          value: [
-                            "CapChanger",
-                            "Gluer",
-                            "Gripper",
-                            "Welder",
-                            "WelderBox",
-                          ],
-                        },
-                      ],
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
                     },
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
                     },
                     {
-                      name: "WerkzeugFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Profilfrei", "InPositionPOT", "InPosition"],
-                        },
-                      ],
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
                     },
                     {
-                      name: "StellungFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Freigabe", "Frei", "Belegt"],
-                        },
-                      ],
-                    },
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
                   ],
-                  children: [],
-                  name: "111020R01",
+                  "Children": [],
+                  "Name": "111020R01"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01VI1KKP11",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01VI1KKP11"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01VI1KKP12",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01VI1KKP12"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01VI1KKP13",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01VI1KKP13"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01VI1KKP14",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01VI1KKP14"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01VI1KKP15",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01VI1KKP15"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01VI1KKP16",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01VI1KKP16"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01VI1KKP17",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01VI1KKP17"
+                        }
                       ],
-                      name: "111020V01VI1",
+                      "Name": "111020V01VI1"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 11,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 11 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE11a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE11a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE11b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE11b"
+                        }
                       ],
-                      name: "111020V01BGE11",
+                      "Name": "111020V01BGE11"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 12,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 12 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE12a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE12a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE12b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE12b"
+                        }
                       ],
-                      name: "111020V01BGE12",
+                      "Name": "111020V01BGE12"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 13,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 13 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE13a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE13a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE13b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE13b"
+                        }
                       ],
-                      name: "111020V01BGE13",
+                      "Name": "111020V01BGE13"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 14,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 14 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE14a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE14a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE14b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE14b"
+                        }
                       ],
-                      name: "111020V01BGE14",
+                      "Name": "111020V01BGE14"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 15,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 15 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE15a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE15a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE15b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE15b"
+                        }
                       ],
-                      name: "111020V01BGE15",
+                      "Name": "111020V01BGE15"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 16,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 16 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE16a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE16a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE16b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE16b"
+                        }
                       ],
-                      name: "111020V01BGE16",
+                      "Name": "111020V01BGE16"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 17,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 17 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE17a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE17a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGE17b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGE17b"
+                        }
                       ],
-                      name: "111020V01BGE17",
+                      "Name": "111020V01BGE17"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT11a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT11a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT11b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT11b"
+                        }
                       ],
-                      name: "111020V01BGT11",
+                      "Name": "111020V01BGT11"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT12a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT12a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT12b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT12b"
+                        }
                       ],
-                      name: "111020V01BGT12",
+                      "Name": "111020V01BGT12"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT13a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT13a"
+                        }
                       ],
-                      name: "111020V01BGT13",
+                      "Name": "111020V01BGT13"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT14a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT14a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT14b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT14b"
+                        }
                       ],
-                      name: "111020V01BGT14",
+                      "Name": "111020V01BGT14"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT15a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT15a"
+                        }
                       ],
-                      name: "111020V01BGT15",
+                      "Name": "111020V01BGT15"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT16a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT16a"
+                        }
                       ],
-                      name: "111020V01BGT16",
+                      "Name": "111020V01BGT16"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT17a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT17a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT17b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT17b"
+                        }
                       ],
-                      name: "111020V01BGT17",
+                      "Name": "111020V01BGT17"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT18a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT18a"
+                        }
                       ],
-                      name: "111020V01BGT18",
+                      "Name": "111020V01BGT18"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT19a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT19a"
+                        }
                       ],
-                      name: "111020V01BGT19",
+                      "Name": "111020V01BGT19"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT20a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT20a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020V01BGT20b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020V01BGT20b"
+                        }
                       ],
-                      name: "111020V01BGT20",
-                    },
+                      "Name": "111020V01BGT20"
+                    }
                   ],
-                  name: "111020V01",
+                  "Name": "111020V01"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB1VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB1VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB1VI1KKP11",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB1VI1KKP11"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB1VI1KKP12",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB1VI1KKP12"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB1VI1KKP13",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB1VI1KKP13"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB1VI1KKP14",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB1VI1KKP14"
+                        }
                       ],
-                      name: "111020SB1VI1",
+                      "Name": "111020SB1VI1"
                     },
                     {
-                      parameters: [],
-                      children: [],
-                      name: "111020SB1SFN1",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111020SB1SFN1"
+                    }
                   ],
-                  name: "111020SB1",
+                  "Name": "111020SB1"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB2VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB2VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB2VI1KKP11",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB2VI1KKP11"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB2VI1KKP12",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB2VI1KKP12"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB2VI1KKP13",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB2VI1KKP13"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111020SB2VI1KKP14",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111020SB2VI1KKP14"
+                        }
                       ],
-                      name: "111020SB2VI1",
+                      "Name": "111020SB2VI1"
                     },
                     {
-                      parameters: [],
-                      children: [],
-                      name: "111020SB2SFN1",
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111020SB2SFN1"
                     },
                     {
-                      parameters: [],
-                      children: [],
-                      name: "111020SB2SFN2",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111020SB2SFN2"
+                    }
                   ],
-                  name: "111020SB2",
-                },
+                  "Name": "111020SB2"
+                }
               ],
-              name: "111020",
+              "Name": "111020"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "Tools",
-                      value: [],
-                      availableValues: [
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "AddressPosition",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         },
                         {
-                          name: "ToolName",
-                          type: "String",
-                          multiSelect: false,
-                          value: [
-                            "CapChanger",
-                            "Gluer",
-                            "Gripper",
-                            "Welder",
-                            "WelderBox",
-                          ],
-                        },
-                      ],
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
                     },
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
                     },
                     {
-                      name: "WerkzeugFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Profilfrei", "InPositionPOT", "InPosition"],
-                        },
-                      ],
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
                     },
                     {
-                      name: "StellungFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Freigabe", "Frei", "Belegt"],
-                        },
-                      ],
-                    },
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
                   ],
-                  children: [],
-                  name: "111025R01",
-                },
+                  "Children": [],
+                  "Name": "111025R01"
+                }
               ],
-              name: "111025",
+              "Name": "111025"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "Tools",
-                      value: [],
-                      availableValues: [
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "AddressPosition",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         },
                         {
-                          name: "ToolName",
-                          type: "String",
-                          multiSelect: false,
-                          value: [
-                            "CapChanger",
-                            "Gluer",
-                            "Gripper",
-                            "Welder",
-                            "WelderBox",
-                          ],
-                        },
-                      ],
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
                     },
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
                     },
                     {
-                      name: "WerkzeugFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Profilfrei", "InPositionPOT", "InPosition"],
-                        },
-                      ],
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
                     },
                     {
-                      name: "StellungFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Freigabe", "Frei", "Belegt"],
-                        },
-                      ],
-                    },
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
                   ],
-                  children: [],
-                  name: "111030R01",
+                  "Children": [],
+                  "Name": "111030R01"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "Tools",
-                      value: [],
-                      availableValues: [
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "AddressPosition",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         },
                         {
-                          name: "ToolName",
-                          type: "String",
-                          multiSelect: false,
-                          value: [
-                            "CapChanger",
-                            "Gluer",
-                            "Gripper",
-                            "Welder",
-                            "WelderBox",
-                          ],
-                        },
-                      ],
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
                     },
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
                     },
                     {
-                      name: "WerkzeugFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Profilfrei", "InPositionPOT", "InPosition"],
-                        },
-                      ],
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
                     },
                     {
-                      name: "StellungFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Freigabe", "Frei", "Belegt"],
-                        },
-                      ],
-                    },
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
                   ],
-                  children: [],
-                  name: "111030R02",
+                  "Children": [],
+                  "Name": "111030R02"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01VI1KKP11",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01VI1KKP11"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01VI1KKP12",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01VI1KKP12"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01VI1KKP13",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01VI1KKP13"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01VI1KKP14",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01VI1KKP14"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01VI1KKP15",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01VI1KKP15"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01VI1KKP16",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01VI1KKP16"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01VI1KKP17",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01VI1KKP17"
+                        }
                       ],
-                      name: "111030V01VI1",
+                      "Name": "111030V01VI1"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 11,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 11 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE11a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE11a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE11b",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE11b"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE11c",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE11c"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE11d",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE11d"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE11e",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE11e"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE11f",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE11f"
+                        }
                       ],
-                      name: "111030V01BGE11",
+                      "Name": "111030V01BGE11"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 12,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 12 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE12a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE12a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE12b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE12b"
+                        }
                       ],
-                      name: "111030V01BGE12",
+                      "Name": "111030V01BGE12"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 13,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 13 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE13a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE13a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE13b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE13b"
+                        }
                       ],
-                      name: "111030V01BGE13",
+                      "Name": "111030V01BGE13"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 14,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 14 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE14a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE14a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE14b",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE14b"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE14c",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE14c"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE14d",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE14d"
+                        }
                       ],
-                      name: "111030V01BGE14",
+                      "Name": "111030V01BGE14"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 15,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 15 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE15a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE15a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE15b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE15b"
+                        }
                       ],
-                      name: "111030V01BGE15",
+                      "Name": "111030V01BGE15"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 16,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 16 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE16a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE16a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE16b",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE16b"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE16c",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE16c"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE16d",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE16d"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE16e",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE16e"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE16f",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE16f"
+                        }
                       ],
-                      name: "111030V01BGE16",
+                      "Name": "111030V01BGE16"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 17,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 17 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11, 12, 13, 14, 15, 16, 17],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11, 12, 13, 14, 15, 16, 17]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE17a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE17a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGE17b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGE17b"
+                        }
                       ],
-                      name: "111030V01BGE17",
+                      "Name": "111030V01BGE17"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT11a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT11a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT11b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT11b"
+                        }
                       ],
-                      name: "111030V01BGT11",
+                      "Name": "111030V01BGT11"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT12a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT12a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT12b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT12b"
+                        }
                       ],
-                      name: "111030V01BGT12",
+                      "Name": "111030V01BGT12"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT13a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT13a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT13b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT13b"
+                        }
                       ],
-                      name: "111030V01BGT13",
+                      "Name": "111030V01BGT13"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT14a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT14a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT14b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT14b"
+                        }
                       ],
-                      name: "111030V01BGT14",
+                      "Name": "111030V01BGT14"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT15a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT15a"
+                        }
                       ],
-                      name: "111030V01BGT15",
+                      "Name": "111030V01BGT15"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT16a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT16a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT16b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT16b"
+                        }
                       ],
-                      name: "111030V01BGT16",
+                      "Name": "111030V01BGT16"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT17a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT17a"
+                        }
                       ],
-                      name: "111030V01BGT17",
+                      "Name": "111030V01BGT17"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT18a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT18a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "111030V01BGT18b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111030V01BGT18b"
+                        }
                       ],
-                      name: "111030V01BGT18",
-                    },
+                      "Name": "111030V01BGT18"
+                    }
                   ],
-                  name: "111030V01",
-                },
+                  "Name": "111030V01"
+                }
               ],
-              name: "111030",
+              "Name": "111030"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "Tools",
-                      value: [],
-                      availableValues: [
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "AddressPosition",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         },
                         {
-                          name: "ToolName",
-                          type: "String",
-                          multiSelect: false,
-                          value: [
-                            "CapChanger",
-                            "Gluer",
-                            "Gripper",
-                            "Welder",
-                            "WelderBox",
-                          ],
-                        },
-                      ],
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
                     },
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
                     },
                     {
-                      name: "WerkzeugFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Profilfrei", "InPositionPOT", "InPosition"],
-                        },
-                      ],
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
                     },
                     {
-                      name: "StellungFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Freigabe", "Frei", "Belegt"],
-                        },
-                      ],
-                    },
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
                   ],
-                  children: [],
-                  name: "111040R01",
-                },
+                  "Children": [],
+                  "Name": "111040R01"
+                }
               ],
-              name: "111040",
+              "Name": "111040"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "Tools",
-                      value: [],
-                      availableValues: [
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "AddressPosition",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         },
                         {
-                          name: "ToolName",
-                          type: "String",
-                          multiSelect: false,
-                          value: [
-                            "CapChanger",
-                            "Gluer",
-                            "Gripper",
-                            "Welder",
-                            "WelderBox",
-                          ],
-                        },
-                      ],
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
                     },
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
                     },
                     {
-                      name: "WerkzeugFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Profilfrei", "InPositionPOT", "InPosition"],
-                        },
-                      ],
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
                     },
                     {
-                      name: "StellungFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Freigabe", "Frei", "Belegt"],
-                        },
-                      ],
-                    },
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
                   ],
-                  children: [],
-                  name: "111045R01",
-                },
+                  "Children": [],
+                  "Name": "111045R01"
+                }
               ],
-              name: "111045",
+              "Name": "111045"
             },
             {
-              parameters: [],
-              children: [],
-              name: "11B12",
+              "Parameters": [],
+              "Children": [],
+              "Name": "11B12"
             },
             {
-              parameters: [],
-              children: [],
-              name: "11IG1",
+              "Parameters": [],
+              "Children": [],
+              "Name": "11IG1"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [],
-                  children: [],
-                  name: "11IG2SFN1",
-                },
+                  "Parameters": [],
+                  "Children": [],
+                  "Name": "11IG2SFN1"
+                }
               ],
-              name: "11IG2",
+              "Name": "11IG2"
             },
             {
-              parameters: [],
-              children: [],
-              name: "11IG3",
+              "Parameters": [],
+              "Children": [],
+              "Name": "11IG3"
             },
             {
-              parameters: [],
-              children: [],
-              name: "11IG4",
+              "Parameters": [],
+              "Children": [],
+              "Name": "11IG4"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [],
-                  children: [],
-                  name: "11IG5SFN1",
-                },
+                  "Parameters": [],
+                  "Children": [],
+                  "Name": "11IG5SFN1"
+                }
               ],
-              name: "11IG5",
+              "Name": "11IG5"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [],
-                  children: [],
-                  name: "11IG6SFN1",
-                },
+                  "Parameters": [],
+                  "Children": [],
+                  "Name": "11IG6SFN1"
+                }
               ],
-              name: "11IG6",
+              "Name": "11IG6"
             },
             {
-              parameters: [],
-              children: [],
-              name: "11IG7",
-            },
+              "Parameters": [],
+              "Children": [],
+              "Name": "11IG7"
+            }
           ],
-          name: "11",
+          "Name": "11"
         },
         {
-          parameters: [],
-          children: [
+          "Parameters": [],
+          "Children": [
             {
-              parameters: [],
-              children: [],
-              name: "12HP",
+              "Parameters": [],
+              "Children": [],
+              "Name": "12HP"
             },
             {
-              parameters: [],
-              children: [],
-              name: "12SFN1",
+              "Parameters": [],
+              "Children": [],
+              "Name": "12SFN1"
             },
             {
-              parameters: [],
-              children: [],
-              name: "12SFN2",
+              "Parameters": [],
+              "Children": [],
+              "Name": "12SFN2"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [],
-                      name: "121050V01VI1",
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "121050V01VI1"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V01BGT11a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT11a"
+                        }
                       ],
-                      name: "121050V01BGT11",
+                      "Name": "121050V01BGT11"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V01BGT12a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT12a"
+                        }
                       ],
-                      name: "121050V01BGT12",
+                      "Name": "121050V01BGT12"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V01BGT13a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT13a"
+                        }
                       ],
-                      name: "121050V01BGT13",
+                      "Name": "121050V01BGT13"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V01BGT14a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT14a"
+                        }
                       ],
-                      name: "121050V01BGT14",
+                      "Name": "121050V01BGT14"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V01BGT19a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT19a"
+                        }
                       ],
-                      name: "121050V01BGT19",
+                      "Name": "121050V01BGT19"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V01BGT21a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT21a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V01BGT21b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT21b"
+                        }
                       ],
-                      name: "121050V01BGT21",
-                    },
+                      "Name": "121050V01BGT21"
+                    }
                   ],
-                  name: "121050V01",
+                  "Name": "121050V01"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [],
-                      name: "121050V02VI1",
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "121050V02VI1"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V02BGT15a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT15a"
+                        }
                       ],
-                      name: "121050V02BGT15",
+                      "Name": "121050V02BGT15"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V02BGT16a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT16a"
+                        }
                       ],
-                      name: "121050V02BGT16",
+                      "Name": "121050V02BGT16"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V02BGT17a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT17a"
+                        }
                       ],
-                      name: "121050V02BGT17",
+                      "Name": "121050V02BGT17"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V02BGT18a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT18a"
+                        }
                       ],
-                      name: "121050V02BGT18",
+                      "Name": "121050V02BGT18"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V02BGT20a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT20a"
+                        }
                       ],
-                      name: "121050V02BGT20",
+                      "Name": "121050V02BGT20"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V02BGT22a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT22a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050V02BGT22b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT22b"
+                        }
                       ],
-                      name: "121050V02BGT22",
-                    },
+                      "Name": "121050V02BGT22"
+                    }
                   ],
-                  name: "121050V02",
+                  "Name": "121050V02"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Positions",
-                          value: [
+                          "Name": "Positions",
+                          "Value": [
                             {
-                              Index: 1,
-                              SensorName: "BGE01",
+                              "Index": 1,
+                              "SensorName": "BGE01"
                             },
                             {
-                              Index: 2,
-                              SensorName: "BGE02",
-                            },
+                              "Index": 2,
+                              "SensorName": "BGE02"
+                            }
                           ],
-                          availableValues: [
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt16",
-                              multiSelect: false,
-                              value: [
-                                1,
-                                2,
-                                3,
-                                4,
-                                5,
-                                6,
-                                7,
-                                8,
-                                9,
-                                10,
-                                11,
-                                12,
-                                13,
-                                14,
-                                15,
-                                16,
-                              ],
+                              "Name": "Index",
+                              "Type": "UInt16",
+                              "MultiSelect": false,
+                              "Value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                             },
                             {
-                              name: "SensorName",
-                              type: "String",
-                              multiSelect: false,
-                              value: ["BGE01", "BGE02"],
-                            },
-                          ],
+                              "Name": "SensorName",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": ["BGE01", "BGE02"]
+                            }
+                          ]
                         },
                         {
-                          name: "Controller",
-                          value: {
-                            Type: 0,
-                          },
-                          availableValues: [
+                          "Name": "Controller",
+                          "Value": { "Type": 0 },
+                          "AvailableValues": [
                             {
-                              name: "Type",
-                              type: "Controller",
-                              multiSelect: false,
-                              value: ["DrehtFU_8S"],
-                            },
-                          ],
+                              "Name": "Type",
+                              "Type": "Controller",
+                              "MultiSelect": false,
+                              "Value": ["DrehtFU_8S"]
+                            }
+                          ]
                         },
                         {
-                          name: "Technology",
-                          value: {
-                            type: 0,
-                          },
-                          availableValues: [
+                          "Name": "Technology",
+                          "Value": { "Type": 0 },
+                          "AvailableValues": [
                             {
-                              name: "Type",
-                              type: "Technology",
-                              multiSelect: false,
-                              value: ["SEW_AMA_BIN"],
-                            },
-                          ],
-                        },
+                              "Name": "Type",
+                              "Type": "Technology",
+                              "MultiSelect": false,
+                              "Value": ["SEW_AMA_BIN"]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050DT1AE1BGE01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGE01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050DT1AE1BGE02",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGE02"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050DT1AE1BGS01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGS01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121050DT1AE1BGS02",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGS02"
+                        }
                       ],
-                      name: "121050DT1AE1",
-                    },
+                      "Name": "121050DT1AE1"
+                    }
                   ],
-                  name: "121050DT1",
-                },
+                  "Name": "121050DT1"
+                }
               ],
-              name: "121050",
+              "Name": "121050"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "Tools",
-                      value: [],
-                      availableValues: [
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "AddressPosition",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                         },
                         {
-                          name: "ToolName",
-                          type: "String",
-                          multiSelect: false,
-                          value: [
-                            "CapChanger",
-                            "Gluer",
-                            "Gripper",
-                            "Welder",
-                            "WelderBox",
-                          ],
-                        },
-                      ],
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
                     },
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
                     },
                     {
-                      name: "WerkzeugFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Profilfrei", "InPositionPOT", "InPosition"],
-                        },
-                      ],
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
                     },
                     {
-                      name: "StellungFreigabeList",
-                      value: [],
-                      availableValues: [
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Address",
-                          type: "UInt32",
-                          multiSelect: false,
-                          value: [
-                            57,
-                            58,
-                            59,
-                            60,
-                            61,
-                            62,
-                            63,
-                            64,
-                            65,
-                            66,
-                            67,
-                            68,
-                            69,
-                            70,
-                            71,
-                            72,
-                            73,
-                            74,
-                            75,
-                            76,
-                            77,
-                            78,
-                            79,
-                          ],
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
                         },
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "Stations",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [
-                            "111011BH1",
-                            "111012BH1",
-                            "111013BH1",
-                            "111015BH1",
-                            "111015BH2",
-                            "111020V01",
-                            "111020SB1",
-                            "111020SB2",
-                            "111030V01",
-                            "121050V01",
-                            "121050V02",
-                            "121050DT1",
-                            "121065V01",
-                            "121065DT1",
-                            "131070SB1",
-                          ],
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
                         },
                         {
-                          name: "Type",
-                          type: "String",
-                          multiSelect: false,
-                          value: ["Freigabe", "Frei", "Belegt"],
-                        },
-                      ],
-                    },
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
                   ],
-                  children: [],
-                  name: "121060R01",
-                },
+                  "Children": [],
+                  "Name": "121060R01"
+                }
               ],
-              name: "121060",
+              "Name": "121060"
             },
             {
-              parameters: [],
-              children: [],
-              name: "121061",
+              "Parameters": [],
+              "Children": [],
+              "Name": "121061"
             },
             {
-              parameters: [],
-              children: [],
-              name: "121062",
+              "Parameters": [],
+              "Children": [],
+              "Name": "121062"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01VI1KKP11",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01VI1KKP11"
+                        }
                       ],
-                      name: "121065V01VI1",
+                      "Name": "121065V01VI1"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Valve",
-                          value: {
-                            index: 11,
-                          },
-                          availableValues: [
+                          "Name": "Valve",
+                          "Value": { "Index": 11 },
+                          "AvailableValues": [
                             {
-                              name: "Index",
-                              type: "UInt32",
-                              multiSelect: false,
-                              value: [1, 11],
-                            },
-                          ],
-                        },
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11]
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGE11a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGE11a"
+                        }
                       ],
-                      name: "121065V01BGE11",
+                      "Name": "121065V01BGE11"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT11a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT11a"
+                        }
                       ],
-                      name: "121065V01BGT11",
+                      "Name": "121065V01BGT11"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT12a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT12a"
+                        }
                       ],
-                      name: "121065V01BGT12",
+                      "Name": "121065V01BGT12"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT13a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT13a"
+                        }
                       ],
-                      name: "121065V01BGT13",
+                      "Name": "121065V01BGT13"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT14a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT14a"
+                        }
                       ],
-                      name: "121065V01BGT14",
+                      "Name": "121065V01BGT14"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT15a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT15a"
+                        }
                       ],
-                      name: "121065V01BGT15",
+                      "Name": "121065V01BGT15"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT16a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT16a"
+                        }
                       ],
-                      name: "121065V01BGT16",
+                      "Name": "121065V01BGT16"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT17a",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT17a"
+                        }
                       ],
-                      name: "121065V01BGT17",
+                      "Name": "121065V01BGT17"
                     },
                     {
-                      parameters: [
+                      "Parameters": [
                         {
-                          name: "Parts",
-                          value: [],
-                          availableValues: [
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
                             {
-                              name: "Name",
-                              type: "String",
-                              multiSelect: false,
-                              value: [],
-                            },
-                          ],
-                        },
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
                       ],
-                      children: [
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT18a",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT18a"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "121065V01BGT18b",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT18b"
+                        }
                       ],
-                      name: "121065V01BGT18",
-                    },
+                      "Name": "121065V01BGT18"
+                    }
                   ],
-                  name: "121065V01",
+                  "Name": "121065V01"
                 },
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [],
-                      name: "121065DT1SFN1",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "121065DT1SFN1"
+                    }
                   ],
-                  name: "121065DT1",
-                },
+                  "Name": "121065DT1"
+                }
               ],
-              name: "121065",
+              "Name": "121065"
             },
             {
-              parameters: [],
-              children: [],
-              name: "12IG1",
-            },
+              "Parameters": [],
+              "Children": [],
+              "Name": "12IG1"
+            }
           ],
-          name: "12",
+          "Name": "12"
         },
         {
-          parameters: [],
-          children: [
+          "Parameters": [],
+          "Children": [
             {
-              parameters: [],
-              children: [],
-              name: "13HP",
+              "Parameters": [],
+              "Children": [],
+              "Name": "13HP"
             },
             {
-              parameters: [],
-              children: [
+              "Parameters": [],
+              "Children": [
                 {
-                  parameters: [
+                  "Parameters": [
                     {
-                      name: "FmList",
-                      value: [],
-                      availableValues: [
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
                         {
-                          name: "Name",
-                          type: "String",
-                          multiSelect: false,
-                          value: null,
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
                         },
                         {
-                          name: "ConnectedActions",
-                          type: "String[]",
-                          multiSelect: true,
-                          value: [],
-                        },
-                      ],
-                    },
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
                   ],
-                  children: [
+                  "Children": [
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI1KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI1KKP21",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP21"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI1KKP22",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP22"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI1KKP23",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP23"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI1KKP24",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP24"
+                        }
                       ],
-                      name: "131070SB1VI1",
+                      "Name": "131070SB1VI1"
                     },
                     {
-                      parameters: [],
-                      children: [
+                      "Parameters": [],
+                      "Children": [
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI2KKP01",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI2KKP01"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI2KKP11",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI2KKP11"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI2KKP12",
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI2KKP12"
                         },
                         {
-                          parameters: [],
-                          children: [],
-                          name: "131070SB1VI2KKP13",
-                        },
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI2KKP13"
+                        }
                       ],
-                      name: "131070SB1VI2",
+                      "Name": "131070SB1VI2"
                     },
                     {
-                      parameters: [],
-                      children: [],
-                      name: "131070SB1SFN1",
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "131070SB1SFN1"
                     },
                     {
-                      parameters: [],
-                      children: [],
-                      name: "131070SB1SFN2",
-                    },
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "131070SB1SFN2"
+                    }
                   ],
-                  name: "131070SB1",
-                },
+                  "Name": "131070SB1"
+                }
               ],
-              name: "131070",
-            },
+              "Name": "131070"
+            }
           ],
-          name: "13",
+          "Name": "13"
         },
         {
-          parameters: [],
-          children: [
+          "Parameters": [],
+          "Children": [
             {
-              parameters: [],
-              children: [],
-              name: "1IA1SFN1",
-            },
+              "Parameters": [],
+              "Children": [],
+              "Name": "1IA1SFN1"
+            }
           ],
-          name: "1IA1",
+          "Name": "1IA1"
         },
         {
-          parameters: [],
-          children: [],
-          name: "1IA2",
+          "Parameters": [],
+          "Children": [],
+          "Name": "1IA2"
         },
         {
-          parameters: [],
-          children: [],
-          name: "1IA3",
+          "Parameters": [],
+          "Children": [],
+          "Name": "1IA3"
         },
         {
-          parameters: [],
-          children: [],
-          name: "1IA4",
+          "Parameters": [],
+          "Children": [],
+          "Name": "1IA4"
         },
         {
-          parameters: [],
-          children: [],
-          name: "1KV1",
+          "Parameters": [],
+          "Children": [],
+          "Name": "1KV1"
         },
         {
-          parameters: [],
-          children: [],
-          name: "1SV1",
+          "Parameters": [],
+          "Children": [],
+          "Name": "1SV1"
         },
         {
-          parameters: [],
-          children: [],
-          name: "1BS1",
-        },
+          "Parameters": [],
+          "Children": [],
+          "Name": "1BS1"
+        }
       ],
-      name: "1",
-    },
+      "Name": "1"
+    }
   ],
-};
+  "Name": "KGBHTS"
+}
 
 export const homeFormSubmit = [
   {

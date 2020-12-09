@@ -1,12 +1,23 @@
 import React from "react";
 import DashboardTable from "../DashboardTable";
 import { render, screen, } from "@testing-library/react";
+import { DashboardProvider } from "../context";
 
 import { homeFormSubmitWithIds } from "../../../../tests/responses";
 
+
 describe("DashboardTable", () => {
   it("initial render", () => {
-    render(<DashboardTable rows={homeFormSubmitWithIds} />);
+    const initial = {
+      tree: { Name: "", Children: [] },
+      rows: homeFormSubmitWithIds,
+      selectedLeaf: null,
+    }
+    render(
+      <DashboardProvider initial={initial}>
+        <DashboardTable />
+      </DashboardProvider>
+    );
     expect(screen.queryAllByText("ID",)).not.toBeNull();
     expect(screen.queryAllByText("Operand Identifier",)).not.toBeNull();
     expect(screen.queryAllByText("Adress",)).not.toBeNull();

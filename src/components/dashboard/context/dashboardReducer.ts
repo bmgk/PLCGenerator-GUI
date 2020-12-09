@@ -5,14 +5,12 @@ import { SET_SELECTED_LEAF, SET_TABLE, SET_TREE, REPLACE_LEAF_IN_TREE } from "./
 import { HomeResponseTreeChildren } from "types";
 
 const replace = (nodes: HomeResponseTreeChildren, selectedLeaf: SelectedLeaf) => {
-  if (nodes.name === selectedLeaf.name) {
-    nodes.parameters = selectedLeaf.parameters
-    console.log(nodes.parameters)
-    console.log(selectedLeaf.parameters)
+  if (nodes.Name === selectedLeaf.Name) {
+    nodes.Parameters = selectedLeaf.Parameters
   }
 
-  Array.isArray(nodes.children)
-    ? nodes.children.map((node: HomeResponseTreeChildren) =>
+  Array.isArray(nodes.Children)
+    ? nodes.Children.map((node: HomeResponseTreeChildren) =>
       replace(node, selectedLeaf)
     )
     : null;
@@ -30,14 +28,15 @@ export const dashboardReducer = (
       return { ...state, rows: action.rows };
     }
     case SET_SELECTED_LEAF: {
-      console.log('selectedLeaf reducer')
       return { ...state, selectedLeaf: action.selectedLeaf };
     }
     case REPLACE_LEAF_IN_TREE: {
       if (state.selectedLeaf === null) return state;
 
       const treeCopy = JSON.parse(JSON.stringify(state.tree))
+      console.log(treeCopy)
       replace(treeCopy, state.selectedLeaf)
+      console.log(treeCopy)
       return { ...state, tree: treeCopy };
     }
     default: {

@@ -46,7 +46,7 @@ export const useStyles = makeStyles((theme) => ({
 export const initValues = (availableValues: HomeResponseTreeAvailableValues[]) => {
     return availableValues.reduce((acc: any, el: HomeResponseTreeAvailableValues) => {
         //@ts-ignore
-        acc[el.name] = el.multiSelect ? [] : "";
+        acc[el.Name] = el.MultiSelect ? [] : "";
         return acc;
     }, {})
 }

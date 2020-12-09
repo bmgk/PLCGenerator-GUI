@@ -13,25 +13,25 @@ export type HomeFormReponseSingleElement = {
 export type HomeFormReponse = HomeFormReponseSingleElement[];
 
 type HomeResponseTreeAvailableValues = {
-  name: string;
-  type: string;
-  multiSelect: boolean;
-  value: string[] | number[] | any;
+  Name: string;
+  Type: string;
+  MultiSelect: boolean;
+  Value: string[] | number[] | any;
 };
 
 type HomeResponseTreeParameters = {
-  name: string;
-  value: any[] | any;
-  availableValues: HomeResponseTreeAvailableValues[];
+  Name: string;
+  Value: any[] | any;
+  AvailableValues: HomeResponseTreeAvailableValues[];
 };
 
 type HomeResponseTreeChildren = {
-  parameters: HomeResponseTreeParameters[];
-  children: HomeResponseTreeChildren[];
-  name: string;
+  Parameters: HomeResponseTreeParameters[];
+  Children: HomeResponseTreeChildren[];
+  Name: string;
 };
 
 export type HomeFormTreeResponse = {
-  name: string;
-  children: HomeResponseTreeChildren[];
+  Name: string;
+  Children: HomeResponseTreeChildren[];
 };

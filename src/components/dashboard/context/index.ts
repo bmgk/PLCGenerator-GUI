@@ -1,10 +1,11 @@
 import React from "react";
+import { SET_TREE, SET_TABLE, SET_SELECTED_LEAF, REPLACE_LEAF_IN_TREE } from "..";
+
 import {
   HomeFormTreeResponse,
   HomeFormReponse,
   HomeResponseTreeParameters,
 } from "types";
-import { SET_TREE, SET_TABLE, SET_SELECTED_LEAF, SET_WORKING_TREE, REPLACE_LEAF_IN_TREE } from "..";
 
 export * from "./dashboardActions";
 export * from "./dashboardReducer";
@@ -44,6 +45,6 @@ export type DashboardState = {
 export type DashboardProviderProps = { children: React.ReactNode, initial?: DashboardState };
 
 export type SelectedLeaf = {
-  parameters: HomeResponseTreeParameters[];
-  name: string;
+  Parameters: HomeResponseTreeParameters[];
+  Name: string;
 };

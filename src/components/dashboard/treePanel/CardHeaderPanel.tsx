@@ -10,7 +10,7 @@ import { useStyles } from "./utils";
 export const CardHeaderPanel: React.FC<DashboardTreePanelHeader> = (props) => {
     const { index, setIndex, selectedLeaf } = props;
     const classes = useStyles();
-    const length = selectedLeaf.parameters.length;
+    const length = selectedLeaf.Parameters.length;
 
     const handlePrev = () => {
         if (index === 0) {
@@ -48,7 +48,7 @@ export const CardHeaderPanel: React.FC<DashboardTreePanelHeader> = (props) => {
                     </IconButton>
                 ) : null
             }
-            title={selectedLeaf.parameters[index].name}
+            title={selectedLeaf.Parameters[index].Name}
             classes={{
                 root: classes.headerRoot,
                 title: classes.headerTitle,

@@ -20,17 +20,17 @@ const useStyles = makeStyles({
 });
 
 const createLeaf = (nodes: HomeResponseTreeChildren) => ({
-  parameters: nodes.parameters,
-  name: nodes.name,
+  Parameters: nodes.Parameters,
+  Name: nodes.Name,
 });
 
 const getIdTree = (
   nodes: HomeFormTreeResponse | HomeFormTreeResponse,
   ids: string[]
 ) => {
-  ids.push(nodes.name);
-  Array.isArray(nodes.children)
-    ? nodes.children.map((node: HomeResponseTreeChildren) =>
+  ids.push(nodes.Name);
+  Array.isArray(nodes.Children)
+    ? nodes.Children.map((node: HomeResponseTreeChildren) =>
       getIdTree(node, ids)
     )
     : null;
@@ -46,14 +46,14 @@ export const DashboardTree: React.FC = () => {
   const renderTreeRoot = (nodes: HomeFormTreeResponse) => {
     return (
       <TreeItem
-        key={nodes.name}
-        nodeId={`${nodes.name}`}
-        label={nodes.name}
+        key={nodes.Name}
+        nodeId={`${nodes.Name}`}
+        label={nodes.Name}
         onClick={() => dispatch(setLeaf(null))}
         style={{ color: 'green' }}
       >
-        {Array.isArray(nodes.children)
-          ? nodes.children.map((node: HomeResponseTreeChildren) =>
+        {Array.isArray(nodes.Children)
+          ? nodes.Children.map((node: HomeResponseTreeChildren) =>
             renderTree(node)
           )
           : null}
@@ -64,14 +64,14 @@ export const DashboardTree: React.FC = () => {
   const renderTree = (nodes: HomeResponseTreeChildren) => {
     return (
       <TreeItem
-        key={nodes.name}
-        nodeId={`${nodes.name}`}
-        label={nodes.name}
+        key={nodes.Name}
+        nodeId={`${nodes.Name}`}
+        label={nodes.Name}
         onClick={() => dispatch(setLeaf(createLeaf(JSON.parse(JSON.stringify(nodes)))))}
-        style={{ color: nodes.parameters.length === 0 ? 'green' : 'red' }}
+        style={{ color: nodes.Parameters.length === 0 ? 'green' : 'red' }}
       >
-        {Array.isArray(nodes.children)
-          ? nodes.children.map((node: HomeResponseTreeChildren) =>
+        {Array.isArray(nodes.Children)
+          ? nodes.Children.map((node: HomeResponseTreeChildren) =>
             renderTree(node)
           )
           : null}

@@ -21,10 +21,10 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
     const { carousele, selectedLeaf } = props;
     const { t } = useTranslation();
     const classes = useStyles();
-    const parameter = selectedLeaf.parameters[carousele];
+    const parameter = selectedLeaf.Parameters[carousele];
 
     const dispatch = useDashboardDispatch();
-    const [values, reducerDispatch] = useReducer(reducer, initValues(parameter.availableValues));
+    const [values, reducerDispatch] = useReducer(reducer, initValues(parameter.AvailableValues));
     const [disabled, setDisabled] = useState(true);
 
     useEffect(() => {
@@ -39,7 +39,11 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
 
     const handleClick = () => {
         const selectedLeafClone: SelectedLeaf = JSON.parse(JSON.stringify(selectedLeaf));
-        selectedLeafClone.parameters[carousele].value.push(values);
+        if (Array.isArray(selectedLeafClone.Parameters[carousele].Value)) {
+            selectedLeafClone.Parameters[carousele].Value.push(values)
+        } else {
+            selectedLeafClone.Parameters[carousele].Value = values;
+        }
         dispatch(setLeaf(selectedLeafClone))
         reducerDispatch(clearValues())
         setDisabled(true);
@@ -56,25 +60,25 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {parameter.availableValues.map((el, index) => {
+                        {parameter.AvailableValues.map((el, index) => {
                             return (
-                                <TableRow key={`${el.name}-create`}>
+                                <TableRow key={`${el.Name}-create`}>
                                     <TableCell className={classes.cell} align="center" component="td">
-                                        {el.name}
+                                        {el.Name}
                                     </TableCell>
                                     <TableCell className={classes.cell} align="center" component="td">
                                         <FormControl className={classes.formControl}>
                                             <Select
-                                                data-testid={`${el.name}-create`}
-                                                value={values[el.name]}
-                                                name={el.name}
+                                                data-testid={`${el.Name}-create`}
+                                                value={values[el.Name]}
+                                                name={el.Name}
                                                 onChange={handleChange}
                                                 displayEmpty
                                                 className={classes.selectEmpty}
-                                                multiple={el.multiSelect}
+                                                multiple={el.MultiSelect}
                                                 native
                                             >
-                                                {Array.isArray(el.value) ? ["", ...el.value].map((el: any) => <option key={el} value={el}>{el}</option>) : null}
+                                                {Array.isArray(el.Value) ? ["", ...el.Value].map((el: any) => <option key={el} value={el}>{el}</option>) : null}
                                             </Select>
                                         </FormControl>
                                     </TableCell>

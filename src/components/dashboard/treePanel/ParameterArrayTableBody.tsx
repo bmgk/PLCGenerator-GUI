@@ -13,20 +13,20 @@ import { useTranslation } from "react-i18next";
 import { SelectedLeaf, useDashboardDispatch, setLeaf } from "../context";
 import { reducer, setValues, useStyles } from "./utils";
 
-import { DashboardTreePanelTableBody, } from "types";
+import { DashboardParameterArrayTableBodyBody, } from "types";
 
-export const ParameterTableBody: React.FC<DashboardTreePanelTableBody> = (props) => {
+export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyBody> = (props) => {
     const { initialValues, carousele, index, selectedLeaf } = props;
     const { t } = useTranslation();
     const classes = useStyles();
-    const parameter = selectedLeaf.parameters[carousele];
+    const parameter = selectedLeaf.Parameters[carousele];
 
     const dispatch = useDashboardDispatch();
     const [values, reducerDispatch] = useReducer(reducer, initialValues);
 
     useEffect(() => {
         const selectedLeafClone: SelectedLeaf = JSON.parse(JSON.stringify(selectedLeaf));
-        selectedLeafClone.parameters[carousele].value[index] = values
+        selectedLeafClone.Parameters[carousele].Value[index] = values
         dispatch(setLeaf(selectedLeafClone))
     }, [values])
 
@@ -45,25 +45,25 @@ export const ParameterTableBody: React.FC<DashboardTreePanelTableBody> = (props)
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {parameter.availableValues.map(el => {
+                    {parameter.AvailableValues.map(el => {
                         return (
-                            <TableRow key={`${el.name}-${index}`}>
+                            <TableRow key={`${el.Name}-${index}`}>
                                 <TableCell className={classes.cell} align="center" component="td">
-                                    {el.name}
+                                    {el.Name}
                                 </TableCell>
                                 <TableCell className={classes.cell} align="center" component="td">
                                     <FormControl className={classes.formControl}>
                                         <Select
-                                            data-testid={`${el.name}-${index}`}
-                                            value={values[el.name]}
-                                            name={el.name}
+                                            data-testid={`${el.Name}-${index}`}
+                                            value={values[el.Name]}
+                                            name={el.Name}
                                             onChange={handleChange}
                                             displayEmpty
                                             className={classes.selectEmpty}
-                                            multiple={el.multiSelect}
+                                            multiple={el.MultiSelect}
                                             native
                                         >
-                                            {Array.isArray(el.value) ? el.value.map((el: any) => <option key={el} value={el}>{el}</option >) : null}
+                                            {Array.isArray(el.Value) ? el.Value.map((el: any) => <option key={el} value={el}>{el}</option >) : null}
                                         </Select>
                                     </FormControl>
                                 </TableCell>
