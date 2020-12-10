@@ -17,7 +17,7 @@ describe("HomeForm", () => {
     render(<HomeForm handleSubmit={handleSubmit} />);
     const file = new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" });
 
-    const fileInput = screen.getByLabelText("Upload button");
+    const fileInput = screen.getByLabelText("Upload File");
     const projectNameInput = screen.getByTestId("projectName");
     fireEvent.change(fileInput, { target: { files: [file] } });
     fireEvent.change(projectNameInput, { target: { value: "Project Name" } });
@@ -37,7 +37,7 @@ describe("HomeForm", () => {
     render(<HomeForm handleSubmit={handleSubmit} />);
     const file = new File(["(⌐□_□)"], "chucknorris.png", { type: "image/png" });
 
-    const fileInput = screen.getByLabelText("Upload button");
+    const fileInput = screen.getByLabelText("Upload File");
     await waitFor(() => {
       fireEvent.change(fileInput, { target: { files: [file] } });
     });

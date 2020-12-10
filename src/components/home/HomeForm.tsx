@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Card from "@material-ui/core/Card";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
@@ -12,7 +13,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { Field, FieldArray, Form, Formik } from "formik";
 import { TextField as TextFieldFormik } from "formik-material-ui";
 
-import { HomeFormValues, EplanTag, HomeFormProps } from "../../types";
+import { HomeFormValues, EplanTag, HomeFormProps } from "types";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -47,20 +48,21 @@ const isDisabled = (values: HomeFormValues) => {
   return values.eplanTags.length === 0 || values.projectName === "";
 };
 
+const handleChange = (push: (element: EplanTag) => void) => (
+  event: React.ChangeEvent<HTMLInputElement>
+) => {
+  event.persist();
+  const file = (event.target.files && event.target.files[0]) || null;
+  if (file != null) {
+    const element: EplanTag = { name: file.name, path: file.path };
+    push(element);
+  }
+};
+
 export const HomeForm: React.FC<HomeFormProps> = (props) => {
   const { handleSubmit } = props;
+  const { t } = useTranslation();
   const classes = useStyles();
-
-  const handleChange = (push: (element: EplanTag) => void) => (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    event.persist();
-    const file = (event.target.files && event.target.files[0]) || null;
-    if (file != null) {
-      const element: EplanTag = { name: file.name, path: file.path };
-      push(element);
-    }
-  };
 
   return (
     <Card className={classes.formContainer}>
@@ -71,7 +73,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
               <Field
                 type="text"
                 name="projectName"
-                label="Project Name"
+                label={t("home.homeForm.projectName")}
                 component={TextFieldFormik}
                 inputProps={{
                   id: "projectName",
@@ -96,7 +98,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                         variant="contained"
                         component="span"
                       >
-                        Upload button
+                        {t("home.homeForm.uploadButton")}
                       </Button>
                     </label>
                   </FormControl>
@@ -126,7 +128,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
               variant="contained"
               disabled={isDisabled(formik.values)}
             >
-              Create
+              {t("home.homeForm.createButton")}
             </Button>
           </Form>
         )}

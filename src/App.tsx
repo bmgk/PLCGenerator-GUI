@@ -1,8 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
-import { Container } from "@material-ui/core";
-import { Home } from "./pages";
+import { DashboardProvider } from "./components/dashboard";
+import { Home, Dashboard } from "./pages";
+
+import "./i18n/i18n";
 
 const mainElement = document.createElement("div");
 mainElement.setAttribute("id", "root");
@@ -10,9 +14,19 @@ document.body.appendChild(mainElement);
 
 const App = () => {
   return (
-    <Container>
-      <Home />
-    </Container>
+    <DashboardProvider>
+      <CssBaseline />
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+        </Switch>
+      </Router>
+    </DashboardProvider>
   );
 };
 

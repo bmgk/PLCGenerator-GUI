@@ -12,7 +12,13 @@
     "jsx": "react",
     "sourceMap": true,
     "outDir": "./dist",
-    "strict": true ,
+    "strict": true,
     "esModuleInterop": true,
+    "baseUrl": "src",
+    "paths": {
+      "test-utils": [
+        "./tests/test-utils"
+      ]
+    }
   }
 }
