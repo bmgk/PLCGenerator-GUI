@@ -16,6 +16,8 @@ import { SelectedLeaf, useDashboardDispatch, setLeaf } from "../context";
 import { clearValues, initValues, reducer, setValues, useStyles } from "./utils";
 
 import { DashboardTreePanelCreateTableBody, } from "types";
+import { DashboardSelect } from "./DashboardSelect";
+import { DashboardInput } from "./DashboardInput";
 
 export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBody> = (props) => {
     const { carousele, selectedLeaf } = props;
@@ -32,11 +34,6 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
         setDisabled(disabled)
     }, [values])
 
-    const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        //@ts-ignore
-        reducerDispatch(setValues(event.target.name, event.target.value))
-    };
-
     const handleClick = () => {
         const selectedLeafClone: SelectedLeaf = JSON.parse(JSON.stringify(selectedLeaf));
         if (Array.isArray(selectedLeafClone.Parameters[carousele].Value)) {
@@ -49,6 +46,28 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
         setDisabled(true);
     }
 
+    const handleChangeSelect = (multiple: boolean) => (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
+        if (multiple) {
+            //@ts-ignore
+            const options = event.target.options;
+            const value = [];
+            for (var i = 0, l = options.length; i < l; i++) {
+                if (options[i].selected) {
+                    value.push(options[i].value);
+                }
+            }
+            //@ts-ignore
+            reducerDispatch(setValues(event.target.name, value))
+        } else {
+            //@ts-ignore
+            reducerDispatch(setValues(event.target.name, event.target.value))
+        }
+    };
+
+    const handleChangeInput = (name: string) => (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        reducerDispatch(setValues(name, event.target.value))
+    };
+
     return (
         <>
             <TableContainer className={classes.tableContainer} component={Paper}>
@@ -60,27 +79,27 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {parameter.AvailableValues.map((el, index) => {
+                        {parameter.AvailableValues.map(el => {
                             return (
                                 <TableRow key={`${el.Name}-create`}>
                                     <TableCell className={classes.cell} align="center" component="td">
                                         {el.Name}
                                     </TableCell>
                                     <TableCell className={classes.cell} align="center" component="td">
-                                        <FormControl className={classes.formControl}>
-                                            <Select
-                                                data-testid={`${el.Name}-create`}
-                                                value={values[el.Name]}
-                                                name={el.Name}
-                                                onChange={handleChange}
-                                                displayEmpty
-                                                className={classes.selectEmpty}
-                                                multiple={el.MultiSelect}
-                                                native
-                                            >
-                                                {Array.isArray(el.Value) ? ["", ...el.Value].map((el: any) => <option key={el} value={el}>{el}</option>) : null}
-                                            </Select>
-                                        </FormControl>
+                                        {Array.isArray(el.Value) ?
+                                            <DashboardSelect
+                                                testId={`${el.Name}-select-create`}
+                                                isCreate={true}
+                                                values={values}
+                                                el={el}
+                                                handleChange={handleChangeSelect}
+                                            /> :
+                                            <DashboardInput
+                                                testId={`${el.Name}-input-create`}
+                                                values={values}
+                                                el={el}
+                                                handleChange={handleChangeInput(el.Name)}
+                                            />}
                                     </TableCell>
                                 </TableRow>
                             )

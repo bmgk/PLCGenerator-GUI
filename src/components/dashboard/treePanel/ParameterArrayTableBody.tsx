@@ -6,11 +6,11 @@ import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import { useTranslation } from "react-i18next";
 
 import { SelectedLeaf, useDashboardDispatch, setLeaf } from "../context";
+import { DashboardSelect } from "./DashboardSelect";
+import { DashboardInput } from "./DashboardInput";
 import { reducer, setValues, useStyles } from "./utils";
 
 import { DashboardParameterArrayTableBodyBody, } from "types";
@@ -30,9 +30,26 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
         dispatch(setLeaf(selectedLeafClone))
     }, [values])
 
-    const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        //@ts-ignore
-        reducerDispatch(setValues(event.target.name, event.target.value))
+    const handleChangeSelect = (multiple: boolean) => (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
+        if (multiple) {
+            //@ts-ignore
+            const options = event.target.options;
+            const value = [];
+            for (var i = 0, l = options.length; i < l; i++) {
+                if (options[i].selected) {
+                    value.push(options[i].value);
+                }
+            }
+            //@ts-ignore
+            reducerDispatch(setValues(event.target.name, value))
+        } else {
+            //@ts-ignore
+            reducerDispatch(setValues(event.target.name, event.target.value))
+        }
+    };
+
+    const handleChangeInput = (name: string) => (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        reducerDispatch(setValues(name, event.target.value))
     };
 
     return (
@@ -52,20 +69,17 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
                                     {el.Name}
                                 </TableCell>
                                 <TableCell className={classes.cell} align="center" component="td">
-                                    <FormControl className={classes.formControl}>
-                                        <Select
-                                            data-testid={`${el.Name}-${index}`}
-                                            value={values[el.Name]}
-                                            name={el.Name}
-                                            onChange={handleChange}
-                                            displayEmpty
-                                            className={classes.selectEmpty}
-                                            multiple={el.MultiSelect}
-                                            native
-                                        >
-                                            {Array.isArray(el.Value) ? el.Value.map((el: any) => <option key={el} value={el}>{el}</option >) : null}
-                                        </Select>
-                                    </FormControl>
+                                    {Array.isArray(el.Value) ?
+                                        <DashboardSelect
+                                            values={values}
+                                            el={el}
+                                            handleChange={handleChangeSelect}
+                                        /> :
+                                        <DashboardInput
+                                            values={values}
+                                            el={el}
+                                            handleChange={handleChangeInput(el.Name)}
+                                        />}
                                 </TableCell>
                             </TableRow>
                         )

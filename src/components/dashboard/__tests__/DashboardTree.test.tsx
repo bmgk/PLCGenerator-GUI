@@ -4,7 +4,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 
 import { DashboardProvider } from "../context";
-import { homeFormSubmitTree } from "../../../../tests/responses";
+import { homeFormSubmitTreeForTests } from "../../../../tests/responses";
 
 import { HomeFormTreeResponse, HomeResponseTreeChildren } from "types";
 
@@ -24,7 +24,7 @@ const getNames = (
 describe("DashboardTree", () => {
   beforeEach(() => {
     const initial = {
-      tree: homeFormSubmitTree,
+      tree: homeFormSubmitTreeForTests,
       rows: [],
       selectedLeaf: null,
     }
@@ -36,7 +36,7 @@ describe("DashboardTree", () => {
   });
 
   it("initial render", () => {
-    const names = getNames(homeFormSubmitTree, []);
+    const names = getNames(homeFormSubmitTreeForTests, []);
     names.forEach((singleName) => {
       expect(screen.queryByText(singleName)).toBeDefined();
     });
@@ -48,7 +48,7 @@ describe("DashboardTree", () => {
   });
 
   it("Display empty parameter tree panel", () => {
-    userEvent.click(screen.getByText('11HP'))
+    userEvent.click(screen.getByText('121050V01VI1'))
     expect(screen.getByText('Parameters are empty')).toBeDefined()
   });
 
@@ -106,17 +106,17 @@ describe("DashboardTree", () => {
 
   it("Create button not disabled after filling form", () => {
     userEvent.click(screen.getByText('121050DT1AE1'))
-    userEvent.selectOptions(screen.getByTestId('Index-create').children[0], "10")
-    userEvent.selectOptions(screen.getByTestId('SensorName-create').children[0], "BGE02")
+    userEvent.selectOptions(screen.getByTestId('Index-select-create').children[0], "10")
+    userEvent.selectOptions(screen.getByTestId('SensorName-select-create').children[0], "BGE02")
     expect(screen.getByRole('button', {
       name: /create/i
     })).not.toBeDisabled()
   });
 
-  it("Create new table item", () => {
+  it("Create new table item, uses select", () => {
     userEvent.click(screen.getByText('121050DT1AE1'))
-    userEvent.selectOptions(screen.getByTestId('Index-create').children[0], "10")
-    userEvent.selectOptions(screen.getByTestId('SensorName-create').children[0], "BGE02")
+    userEvent.selectOptions(screen.getByTestId('Index-select-create').children[0], "10")
+    userEvent.selectOptions(screen.getByTestId('SensorName-select-create').children[0], "BGE02")
     userEvent.click(screen.getByRole('button', {
       name: /create/i
     }));
@@ -126,10 +126,10 @@ describe("DashboardTree", () => {
   });
 
 
-  it("Create new table item and, prev element and then next element", () => {
+  it("Create new table item uses select and prev element and then next element ", () => {
     userEvent.click(screen.getByText('121050DT1AE1'))
-    userEvent.selectOptions(screen.getByTestId('Index-create').children[0], "10")
-    userEvent.selectOptions(screen.getByTestId('SensorName-create').children[0], "BGE02")
+    userEvent.selectOptions(screen.getByTestId('Index-select-create').children[0], "10")
+    userEvent.selectOptions(screen.getByTestId('SensorName-select-create').children[0], "BGE02")
     userEvent.click(screen.getByRole('button', {
       name: /create/i
     }));
@@ -148,5 +148,39 @@ describe("DashboardTree", () => {
     }))
     expect(screen.queryAllByText('Name').length).toBe(4)
     expect(screen.queryAllByText('Value').length).toBe(4)
+  });
+
+  it("Check when value is not array, then do not display create icon", () => {
+    userEvent.click(screen.getByText('121050DT1AE1'))
+    userEvent.click(screen.getByRole('button', {
+      name: /next-parameter/i
+    }))
+    expect(screen.queryByRole('button', {
+      name: /create/i
+    })).toBeNull()
+  });
+
+  it("Do not preserve value when change tree item, when same structure", async () => {
+    userEvent.click(screen.getByText('121050V01'));
+    userEvent.type(screen.getByTestId('Name-input-create').children[0], 'Marjan Kaleta ubija kotleta')
+
+    //@ts-ignore
+    expect(screen.getByTestId('Name-input-create').children[0].value).toBe('Marjan Kaleta ubija kotleta')
+    userEvent.click(screen.getByText('121050V02'))
+    //@ts-ignore
+    expect(screen.getByTestId('Name-input-create').children[0].value).not.toBe('Marjan Kaleta ubija kotleta')
+  });
+
+  it("Do not preserve index when change tree item, when not same structure", async () => {
+    userEvent.click(screen.getByText('121050DT1AE1'));
+    userEvent.click(screen.getByRole('button', {
+      name: /next-parameter/i
+    }))
+    expect(screen.queryByText('Controller')).toBeDefined();
+    userEvent.click(screen.getByText('121050DT1'))
+    expect(screen.queryByText('FmList')).toBeDefined();
+    expect(screen.queryByRole('button', {
+      name: /next-parameter/i
+    })).toBeNull()
   });
 });

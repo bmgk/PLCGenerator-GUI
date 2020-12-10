@@ -14,6 +14,8 @@ import { SelectedLeaf, useDashboardDispatch, setLeaf } from "../context";
 import { reducer, setValues, useStyles } from "./utils";
 
 import { DashboardParameterSingleTableBodyBody, } from "types";
+import { DashboardSelect } from "./DashboardSelect";
+import { DashboardInput } from "./DashboardInput";
 
 export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBodyBody> = (props) => {
     const { initialValues, carousele, selectedLeaf } = props;
@@ -30,10 +32,29 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
         dispatch(setLeaf(selectedLeafClone))
     }, [values])
 
-    const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        //@ts-ignore
-        reducerDispatch(setValues(event.target.name, event.target.value))
+    const handleChangeSelect = (multiple: boolean) => (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
+        if (multiple) {
+            //@ts-ignore
+            const options = event.target.options;
+            const value = [];
+            for (var i = 0, l = options.length; i < l; i++) {
+                if (options[i].selected) {
+                    value.push(options[i].value);
+                }
+            }
+            //@ts-ignore
+            reducerDispatch(setValues(event.target.name, value))
+        } else {
+            //@ts-ignore
+            reducerDispatch(setValues(event.target.name, event.target.value))
+        }
     };
+
+    const handleChangeInput = (name: string) => (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+        reducerDispatch(setValues(name, event.target.value))
+    };
+
+    const el = parameter.AvailableValues[0];
 
     return (
         <TableContainer className={classes.tableContainer} component={Paper}>
@@ -45,28 +66,24 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow key={`${parameter.AvailableValues[0].Name}`}>
+                    <TableRow key={`${el.Name}`}>
                         <TableCell className={classes.cell} align="center" component="td">
-                            {parameter.AvailableValues[0].Name}
+                            {el.Name}
                         </TableCell>
                         <TableCell className={classes.cell} align="center" component="td">
-                            <FormControl className={classes.formControl}>
-                                <Select
-                                    data-testid={`${parameter.AvailableValues[0].Name}`}
-                                    value={values[parameter.AvailableValues[0].Name]}
-                                    name={parameter.AvailableValues[0].Name}
-                                    onChange={handleChange}
-                                    displayEmpty
-                                    className={classes.selectEmpty}
-                                    multiple={parameter.AvailableValues[0].MultiSelect}
-                                    native
-                                >
-                                    {Array.isArray(parameter.AvailableValues[0].Value) ? parameter.AvailableValues[0].Value.map((el: any) => <option key={el} value={el}>{el}</option >) : null}
-                                </Select>
-                            </FormControl>
+                            {Array.isArray(el.Value) ?
+                                <DashboardSelect
+                                    values={values}
+                                    el={el}
+                                    handleChange={handleChangeSelect}
+                                /> :
+                                <DashboardInput
+                                    values={values}
+                                    el={el}
+                                    handleChange={handleChangeInput(el.Name)}
+                                />}
                         </TableCell>
                     </TableRow>
-
                 </TableBody>
             </Table>
         </TableContainer>

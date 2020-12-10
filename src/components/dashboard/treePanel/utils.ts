@@ -4,6 +4,7 @@ import { HomeResponseTreeAvailableValues, } from "types";
 
 export const SET_VALUES = "SET_VALUES"
 export const CLEAR_VALUES = "CLEAR_VALUES"
+export const SET_ALL_VALUES = "SET_ALL_VALUES"
 
 export const useStyles = makeStyles((theme) => ({
     treePanelContainer: {
@@ -61,8 +62,18 @@ export const clearValues = () => ({
     type: CLEAR_VALUES,
 })
 
+export const setInitialValues = (initialValues: any) => ({
+    type: SET_ALL_VALUES,
+    initialValues,
+})
+
 export const reducer = (state: any, action: any): any => {
     switch (action.type) {
+        case SET_ALL_VALUES: {
+            const { initialValues } = action;
+
+            return { ...initialValues }
+        }
         case SET_VALUES: {
             const { name, value } = action;
 
