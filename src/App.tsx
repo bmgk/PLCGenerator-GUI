@@ -1,7 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Container } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+import { DashboardProvider } from "./components/dashboard";
 import { Home, Dashboard } from "./pages";
 
 import "./i18n/i18n";
@@ -12,18 +14,19 @@ document.body.appendChild(mainElement);
 
 const App = () => {
   return (
-    <Router>
-      <Container>
+    <DashboardProvider>
+      <CssBaseline />
+      <Router>
         <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
           <Route path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path="/">
-            <Home />
-          </Route>
         </Switch>
-      </Container>
-    </Router>
+      </Router>
+    </DashboardProvider>
   );
 };
 

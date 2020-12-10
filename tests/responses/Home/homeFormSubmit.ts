@@ -1,3 +1,1878 @@
+import { HomeFormReponse, HomeFormTreeResponse } from "types";
+
+export const homeFormSubmitTree: HomeFormTreeResponse = {
+  "Children": [
+    {
+      "Parameters": [
+        {
+          "Name": "Interlocks",
+          "Value": [],
+          "AvailableValues": [
+            {
+              "Name": "Index",
+              "Type": "UInt16",
+              "MultiSelect": false,
+              "Value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+              "Name": "Robot1",
+              "Type": "String",
+              "MultiSelect": false,
+              "Value": ["111010R01", "111020R01", "111025R01", "111030R01", "111030R02", "111040R01", "111045R01", "121060R01"]
+            },
+            {
+              "Name": "Robot2",
+              "Type": "String",
+              "MultiSelect": false,
+              "Value": ["111010R01", "111020R01", "111025R01", "111030R01", "111030R02", "111040R01", "111045R01", "121060R01"]
+            }
+          ]
+        }
+      ],
+      "Children": [
+        {
+          "Parameters": [],
+          "Children": [
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "11HP"
+            },
+            {
+              "Parameters": [],
+              "Children": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                        },
+                        {
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
+                    },
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    },
+                    {
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        },
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
+                        },
+                        {
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
+                    },
+                    {
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        },
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
+                        },
+                        {
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [],
+                  "Name": "111010R01"
+                }
+              ],
+              "Name": "111010"
+            },
+            {
+              "Parameters": [],
+              "Children": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111011BH1VI1KKP01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111011BH1VI1KKP11"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111011BH1VI1KKP12"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111011BH1VI1KKP13"
+                        }
+                      ],
+                      "Name": "111011BH1VI1"
+                    },
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111011BH1SFN1"
+                    }
+                  ],
+                  "Name": "111011BH1"
+                }
+              ],
+              "Name": "111011"
+            },
+            {
+              "Parameters": [],
+              "Children": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111012BH1VI1KKP01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111012BH1VI1KKP11"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111012BH1VI1KKP12"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "111012BH1VI1KKP13"
+                        }
+                      ],
+                      "Name": "111012BH1VI1"
+                    },
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "111012BH1SFN1"
+                    }
+                  ],
+                  "Name": "111012BH1"
+                }
+              ],
+              "Name": "111012"
+            },
+          ],
+          "Name": "11"
+        },
+        {
+          "Parameters": [],
+          "Children": [
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "12HP"
+            },
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "12SFN1"
+            },
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "12SFN2"
+            },
+            {
+              "Parameters": [],
+              "Children": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "121050V01VI1"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT11a"
+                        }
+                      ],
+                      "Name": "121050V01BGT11"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT12a"
+                        }
+                      ],
+                      "Name": "121050V01BGT12"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT13a"
+                        }
+                      ],
+                      "Name": "121050V01BGT13"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT14a"
+                        }
+                      ],
+                      "Name": "121050V01BGT14"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT19a"
+                        }
+                      ],
+                      "Name": "121050V01BGT19"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT21a"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT21b"
+                        }
+                      ],
+                      "Name": "121050V01BGT21"
+                    }
+                  ],
+                  "Name": "121050V01"
+                },
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "121050V02VI1"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT15a"
+                        }
+                      ],
+                      "Name": "121050V02BGT15"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT16a"
+                        }
+                      ],
+                      "Name": "121050V02BGT16"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT17a"
+                        }
+                      ],
+                      "Name": "121050V02BGT17"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT18a"
+                        }
+                      ],
+                      "Name": "121050V02BGT18"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT20a"
+                        }
+                      ],
+                      "Name": "121050V02BGT20"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT22a"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT22b"
+                        }
+                      ],
+                      "Name": "121050V02BGT22"
+                    }
+                  ],
+                  "Name": "121050V02"
+                },
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Positions",
+                          "Value": [
+                            {
+                              "Index": 1,
+                              "SensorName": "BGE01"
+                            },
+                            {
+                              "Index": 2,
+                              "SensorName": "BGE02"
+                            }
+                          ],
+                          "AvailableValues": [
+                            {
+                              "Name": "Index",
+                              "Type": "UInt16",
+                              "MultiSelect": false,
+                              "Value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                            },
+                            {
+                              "Name": "SensorName",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": ["BGE01", "BGE02"]
+                            }
+                          ]
+                        },
+                        {
+                          "Name": "Controller",
+                          "Value": { "Type": 0 },
+                          "AvailableValues": [
+                            {
+                              "Name": "Type",
+                              "Type": "Controller",
+                              "MultiSelect": false,
+                              "Value": ["DrehtFU_8S"]
+                            }
+                          ]
+                        },
+                        {
+                          "Name": "Technology",
+                          "Value": { "Type": 0 },
+                          "AvailableValues": [
+                            {
+                              "Name": "Type",
+                              "Type": "Technology",
+                              "MultiSelect": false,
+                              "Value": ["SEW_AMA_BIN"]
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGE01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGE02"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGS01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGS02"
+                        }
+                      ],
+                      "Name": "121050DT1AE1"
+                    }
+                  ],
+                  "Name": "121050DT1"
+                }
+              ],
+              "Name": "121050"
+            },
+            {
+              "Parameters": [],
+              "Children": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "Tools",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "AddressPosition",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                        },
+                        {
+                          "Name": "ToolName",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["CapChanger", "Gluer", "Gripper", "Welder", "WelderBox"]
+                        }
+                      ]
+                    },
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    },
+                    {
+                      "Name": "WerkzeugFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        },
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
+                        },
+                        {
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Profilfrei", "InPositionPOT", "InPosition"]
+                        }
+                      ]
+                    },
+                    {
+                      "Name": "StellungFreigabeList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Address",
+                          "Type": "UInt32",
+                          "MultiSelect": false,
+                          "Value": [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        },
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "Stations",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": ["111011BH1", "111012BH1", "111013BH1", "111015BH1", "111015BH2", "111020V01", "111020SB1", "111020SB2", "111030V01", "121050V01", "121050V02", "121050DT1", "121065V01", "121065DT1", "131070SB1"]
+                        },
+                        {
+                          "Name": "Type",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": ["Freigabe", "Frei", "Belegt"]
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [],
+                  "Name": "121060R01"
+                }
+              ],
+              "Name": "121060"
+            },
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "121061"
+            },
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "121062"
+            },
+            {
+              "Parameters": [],
+              "Children": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01VI1KKP01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01VI1KKP11"
+                        }
+                      ],
+                      "Name": "121065V01VI1"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Valve",
+                          "Value": { "Index": 11 },
+                          "AvailableValues": [
+                            {
+                              "Name": "Index",
+                              "Type": "UInt32",
+                              "MultiSelect": false,
+                              "Value": [1, 11]
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGE11a"
+                        }
+                      ],
+                      "Name": "121065V01BGE11"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT11a"
+                        }
+                      ],
+                      "Name": "121065V01BGT11"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT12a"
+                        }
+                      ],
+                      "Name": "121065V01BGT12"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT13a"
+                        }
+                      ],
+                      "Name": "121065V01BGT13"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT14a"
+                        }
+                      ],
+                      "Name": "121065V01BGT14"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT15a"
+                        }
+                      ],
+                      "Name": "121065V01BGT15"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT16a"
+                        }
+                      ],
+                      "Name": "121065V01BGT16"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT17a"
+                        }
+                      ],
+                      "Name": "121065V01BGT17"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT18a"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121065V01BGT18b"
+                        }
+                      ],
+                      "Name": "121065V01BGT18"
+                    }
+                  ],
+                  "Name": "121065V01"
+                },
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "121065DT1SFN1"
+                    }
+                  ],
+                  "Name": "121065DT1"
+                }
+              ],
+              "Name": "121065"
+            },
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "12IG1"
+            }
+          ],
+          "Name": "12"
+        },
+        {
+          "Parameters": [],
+          "Children": [
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "13HP"
+            },
+            {
+              "Parameters": [],
+              "Children": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP21"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP22"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP23"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI1KKP24"
+                        }
+                      ],
+                      "Name": "131070SB1VI1"
+                    },
+                    {
+                      "Parameters": [],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI2KKP01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI2KKP11"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI2KKP12"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "131070SB1VI2KKP13"
+                        }
+                      ],
+                      "Name": "131070SB1VI2"
+                    },
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "131070SB1SFN1"
+                    },
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "131070SB1SFN2"
+                    }
+                  ],
+                  "Name": "131070SB1"
+                }
+              ],
+              "Name": "131070"
+            }
+          ],
+          "Name": "13"
+        },
+        {
+          "Parameters": [],
+          "Children": [
+            {
+              "Parameters": [],
+              "Children": [],
+              "Name": "1IA1SFN1"
+            }
+          ],
+          "Name": "1IA1"
+        },
+        {
+          "Parameters": [],
+          "Children": [],
+          "Name": "1IA2"
+        },
+        {
+          "Parameters": [],
+          "Children": [],
+          "Name": "1IA3"
+        },
+        {
+          "Parameters": [],
+          "Children": [],
+          "Name": "1IA4"
+        },
+        {
+          "Parameters": [],
+          "Children": [],
+          "Name": "1KV1"
+        },
+        {
+          "Parameters": [],
+          "Children": [],
+          "Name": "1SV1"
+        },
+        {
+          "Parameters": [],
+          "Children": [],
+          "Name": "1BS1"
+        }
+      ],
+      "Name": "1"
+    }
+  ],
+  "Name": "KGBHTS"
+}
+export const homeFormSubmitTreeForTests: HomeFormTreeResponse = {
+  "Children": [
+    {
+      "Parameters": [
+        {
+          "Name": "Interlocks",
+          "Value": [],
+          "AvailableValues": [
+            {
+              "Name": "Index",
+              "Type": "UInt16",
+              "MultiSelect": false,
+              "Value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+            },
+            {
+              "Name": "Robot1",
+              "Type": "String",
+              "MultiSelect": false,
+              "Value": ["111010R01", "111020R01", "111025R01", "111030R01", "111030R02", "111040R01", "111045R01", "121060R01"]
+            },
+            {
+              "Name": "Robot2",
+              "Type": "String",
+              "MultiSelect": false,
+              "Value": ["111010R01", "111020R01", "111025R01", "111030R01", "111030R02", "111040R01", "111045R01", "121060R01"]
+            }
+          ]
+        }
+      ],
+      "Children": [
+        {
+          "Parameters": [],
+          "Children": [
+
+            {
+              "Parameters": [],
+              "Children": [
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "121050V01VI1"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT11a"
+                        }
+                      ],
+                      "Name": "121050V01BGT11"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT12a"
+                        }
+                      ],
+                      "Name": "121050V01BGT12"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT13a"
+                        }
+                      ],
+                      "Name": "121050V01BGT13"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT14a"
+                        }
+                      ],
+                      "Name": "121050V01BGT14"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT19a"
+                        }
+                      ],
+                      "Name": "121050V01BGT19"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT21a"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V01BGT21b"
+                        }
+                      ],
+                      "Name": "121050V01BGT21"
+                    }
+                  ],
+                  "Name": "121050V01"
+                },
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [],
+                      "Children": [],
+                      "Name": "121050V02VI1"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT15a"
+                        }
+                      ],
+                      "Name": "121050V02BGT15"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT16a"
+                        }
+                      ],
+                      "Name": "121050V02BGT16"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT17a"
+                        }
+                      ],
+                      "Name": "121050V02BGT17"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT18a"
+                        }
+                      ],
+                      "Name": "121050V02BGT18"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT20a"
+                        }
+                      ],
+                      "Name": "121050V02BGT20"
+                    },
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Parts",
+                          "Value": [],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": []
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT22a"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050V02BGT22b"
+                        }
+                      ],
+                      "Name": "121050V02BGT22"
+                    }
+                  ],
+                  "Name": "121050V02"
+                },
+                {
+                  "Parameters": [
+                    {
+                      "Name": "FmList",
+                      "Value": [],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "ConnectedActions",
+                          "Type": "String[]",
+                          "MultiSelect": true,
+                          "Value": []
+                        }
+                      ]
+                    }
+                  ],
+                  "Children": [
+                    {
+                      "Parameters": [
+                        {
+                          "Name": "Positions",
+                          "Value": [
+                            {
+                              "Index": 1,
+                              "SensorName": "BGE01"
+                            },
+                            {
+                              "Index": 2,
+                              "SensorName": "BGE02"
+                            }
+                          ],
+                          "AvailableValues": [
+                            {
+                              "Name": "Index",
+                              "Type": "UInt16",
+                              "MultiSelect": false,
+                              "Value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                            },
+                            {
+                              "Name": "SensorName",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": ["BGE01", "BGE02"]
+                            }
+                          ]
+                        },
+                        {
+                          "Name": "Controller",
+                          "Value": { "Type": 0 },
+                          "AvailableValues": [
+                            {
+                              "Name": "Type",
+                              "Type": "Controller",
+                              "MultiSelect": false,
+                              "Value": ["DrehtFU_8S"]
+                            }
+                          ]
+                        },
+                        {
+                          "Name": "Technology",
+                          "Value": { "Type": 0 },
+                          "AvailableValues": [
+                            {
+                              "Name": "Type",
+                              "Type": "Technology",
+                              "MultiSelect": false,
+                              "Value": ["SEW_AMA_BIN"]
+                            }
+                          ]
+                        }
+                      ],
+                      "Children": [
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGE01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGE02"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGS01"
+                        },
+                        {
+                          "Parameters": [],
+                          "Children": [],
+                          "Name": "121050DT1AE1BGS02"
+                        }
+                      ],
+                      "Name": "121050DT1AE1"
+                    }
+                  ],
+                  "Name": "121050DT1"
+                }
+              ],
+              "Name": "121050"
+            },
+          ],
+          "Name": "12"
+        },
+      ],
+      "Name": "1"
+    }
+  ],
+  "Name": "KGBHTS"
+}
+
 export const homeFormSubmit = [
   {
     operandIdentifier: 1,
@@ -1001,7 +2876,9 @@ export const homeFormSubmit = [
   },
 ];
 
-export const homeFormSubmitWithIds = homeFormSubmit.map((el, id) => ({
-  id,
-  ...el,
-}));
+export const homeFormSubmitWithIds: HomeFormReponse = homeFormSubmit.map(
+  (el, id) => ({
+    id,
+    ...el,
+  })
+);

@@ -13,7 +13,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { Field, FieldArray, Form, Formik } from "formik";
 import { TextField as TextFieldFormik } from "formik-material-ui";
 
-import { HomeFormValues, EplanTag, HomeFormProps } from "../../types";
+import { HomeFormValues, EplanTag, HomeFormProps } from "types";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {

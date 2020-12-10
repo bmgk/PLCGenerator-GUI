@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { FormikHelpers } from "formik";
 
 import { HomeForm } from "../components/home";
-import { submitHomeForm } from "../api/home";
+import { submitHomeForm, submitHomeFormTree } from "../api/home";
 import { HomeFormValues } from "../types";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,9 +22,10 @@ export const Home: React.FC = () => {
     values: HomeFormValues,
     formikHelpers: FormikHelpers<HomeFormValues>
   ) => {
-    submitHomeForm(values).then((rows) => {
-      history.push("/dashboard", rows);
-    });
+    Promise.all([submitHomeForm(values), submitHomeFormTree(values)])
+      .then(([rows, tree]) => {
+        history.push("/dashboard", { rows, tree });
+      });
   };
 
   return (
