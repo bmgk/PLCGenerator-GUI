@@ -34,9 +34,7 @@ export const dashboardReducer = (
       if (state.selectedLeaf === null) return state;
 
       const treeCopy = JSON.parse(JSON.stringify(state.tree))
-      console.log(treeCopy)
       replace(treeCopy, state.selectedLeaf)
-      console.log(treeCopy)
       return { ...state, tree: treeCopy };
     }
     default: {

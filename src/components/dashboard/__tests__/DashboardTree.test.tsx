@@ -1,6 +1,6 @@
 import React from "react";
 import DashboardTree from "../DashboardTree";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from '@testing-library/user-event'
 
 import { DashboardProvider } from "../context";
@@ -21,6 +21,40 @@ const getNames = (
   return names;
 };
 
+const selectOption = (label: string, option: string) => {
+  const select = screen.getByLabelText(label);
+  fireEvent.focus(select)
+  fireEvent.keyDown(select, {
+    key: "ArrowDown",
+    keyCode: 40,
+    code: 40
+  });
+  fireEvent.click(screen.getByText(option))
+}
+
+const coloredKeys = [
+  "121050V01",
+  "121050DT1AE1",
+  "121050V02BGT22",
+  "1",
+  "121050DT1",
+  "121050V01BGT11",
+  "121050V01BGT12",
+  "121050V01BGT13",
+  "121050V01BGT14",
+  "121050V01BGT19",
+  "121050V01BGT21",
+  "121050V02",
+  "121050V02BGT15",
+  "121050V02BGT16",
+  "121050V02BGT17",
+  "121050V02BGT18",
+  "121050V02BGT20",
+  "121050DT1",
+]
+
+const names = getNames(homeFormSubmitTreeForTests, []);
+
 describe("DashboardTree", () => {
   beforeEach(() => {
     const initial = {
@@ -36,7 +70,6 @@ describe("DashboardTree", () => {
   });
 
   it("initial render", () => {
-    const names = getNames(homeFormSubmitTreeForTests, []);
     names.forEach((singleName) => {
       expect(screen.queryByText(singleName)).toBeDefined();
     });
@@ -106,8 +139,8 @@ describe("DashboardTree", () => {
 
   it("Create button not disabled after filling form", () => {
     userEvent.click(screen.getByText('121050DT1AE1'))
-    userEvent.selectOptions(screen.getByTestId('Index-select-create').children[0], "10")
-    userEvent.selectOptions(screen.getByTestId('SensorName-select-create').children[0], "BGE02")
+    selectOption('SensorName-create', "BGE02999")
+    selectOption('Index-create', "999")
     expect(screen.getByRole('button', {
       name: /create/i
     })).not.toBeDisabled()
@@ -115,25 +148,22 @@ describe("DashboardTree", () => {
 
   it("Create new table item, uses select", () => {
     userEvent.click(screen.getByText('121050DT1AE1'))
-    userEvent.selectOptions(screen.getByTestId('Index-select-create').children[0], "10")
-    userEvent.selectOptions(screen.getByTestId('SensorName-select-create').children[0], "BGE02")
+    selectOption('SensorName-create', "BGE02999")
+    selectOption('Index-create', "999")
     userEvent.click(screen.getByRole('button', {
       name: /create/i
     }));
-
     expect(screen.queryAllByText('Name').length).toBe(4)
     expect(screen.queryAllByText('Value').length).toBe(4)
   });
 
-
   it("Create new table item uses select and prev element and then next element ", () => {
     userEvent.click(screen.getByText('121050DT1AE1'))
-    userEvent.selectOptions(screen.getByTestId('Index-select-create').children[0], "10")
-    userEvent.selectOptions(screen.getByTestId('SensorName-select-create').children[0], "BGE02")
+    selectOption('SensorName-create', "BGE02999")
+    selectOption('Index-create', "999")
     userEvent.click(screen.getByRole('button', {
       name: /create/i
     }));
-
     expect(screen.queryAllByText('Name').length).toBe(4)
     expect(screen.queryAllByText('Value').length).toBe(4)
     userEvent.click(screen.getByRole('button', {
@@ -162,13 +192,12 @@ describe("DashboardTree", () => {
 
   it("Do not preserve value when change tree item, when same structure", async () => {
     userEvent.click(screen.getByText('121050V01'));
-    userEvent.type(screen.getByTestId('Name-input-create').children[0], 'Marjan Kaleta ubija kotleta')
-
+    userEvent.type(screen.getByTestId('Name-input-create'), 'Marjan Kaleta ubija kotleta')
     //@ts-ignore
-    expect(screen.getByTestId('Name-input-create').children[0].value).toBe('Marjan Kaleta ubija kotleta')
+    expect(screen.getByTestId('Name-input-create').value).toBe('Marjan Kaleta ubija kotleta')
     userEvent.click(screen.getByText('121050V02'))
     //@ts-ignore
-    expect(screen.getByTestId('Name-input-create').children[0].value).not.toBe('Marjan Kaleta ubija kotleta')
+    expect(screen.getByTestId('Name-input-create').value).not.toBe('Marjan Kaleta ubija kotleta')
   });
 
   it("Do not preserve index when change tree item, when not same structure", async () => {
@@ -183,4 +212,56 @@ describe("DashboardTree", () => {
       name: /next-parameter/i
     })).toBeNull()
   });
+
+  describe('Colors in tree', () => {
+    it('Check whole tree colors', () => {
+      const blackKeys = names.filter(el => !coloredKeys.includes(el))
+      blackKeys.forEach((singleName) => {
+        expect(screen.getByTestId(singleName)).toHaveStyle({ color: 'black' });
+      });
+    })
+
+    it('Tree element with initial values, but not fully completed', () => {
+      expect(screen.getByTestId('121050V01')).toHaveStyle({ color: 'yellow' });
+      expect(screen.getByTestId('121050DT1AE1')).toHaveStyle({ color: 'yellow' });
+    })
+
+    it('Tree element with no initial values, but with avaliable messages', () => {
+      expect(screen.getByTestId('1')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050DT1')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V01BGT11')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V01BGT12')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V01BGT13')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V01BGT14')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V01BGT19')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V01BGT21')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V02')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V02BGT15')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V02BGT16')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V02BGT17')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V02BGT18')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050V02BGT20')).toHaveStyle({ color: 'purple' });
+      expect(screen.getByTestId('121050DT1')).toHaveStyle({ color: 'purple' });
+    })
+
+    it('Tree element with values filled and with avaliable messages, completed leaf', () => {
+      expect(screen.getByTestId('121050V02BGT22')).toHaveStyle({ color: 'green' });
+    })
+
+    it('Yellow -> Green', async () => {
+      userEvent.click(screen.getByText('121050DT1AE1'));
+      userEvent.click(screen.getByRole('button', {
+        name: /next-parameter/i
+      }))
+      userEvent.click(screen.getByRole('button', {
+        name: /next-parameter/i
+      }))
+      selectOption('Type', "SEW_AMA_BIN")
+      expect(screen.getByTestId('121050DT1AE1')).toHaveStyle({ color: 'yellow' });
+      userEvent.click(screen.getByRole('button', {
+        name: /accept-leaf/i
+      }))
+      await waitFor(() => expect(screen.getByTestId('121050DT1AE1')).toHaveStyle({ color: 'green' }))
+    })
+  })
 });

@@ -12,10 +12,13 @@ export const DashboardInput: React.FC<DashboardInputProps> = (props) => {
     return (
         <FormControl className={classes.formControl}>
             <Input
-                data-testid={testId}
                 value={values[el.Name]}
                 name={el.Name}
                 onChange={handleChange}
+                inputProps={{
+                    'id': el.Name,
+                    'data-testid': testId
+                }}
             />
         </FormControl>
     )

@@ -636,7 +636,7 @@ export const homeFormSubmitTree: HomeFormTreeResponse = {
                       "Parameters": [
                         {
                           "Name": "Parts",
-                          "Value": [],
+                          "Value": [{ "Name": "test" }],
                           "AvailableValues": [
                             {
                               "Name": "Name",
@@ -717,7 +717,7 @@ export const homeFormSubmitTree: HomeFormTreeResponse = {
                         },
                         {
                           "Name": "Controller",
-                          "Value": { "Type": 0 },
+                          "Value": { "Type": "DrehtFU_8S" },
                           "AvailableValues": [
                             {
                               "Name": "Type",
@@ -729,7 +729,7 @@ export const homeFormSubmitTree: HomeFormTreeResponse = {
                         },
                         {
                           "Name": "Technology",
-                          "Value": { "Type": 0 },
+                          "Value": {},
                           "AvailableValues": [
                             {
                               "Name": "Type",
@@ -1137,12 +1137,36 @@ export const homeFormSubmitTree: HomeFormTreeResponse = {
                       "Parameters": [
                         {
                           "Name": "Parts",
+                          "Value": [{ "Index": 1, "Name": 'Marjan ubija kotelta' }],
+                          "AvailableValues": [
+                            {
+                              "Name": "Name",
+                              "Type": "String",
+                              "MultiSelect": false,
+                              "Value": null
+                            },
+                            {
+                              "Name": "Index",
+                              "Type": "UInt16",
+                              "MultiSelect": false,
+                              "Value": [999, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                            },
+                          ]
+                        },
+                        {
+                          "Name": "FmList",
                           "Value": [],
                           "AvailableValues": [
                             {
                               "Name": "Name",
                               "Type": "String",
                               "MultiSelect": false,
+                              "Value": null
+                            },
+                            {
+                              "Name": "ConnectedActions",
+                              "Type": "String[]",
+                              "MultiSelect": true,
                               "Value": []
                             }
                           ]
@@ -1401,6 +1425,24 @@ export const homeFormSubmitTreeForTests: HomeFormTreeResponse = {
               "Children": [
                 {
                   "Parameters": [
+                    {
+                      "Name": "Parts",
+                      "Value": [{ "Index": 1, "Name": 'Marjan ubija kotelta' }],
+                      "AvailableValues": [
+                        {
+                          "Name": "Name",
+                          "Type": "String",
+                          "MultiSelect": false,
+                          "Value": null
+                        },
+                        {
+                          "Name": "Index",
+                          "Type": "UInt16",
+                          "MultiSelect": false,
+                          "Value": [999, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                        },
+                      ]
+                    },
                     {
                       "Name": "FmList",
                       "Value": [],
@@ -1729,7 +1771,7 @@ export const homeFormSubmitTreeForTests: HomeFormTreeResponse = {
                       "Parameters": [
                         {
                           "Name": "Parts",
-                          "Value": [],
+                          "Value": [{ "Name": "test" }],
                           "AvailableValues": [
                             {
                               "Name": "Name",
@@ -1798,19 +1840,19 @@ export const homeFormSubmitTreeForTests: HomeFormTreeResponse = {
                               "Name": "Index",
                               "Type": "UInt16",
                               "MultiSelect": false,
-                              "Value": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+                              "Value": [999, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
                             },
                             {
                               "Name": "SensorName",
                               "Type": "String",
                               "MultiSelect": false,
-                              "Value": ["BGE01", "BGE02"]
+                              "Value": ["BGE01", "BGE02", "BGE02999"]
                             }
                           ]
                         },
                         {
                           "Name": "Controller",
-                          "Value": { "Type": 0 },
+                          "Value": { "Type": "DrehtFU_8S" },
                           "AvailableValues": [
                             {
                               "Name": "Type",
@@ -1822,7 +1864,7 @@ export const homeFormSubmitTreeForTests: HomeFormTreeResponse = {
                         },
                         {
                           "Name": "Technology",
-                          "Value": { "Type": 0 },
+                          "Value": {},
                           "AvailableValues": [
                             {
                               "Name": "Type",

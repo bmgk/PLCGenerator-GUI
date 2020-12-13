@@ -1,7 +1,10 @@
 import { FormikHelpers } from "formik";
+import { SelectOption } from "react-select-material-ui";
+
+import { SelectedLeaf } from "../components/dashboard";
+
 import { HomeFormValues } from "./forms";
 import { HomeFormReponse, HomeFormTreeResponse, HomeResponseTreeAvailableValues } from "./responses";
-import { SelectedLeaf } from "../components/dashboard";
 
 export type HomeFormProps = {
   handleSubmit: (
@@ -23,10 +26,10 @@ export type DashboardSelectProps = {
   testId?: string;
   isCreate?: boolean;
   values: any, el: HomeResponseTreeAvailableValues;
-  handleChange: (multiple: boolean) => ((event: React.ChangeEvent<{
-    name?: string | undefined;
-    value: unknown;
-  }>, child: React.ReactNode) => void) | undefined;
+  handleChange: (
+    value: string | string[],
+    option?: SelectOption | SelectOption[]
+  ) => void
 }
 export type DashboardInputProps = {
   testId?: string;
