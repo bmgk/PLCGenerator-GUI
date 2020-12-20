@@ -1,4 +1,4 @@
-import { componentsTranslations } from "./components";
+import { componentsTranslations } from './components';
 
 export const pl = {
   ...componentsTranslations,

@@ -24,7 +24,7 @@ function createWindow() {
         pathname: path.join(__dirname, 'renderer/index.html'),
         protocol: 'file:',
         slashes: true,
-      })
+      }),
     );
   }
 

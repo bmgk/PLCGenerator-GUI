@@ -68,7 +68,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
     <Card className={classes.formContainer}>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {(formik) => (
-          <Form className={classes.form} data-testid="home-form">
+          <Form className={classes.form} data-testid="homeForm">
             <FormControl className={classes.formControl}>
               <Field
                 type="text"
