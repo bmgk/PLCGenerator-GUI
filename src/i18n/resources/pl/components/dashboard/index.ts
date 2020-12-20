@@ -1,4 +1,7 @@
-import { dashboardTableTranslations } from "./dashboardTable";
-import { dashboardTreeTranslations } from "./dashboardTree";
+import { dashboardTableTranslations } from './dashboardTable';
+import { dashboardTreeTranslations } from './dashboardTree';
 
-export const dashboardTranslations = { ...dashboardTableTranslations, ...dashboardTreeTranslations };
+export const dashboardTranslations = {
+  ...dashboardTableTranslations,
+  ...dashboardTreeTranslations,
+};

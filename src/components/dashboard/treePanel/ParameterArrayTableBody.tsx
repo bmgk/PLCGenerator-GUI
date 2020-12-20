@@ -14,6 +14,7 @@ import { DashboardInput } from "./DashboardInput";
 import { reducer, setValues, useStyles } from "./utils";
 
 import { DashboardParameterArrayTableBodyBody, } from "types";
+import { SelectOption } from "react-select-material-ui";
 
 export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyBody> = (props) => {
     const { initialValues, carousele, index, selectedLeaf } = props;
@@ -30,22 +31,11 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
         dispatch(setLeaf(selectedLeafClone))
     }, [values])
 
-    const handleChangeSelect = (multiple: boolean) => (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        if (multiple) {
-            //@ts-ignore
-            const options = event.target.options;
-            const value = [];
-            for (var i = 0, l = options.length; i < l; i++) {
-                if (options[i].selected) {
-                    value.push(options[i].value);
-                }
-            }
-            //@ts-ignore
-            reducerDispatch(setValues(event.target.name, value))
-        } else {
-            //@ts-ignore
-            reducerDispatch(setValues(event.target.name, event.target.value))
-        }
+    const handleChangeSelect = (name: string) => (
+        value: string | string[],
+        option?: SelectOption | SelectOption[]
+    ) => {
+        reducerDispatch(setValues(name, value))
     };
 
     const handleChangeInput = (name: string) => (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -57,8 +47,12 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
             <Table aria-label="parameter-table">
                 <TableHead>
                     <TableRow>
-                        <TableCell className={classes.cell} component="th" align="center">{t("dashboard.dashboardTreeTranslations.header.name")}</TableCell>
-                        <TableCell className={classes.cell} component="th" align="center">{t("dashboard.dashboardTreeTranslations.header.value")}</TableCell>
+                        <TableCell className={classes.cell} component="th" align="center">
+                            {t("dashboard.dashboardTreeTranslations.header.name")}
+                        </TableCell>
+                        <TableCell className={classes.cell} component="th" align="center">
+                            {t("dashboard.dashboardTreeTranslations.header.value")}
+                        </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -73,7 +67,7 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
                                         <DashboardSelect
                                             values={values}
                                             el={el}
-                                            handleChange={handleChangeSelect}
+                                            handleChange={handleChangeSelect(el.Name)}
                                         /> :
                                         <DashboardInput
                                             values={values}

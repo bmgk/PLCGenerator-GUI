@@ -1,9 +1,11 @@
 const path = require('path')
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const rootPath = path.resolve(__dirname, '..')
+const IP = "http://localhost:5000"
 
-module.exports = {
+module.exports = env => ({
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     mainFields: ['main', 'module', 'browser'],
@@ -41,6 +43,9 @@ module.exports = {
     publicPath: './'
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.IP': JSON.stringify(IP)
+    })
   ]
-}
+})

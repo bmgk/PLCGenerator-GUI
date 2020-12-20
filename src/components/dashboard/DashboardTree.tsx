@@ -17,6 +17,8 @@ const useStyles = makeStyles({
   treeRoot: { height: 110 },
   treeContainer: { height: "90vh", overflowY: "scroll", flex: 2 },
   container: { width: "100vw", margin: "0 auto", display: "flex" },
+  label: {},
+  labelBold: { fontWeight: 800 },
 });
 
 const createLeaf = (nodes: HomeResponseTreeChildren) => ({
@@ -37,6 +39,56 @@ const getIdTree = (
   return ids;
 };
 
+const isYellow = ({ Parameters }: HomeResponseTreeChildren) => {
+  return Parameters.some(el => {
+    if (Array.isArray(el.Value)) {
+      return el.Value.length === 0
+    } else {
+      return Object.keys(el.Value).length === 0;
+    }
+  }) && Parameters.some(el => {
+    if (Array.isArray(el.Value)) {
+      return el.Value.length >= 1
+    } else {
+      return Object.keys(el.Value).length !== 0;
+    }
+  })
+}
+
+const isGreen = ({ Parameters }: HomeResponseTreeChildren) => {
+  return Parameters.every(el => {
+    if (Array.isArray(el.Value)) {
+      return el.Value.length >= 1
+    } else {
+      return Object.keys(el.Value).length !== 0;
+    }
+  })
+}
+
+const isPurple = ({ Parameters }: HomeResponseTreeChildren) => {
+  return Parameters.some(el => {
+    if (Array.isArray(el.Value)) {
+      return el.Value.length === 0 && el.AvailableValues.length !== 0
+    } else {
+      return Object.keys(el.Value).length === 0 && el.AvailableValues.length !== 0;
+    }
+  })
+}
+
+const isBlack = ({ Parameters }: HomeResponseTreeChildren) => {
+  return Parameters.length === 0
+}
+
+const pickStyles = (node: HomeResponseTreeChildren): {
+  color: 'black' | 'green' | 'yellow' | 'purple',
+} => {
+  if (isBlack(node)) return { color: 'black', }
+  if (isYellow(node)) return { color: 'yellow', }
+  if (isGreen(node)) return { color: 'green', }
+  if (isPurple(node)) return { color: 'purple', }
+  return { color: 'black' }
+}
+
 export const DashboardTree: React.FC = () => {
   const { tree } = useDashboardStore();
   const dispatch = useDashboardDispatch();
@@ -46,11 +98,12 @@ export const DashboardTree: React.FC = () => {
   const renderTreeRoot = (nodes: HomeFormTreeResponse) => {
     return (
       <TreeItem
+        data-testid={nodes.Name}
         key={nodes.Name}
         nodeId={`${nodes.Name}`}
         label={nodes.Name}
         onClick={() => dispatch(setLeaf(null))}
-        style={{ color: 'green' }}
+        style={{ color: 'black' }}
       >
         {Array.isArray(nodes.Children)
           ? nodes.Children.map((node: HomeResponseTreeChildren) =>
@@ -62,13 +115,19 @@ export const DashboardTree: React.FC = () => {
   };
 
   const renderTree = (nodes: HomeResponseTreeChildren) => {
+    const styles = pickStyles(nodes);
+
     return (
       <TreeItem
+        data-testid={nodes.Name}
         key={nodes.Name}
         nodeId={`${nodes.Name}`}
         label={nodes.Name}
         onClick={() => dispatch(setLeaf(createLeaf(JSON.parse(JSON.stringify(nodes)))))}
-        style={{ color: nodes.Parameters.length === 0 ? 'green' : 'red' }}
+        style={styles}
+        classes={{
+          label: styles.color !== 'black' ? classes.labelBold : classes.label
+        }}
       >
         {Array.isArray(nodes.Children)
           ? nodes.Children.map((node: HomeResponseTreeChildren) =>

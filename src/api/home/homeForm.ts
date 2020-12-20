@@ -1,18 +1,31 @@
-import {
-  homeFormSubmitWithIds,
-  homeFormSubmitTree,
-} from "../../../tests/responses";
+import axios from 'axios';
+import { IP } from './../config';
 
-import { HomeFormValues, HomeFormReponse, HomeFormTreeResponse } from "types";
+import {
+  HomeFormValues,
+  HomeFormReponse,
+  HomeFormTreeResponse,
+} from 'types';
 
 export const submitHomeForm = (
-  form: HomeFormValues
+  form: HomeFormValues,
 ): Promise<HomeFormReponse> => {
-  return Promise.resolve(homeFormSubmitWithIds);
+  return axios
+    .post(
+      `${IP}/Api/Structure/CreateFromTags`,
+      {
+        LineName: form.projectName,
+        TagPaths: form.eplanTags.map((el) => el.path),
+      },
+      {
+        headers: { 'Content-type': 'application/json' },
+      },
+    )
+    .then((el) => el.data);
 };
 
 export const submitHomeFormTree = (
-  form: HomeFormValues
+  form: HomeFormValues,
 ): Promise<HomeFormTreeResponse> => {
-  return Promise.resolve(homeFormSubmitTree);
+  return axios.get(`${IP}/Api/Structure`).then((el) => el.data);
 };

@@ -6,18 +6,18 @@ import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from "@material-ui/core/IconButton";
 import { useTranslation } from "react-i18next";
+import { SelectOption } from "react-select-material-ui";
 
+import { DashboardSelect } from "./DashboardSelect";
+import { DashboardInput } from "./DashboardInput";
 import { SelectedLeaf, useDashboardDispatch, setLeaf } from "../context";
 import { clearValues, initValues, reducer, setValues, useStyles } from "./utils";
 
 import { DashboardTreePanelCreateTableBody, } from "types";
-import { DashboardSelect } from "./DashboardSelect";
-import { DashboardInput } from "./DashboardInput";
+
 
 export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBody> = (props) => {
     const { carousele, selectedLeaf } = props;
@@ -46,22 +46,11 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
         setDisabled(true);
     }
 
-    const handleChangeSelect = (multiple: boolean) => (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        if (multiple) {
-            //@ts-ignore
-            const options = event.target.options;
-            const value = [];
-            for (var i = 0, l = options.length; i < l; i++) {
-                if (options[i].selected) {
-                    value.push(options[i].value);
-                }
-            }
-            //@ts-ignore
-            reducerDispatch(setValues(event.target.name, value))
-        } else {
-            //@ts-ignore
-            reducerDispatch(setValues(event.target.name, event.target.value))
-        }
+    const handleChangeSelect = (name: string) => (
+        value: string | string[],
+        option?: SelectOption | SelectOption[]
+    ) => {
+        reducerDispatch(setValues(name, value))
     };
 
     const handleChangeInput = (name: string) => (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -89,10 +78,10 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
                                         {Array.isArray(el.Value) ?
                                             <DashboardSelect
                                                 testId={`${el.Name}-select-create`}
-                                                isCreate={true}
                                                 values={values}
                                                 el={el}
-                                                handleChange={handleChangeSelect}
+                                                handleChange={handleChangeSelect(el.Name)}
+                                                isCreate
                                             /> :
                                             <DashboardInput
                                                 testId={`${el.Name}-input-create`}

@@ -1,15 +1,20 @@
-import React from "react";
-import { SET_TREE, SET_TABLE, SET_SELECTED_LEAF, REPLACE_LEAF_IN_TREE } from "..";
+import React from 'react';
+import {
+  SET_TREE,
+  SET_TABLE,
+  SET_SELECTED_LEAF,
+  REPLACE_LEAF_IN_TREE,
+} from '..';
 
 import {
   HomeFormTreeResponse,
   HomeFormReponse,
   HomeResponseTreeParameters,
-} from "types";
+} from 'types';
 
-export * from "./dashboardActions";
-export * from "./dashboardReducer";
-export * from "./dashboardContext";
+export * from './dashboardActions';
+export * from './dashboardReducer';
+export * from './dashboardContext';
 
 export type DashboardSetTreeAction = {
   type: typeof SET_TREE;
@@ -34,7 +39,7 @@ export type DashboardAction =
   | DashboardSetTreeAction
   | DashboardSetRowsAction
   | DashboardSetLeaf
-  | DashboardReplaceLeaf
+  | DashboardReplaceLeaf;
 
 export type DashboardDispatch = (action: DashboardAction) => void;
 export type DashboardState = {
@@ -42,7 +47,10 @@ export type DashboardState = {
   rows: HomeFormReponse;
   selectedLeaf: SelectedLeaf | null;
 };
-export type DashboardProviderProps = { children: React.ReactNode, initial?: DashboardState };
+export type DashboardProviderProps = {
+  children: React.ReactNode;
+  initial?: DashboardState;
+};
 
 export type SelectedLeaf = {
   Parameters: HomeResponseTreeParameters[];
