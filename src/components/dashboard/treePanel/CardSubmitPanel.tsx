@@ -17,7 +17,7 @@ export const CardSubmitPanel: React.FC = () => {
 
     return (
         <CardActions classes={{ root: classes.submitButtonContainer }}>
-            <Button size="small" color="primary" variant="contained" onClick={handleClick}>
+            <Button size="small" color="primary" variant="contained" onClick={handleClick} aria-label="accept-leaf">
                 {t("dashboard.dashboardTreeTranslations.create")}
             </Button>
         </CardActions>

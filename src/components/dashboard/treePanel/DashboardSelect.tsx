@@ -1,30 +1,41 @@
 import React from "react";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import ReactSelectMaterialUi from "react-select-material-ui";
+import { StylesConfig } from "react-select";
 
 import { useStyles } from "./utils";
 import { DashboardSelectProps } from "types";
+
+const styles: StylesConfig = {
+    menu: (base: any) => ({
+        ...base,
+        position: "",
+    }),
+}
 
 export const DashboardSelect: React.FC<DashboardSelectProps> = (props) => {
     const { values, el, handleChange, testId = el.Name, isCreate = false } = props;
     const classes = useStyles();
 
-    const options = isCreate ? ["", ...el.Value] : el.Value
+    const label = !isCreate ? el.Name : `${el.Name}-create`
+    const optionsSelect = el.Value.map((el: string | number) => el + "");
+    const selectValue = Array.isArray(values[el.Name])
+        ? values[el.Name].map((el: string | number) => el + "")
+        : values[el.Name] + ""
 
     return (
         <FormControl className={classes.formControl}>
-            <Select
+            <ReactSelectMaterialUi
                 data-testid={testId}
-                value={values[el.Name]}
-                name={el.Name}
-                onChange={handleChange(el.MultiSelect)}
-                displayEmpty
-                className={classes.selectEmpty}
-                multiple={el.MultiSelect}
-                native
-            >
-                {Array.isArray(el.Value) ? options.map((el: any) => <option key={el} value={el}>{el}</option >) : null}
-            </Select>
+                id={testId}
+                label={label}
+                options={optionsSelect}
+                value={selectValue}
+                values={selectValue}
+                fullWidth
+                SelectProps={{ isClearable: true, isMulti: el.MultiSelect, styles }}
+                onChange={handleChange}
+            />
         </FormControl>
     )
 }

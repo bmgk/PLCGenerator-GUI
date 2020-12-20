@@ -6,16 +6,15 @@ import TableBody from "@material-ui/core/TableBody";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import { useTranslation } from "react-i18next";
+import { SelectOption } from "react-select-material-ui";
 
 import { SelectedLeaf, useDashboardDispatch, setLeaf } from "../context";
+import { DashboardSelect } from "./DashboardSelect";
+import { DashboardInput } from "./DashboardInput";
 import { reducer, setValues, useStyles } from "./utils";
 
 import { DashboardParameterSingleTableBodyBody, } from "types";
-import { DashboardSelect } from "./DashboardSelect";
-import { DashboardInput } from "./DashboardInput";
 
 export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBodyBody> = (props) => {
     const { initialValues, carousele, selectedLeaf } = props;
@@ -32,23 +31,13 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
         dispatch(setLeaf(selectedLeafClone))
     }, [values])
 
-    const handleChangeSelect = (multiple: boolean) => (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
-        if (multiple) {
-            //@ts-ignore
-            const options = event.target.options;
-            const value = [];
-            for (var i = 0, l = options.length; i < l; i++) {
-                if (options[i].selected) {
-                    value.push(options[i].value);
-                }
-            }
-            //@ts-ignore
-            reducerDispatch(setValues(event.target.name, value))
-        } else {
-            //@ts-ignore
-            reducerDispatch(setValues(event.target.name, event.target.value))
-        }
+    const handleChangeSelect = (name: string) => (
+        value: string | string[],
+        option?: SelectOption | SelectOption[]
+    ) => {
+        reducerDispatch(setValues(name, value))
     };
+
 
     const handleChangeInput = (name: string) => (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         reducerDispatch(setValues(name, event.target.value))
@@ -75,7 +64,7 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
                                 <DashboardSelect
                                     values={values}
                                     el={el}
-                                    handleChange={handleChangeSelect}
+                                    handleChange={handleChangeSelect(el.Name)}
                                 /> :
                                 <DashboardInput
                                     values={values}

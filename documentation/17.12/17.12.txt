@@ -1,0 +1,17 @@
+homeSubmit -> Gnerate and export. /Api/Structure/CreateFromTags/{lineName}
+lineName -> Project Name.
+body -> tablica sciezek do pliku.
+resultat z requesta to jest do zakladki table.
+
+/Api/Structure GET
+resultat z requesta to jest do zakladki tree.
+
+/Api/Configure/Base/Single/{elementName} -> objekt.
+uery string parameter nazwa drzewa.
+body: value z parameters
+
+/Api/Configure/Base/Many/{elementName} -> tablica
+Query string parameter nazwa drzewa.
+body: value z parameters
+
+

@@ -22,10 +22,12 @@ export const Home: React.FC = () => {
     values: HomeFormValues,
     formikHelpers: FormikHelpers<HomeFormValues>
   ) => {
-    Promise.all([submitHomeForm(values), submitHomeFormTree(values)])
+    submitHomeForm(values)
+      .then((rows) => Promise.all([rows, submitHomeFormTree(values)]))
       .then(([rows, tree]) => {
         history.push("/dashboard", { rows, tree });
-      });
+      })
+      .catch(err => console.log(err))
   };
 
   return (
