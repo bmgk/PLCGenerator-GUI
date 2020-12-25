@@ -1,7 +1,11 @@
 import { dashboardTableTranslations } from './dashboardTable';
-import { dashboardTreeTranslations } from './dashboardTree';
+import { dashboardTree } from './dashboardTree';
+import { dashboardNavigationTranslations } from './dashboardNavigation';
+import { dashboardSelectTranslations } from './dashboardSelect';
 
 export const dashboardTranslations = {
   ...dashboardTableTranslations,
-  ...dashboardTreeTranslations,
+  ...dashboardTree,
+  ...dashboardNavigationTranslations,
+  ...dashboardSelectTranslations,
 };

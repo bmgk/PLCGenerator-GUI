@@ -1,14 +1,13 @@
 import { FormikHelpers } from 'formik';
 import { SelectOption } from 'react-select-material-ui';
-
-import { SelectedLeaf } from '../components/dashboard';
-
 import { HomeFormValues } from './forms';
 import {
-  HomeFormReponse,
+  HomeFormReponseWithId,
   HomeFormTreeResponse,
   HomeResponseTreeAvailableValues,
 } from './responses';
+
+import { SelectedLeaf } from 'types';
 
 export type HomeFormProps = {
   handleSubmit: (
@@ -19,7 +18,7 @@ export type HomeFormProps = {
 
 export type DashboardProps = {
   tree: HomeFormTreeResponse;
-  rows: HomeFormReponse;
+  rows: HomeFormReponseWithId[];
 };
 
 export type DashboardTreePanelCreateTableBody = {
@@ -63,4 +62,11 @@ export type DashboardInputProps = {
         >,
       ) => void)
     | undefined;
+};
+
+export type CardSubmitPanelProps = {
+  submit: () => Promise<void>;
+};
+export type RootPanelProps = {
+  submit: () => Promise<void>;
 };

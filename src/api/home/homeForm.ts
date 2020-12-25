@@ -3,13 +3,13 @@ import { IP } from './../config';
 
 import {
   HomeFormValues,
-  HomeFormReponse,
+  HomeFormReponseWithId,
   HomeFormTreeResponse,
 } from 'types';
 
 export const submitHomeForm = (
   form: HomeFormValues,
-): Promise<HomeFormReponse> => {
+): Promise<HomeFormReponseWithId[]> => {
   return axios
     .post(
       `${IP}/Api/Structure/CreateFromTags`,
@@ -21,11 +21,16 @@ export const submitHomeForm = (
         headers: { 'Content-type': 'application/json' },
       },
     )
-    .then((el) => el.data);
+    .then((el) =>
+      el.data.map((el: HomeFormReponseWithId, id: number) => ({
+        ...el,
+        id,
+      })),
+    );
 };
 
-export const submitHomeFormTree = (
-  form: HomeFormValues,
-): Promise<HomeFormTreeResponse> => {
+export const submitHomeFormTree = (): Promise<
+  HomeFormTreeResponse
+> => {
   return axios.get(`${IP}/Api/Structure`).then((el) => el.data);
 };
