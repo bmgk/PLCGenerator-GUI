@@ -1,4 +1,4 @@
-import { HomeFormReponse, HomeFormTreeResponse } from 'types';
+import { HomeFormReponseSingleElementWithId, HomeFormTreeResponse } from 'types';
 
 export const homeFormSubmitTree: HomeFormTreeResponse = {
   Children: [
@@ -3245,7 +3245,7 @@ export const homeFormSubmit = [
   },
 ];
 
-export const homeFormSubmitWithIds: HomeFormReponse = homeFormSubmit.map(
+export const homeFormSubmitWithIds: HomeFormReponseSingleElementWithId[] = homeFormSubmit.map(
   (el, id) => ({
     id,
     ...el,

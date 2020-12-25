@@ -8,4 +8,10 @@ export const handlers = [
   rest.get(/Api\/Structure/, (req, res, ctx) => {
     return res(ctx.json(homeFormSubmitTree), ctx.status(200));
   }),
+  rest.post(/Api\/Configure\/Many/, (req, res, ctx) => {
+    return res(ctx.json({}), ctx.status(200));
+  }),
+  rest.post(/Api\/Configure\/Single/, (req, res, ctx) => {
+    return res(ctx.json({}), ctx.status(200));
+  }),
 ];

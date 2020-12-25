@@ -45,6 +45,12 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  rootContainer: {
+    margin: '0 auto',
+    minWidth: '20rem',
+    maxHeight: '30rem',
+    padding: '2rem',
+  },
 }));
 
 export const initValues = (

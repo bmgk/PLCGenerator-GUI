@@ -1,12 +1,12 @@
-import React from 'react';
-import { HomeFormTreeResponse, HomeFormReponse } from 'types';
 import {
+  HomeFormTreeResponse,
   DashboardSetTreeAction,
   DashboardSetRowsAction,
   SelectedLeaf,
   DashboardSetLeaf,
   DashboardReplaceLeaf,
-} from '.';
+  HomeFormReponseWithId,
+} from 'types';
 
 export const SET_TREE = 'SET_TREE';
 export const SET_TABLE = 'SET_TABLE';
@@ -22,7 +22,7 @@ export const setTree = (
 });
 
 export const setRows = (
-  rows: HomeFormReponse,
+  rows: HomeFormReponseWithId[],
 ): DashboardSetRowsAction => ({
   type: SET_TABLE,
   rows,
