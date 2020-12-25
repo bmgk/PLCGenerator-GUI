@@ -1,0 +1,7 @@
+/Api/Configure/Many -> sluzy do akceptowania z tree panel zmian do drzewa. 
+
+headers: {content-type:'application-json'},
+Name-> nazwa parametru ( z prawej tytuł )
+ElementName -> nazwa liscia z drzewa.
+Value: [] -> {} cały tree panel. 
+

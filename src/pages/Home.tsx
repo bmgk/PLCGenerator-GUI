@@ -1,33 +1,40 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
-import { FormikHelpers } from "formik";
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { FormikHelpers } from 'formik';
+import {
+  setRows,
+  setTree,
+  useDashboardDispatch,
+} from '../components/dashboard/context';
+import { HomeForm } from '../components/home';
+import { submitHomeForm, submitHomeFormTree } from '../api/home';
 
-import { HomeForm } from "../components/home";
-import { submitHomeForm, submitHomeFormTree } from "../api/home";
-import { HomeFormValues } from "../types";
+import { HomeFormValues } from '../types';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    display: "flex",
-    marginTop: "10vh",
+    display: 'flex',
+    marginTop: '10vh',
   },
 }));
 
 export const Home: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDashboardDispatch();
 
   const handleSubmit = (
     values: HomeFormValues,
-    formikHelpers: FormikHelpers<HomeFormValues>
+    formikHelpers: FormikHelpers<HomeFormValues>,
   ) => {
     submitHomeForm(values)
-      .then((rows) => Promise.all([rows, submitHomeFormTree(values)]))
+      .then((rows) => Promise.all([rows, submitHomeFormTree()]))
       .then(([rows, tree]) => {
-        history.push("/dashboard", { rows, tree });
-      })
-      .catch(err => console.log(err))
+        dispatch(setTree(tree));
+        dispatch(setRows(rows));
+        history.push('/dashboard');
+      });
   };
 
   return (

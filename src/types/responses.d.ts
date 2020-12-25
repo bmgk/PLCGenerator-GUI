@@ -9,8 +9,10 @@ export type HomeFormReponseSingleElement = {
   visibleInHmiEngineering: boolean;
   writableFromHmi: boolean;
 };
-
-export type HomeFormReponse = HomeFormReponseSingleElement[];
+export type HomeFormReponseSingleElementWithId = HomeFormReponseSingleElement & {
+  id: number;
+};
+export type HomeFormReponseWithId = HomeFormReponseSingleElementWithId[];
 
 type HomeResponseTreeAvailableValues = {
   Name: string;

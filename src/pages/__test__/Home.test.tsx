@@ -11,10 +11,6 @@ import { createMemoryHistory } from 'history';
 
 import { DashboardProvider } from '../../components';
 import Home from '../Home';
-import {
-  homeFormSubmit,
-  homeFormSubmitTree,
-} from '../../../tests/responses';
 
 describe('Home', () => {
   it('check if render', async () => {
@@ -42,6 +38,7 @@ describe('Home', () => {
         </Router>
       </DashboardProvider>,
     );
+
     userEvent.type(screen.getByTestId('projectName'), 'Test project');
     userEvent.upload(
       screen.getByLabelText('Upload File'),
@@ -51,10 +48,7 @@ describe('Home', () => {
       fireEvent.submit(screen.getByTestId('homeForm'));
     });
     await waitFor(() => [
-      expect(history.push).toBeCalledWith('/dashboard', {
-        rows: homeFormSubmit,
-        tree: homeFormSubmitTree,
-      }),
+      expect(history.push).toBeCalledWith('/dashboard'),
     ]);
   });
 });
