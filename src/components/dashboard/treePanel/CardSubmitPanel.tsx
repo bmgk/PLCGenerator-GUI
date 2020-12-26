@@ -1,46 +1,43 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import { useTranslation } from 'react-i18next';
-
+import { SnackbarNotification } from '../../common';
 import { useStyles } from './utils';
-import { CardSubmitPanelProps } from 'types';
 
-const Alert = (props: AlertProps) => {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-};
+import { CardSubmitPanelProps } from 'types';
 
 export const CardSubmitPanel: React.FC<CardSubmitPanelProps> = (
   props,
 ) => {
   const { submit } = props;
-  const [success, setSucces] = useState(false);
-  const [error, setError] = useState(false);
+  const [success, setSucces] = useState('');
+  const [error, setError] = useState('');
   const { t } = useTranslation();
   const classes = useStyles();
 
   const handleSubmit = () => {
     submit()
-      .then(() => setSucces(true))
-      .catch(() => setError(true));
-  };
-
-  const handleClose = (
-    event?: React.SyntheticEvent,
-    reason?: string,
-  ) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setSucces(false);
-    setError(false);
+      .then(() =>
+        setSucces(
+          'dashboard.notification.dashboardTree.parameter.success',
+        ),
+      )
+      .catch(() =>
+        setError(
+          'dashboard.notification.dashboardTree.parameter.error',
+        ),
+      );
   };
 
   return (
     <>
+      <SnackbarNotification
+        success={success}
+        setSucces={setSucces}
+        error={error}
+        setError={setError}
+      />
       <CardActions classes={{ root: classes.submitButtonContainer }}>
         <Button
           size="small"
@@ -52,26 +49,6 @@ export const CardSubmitPanel: React.FC<CardSubmitPanelProps> = (
           {t('dashboard.dashboardTree.create')}
         </Button>
       </CardActions>
-      <Snackbar
-        open={success}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert onClose={handleClose} severity="success">
-          {t(
-            'dashboard.notification.dashboardTree.parameter.success',
-          )}
-        </Alert>
-      </Snackbar>
-      <Snackbar
-        open={error}
-        autoHideDuration={6000}
-        onClose={handleClose}
-      >
-        <Alert onClose={handleClose} severity="error">
-          {t('dashboard.notification.dashboardTree.parameter.error')}
-        </Alert>
-      </Snackbar>
     </>
   );
 };

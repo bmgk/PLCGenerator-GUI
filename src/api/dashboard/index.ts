@@ -1,1 +1,2 @@
-export * from './acceptParameters';
+export * from './acceptParameter';
+export * from './generateStructure';

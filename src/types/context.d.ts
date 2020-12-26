@@ -19,7 +19,7 @@ export type DashboardSetTreeAction = {
 
 export type DashboardSetRowsAction = {
   type: typeof SET_TABLE;
-  rows: HomeFormReponseWithId[];
+  rows: HomeFormReponseWithId;
 };
 
 export type DashboardSetLeaf = {
@@ -38,11 +38,13 @@ export type DashboardAction =
   | DashboardReplaceLeaf;
 
 export type DashboardDispatch = (action: DashboardAction) => void;
+
 export type DashboardState = {
   tree: HomeFormTreeResponse;
   rows: HomeFormReponseWithId;
   selectedLeaf: SelectedLeaf | null;
 };
+
 export type DashboardProviderProps = {
   children: React.ReactNode;
   initial?: DashboardState;

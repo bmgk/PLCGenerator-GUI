@@ -9,7 +9,7 @@ import {
 
 export const submitHomeForm = (
   form: HomeFormValues,
-): Promise<HomeFormReponseWithId[]> => {
+): Promise<HomeFormReponseWithId> => {
   return axios
     .post(
       `${IP}/Api/Structure/CreateFromTags`,

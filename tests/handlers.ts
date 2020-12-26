@@ -1,5 +1,9 @@
 import { rest } from 'msw';
-import { homeFormSubmit, homeFormSubmitTree } from './responses';
+import {
+  homeFormSubmit,
+  homeFormSubmitTree,
+  generateAndExport,
+} from './responses';
 
 export const handlers = [
   rest.post(/Api\/Structure\/CreateFromTags/, (req, res, ctx) => {
@@ -13,5 +17,9 @@ export const handlers = [
   }),
   rest.post(/Api\/Configure\/Single/, (req, res, ctx) => {
     return res(ctx.json({}), ctx.status(200));
+  }),
+  rest.post(/Api\/Project\/GenerateAndExport/, (req, res, ctx) => {
+    ctx.delay(1000);
+    return res(ctx.json(generateAndExport), ctx.status(200));
   }),
 ];

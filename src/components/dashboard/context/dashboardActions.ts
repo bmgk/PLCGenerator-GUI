@@ -22,7 +22,7 @@ export const setTree = (
 });
 
 export const setRows = (
-  rows: HomeFormReponseWithId[],
+  rows: HomeFormReponseWithId,
 ): DashboardSetRowsAction => ({
   type: SET_TABLE,
   rows,

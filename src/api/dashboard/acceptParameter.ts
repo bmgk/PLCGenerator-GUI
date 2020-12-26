@@ -24,8 +24,9 @@ const parseSingleValue = (value: any) => {
 };
 
 const parseToNumberIfPossible = (element: string) => {
-  const number = parseInt(element);
-  return Number.isNaN(number) ? element : number;
+  return element !== null && element.match(/^[0-9]+$/) != null
+    ? parseInt(element)
+    : element;
 };
 
 export const acceptManyParameters = (

@@ -39,7 +39,10 @@ describe('Home', () => {
       </DashboardProvider>,
     );
 
-    userEvent.type(screen.getByTestId('projectName'), 'Test project');
+    userEvent.type(
+      screen.getByLabelText('Project Name'),
+      'Test project',
+    );
     userEvent.upload(
       screen.getByLabelText('Upload File'),
       new File(['hello'], 'hello.png', { type: 'image/png' }),
@@ -47,6 +50,7 @@ describe('Home', () => {
     await waitFor(() => {
       fireEvent.submit(screen.getByTestId('homeForm'));
     });
+
     await waitFor(() => [
       expect(history.push).toBeCalledWith('/dashboard'),
     ]);

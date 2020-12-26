@@ -1,0 +1,59 @@
+import { spawn } from 'child_process';
+import electron from 'electron';
+import path from 'path';
+import fs from 'fs';
+
+import { HomeFormTreeResponse } from 'types';
+
+const generatePath = (filePath: string) => {
+  return `${filePath}${
+    path.sep
+  }PLCGENERATOR-${new Date()
+    .toISOString()
+    .substr(0, 10)}-${Math.random().toString().substr(0, 10)}.json`;
+};
+
+export const saveDraft = (tree: HomeFormTreeResponse) => {
+  return pickFolder().then((filePath) => {
+    try {
+      const fileName = generatePath(filePath);
+      fs.writeFileSync(fileName, JSON.stringify(tree), 'utf-8');
+      return Promise.resolve(fileName);
+    } catch (e) {
+      console.error(e);
+      return Promise.reject(e);
+    }
+  });
+};
+
+export const pickFolder = () => {
+  return electron.remote.dialog
+    .showOpenDialog({
+      properties: ['openDirectory'],
+    })
+    .then((el) => el.filePaths[0]);
+};
+
+export const invokeProjectImporter = (path: string) => {
+  const tiaWPF = spawn(`powershell.exe`, [
+    `../Release/TiaWpfProjectImporter.exe /Source ${path}`,
+  ]);
+
+  tiaWPF.stdout.on('data', (data) => {
+    console.log(`stdout: ${data}`);
+  });
+
+  tiaWPF.stderr.on('data', (data) => {
+    console.log(`stderr: ${data}`);
+  });
+
+  tiaWPF.on('error', (error) => {
+    console.log(`error: ${error.message}`);
+  });
+
+  tiaWPF.on('close', (code) => {
+    console.log(`child process exited with code ${code}`);
+  });
+
+  return tiaWPF;
+};
