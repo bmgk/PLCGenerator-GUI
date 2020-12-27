@@ -44,18 +44,13 @@ const extractInitialValue = (
   return initialValues;
 };
 
-export const DashboardTreePanel: React.FC = () => {
+export const DashboardTreePanel = () => {
   const classes = useStyles();
   const [index, setIndex] = useState(0);
-  const { selectedLeaf, tree } = useDashboardStore();
+  const { selectedLeaf } = useDashboardStore();
   const dispatch = useDashboardDispatch();
 
-  const handleSubmitStructure = (): Promise<void> => {
-    return Promise.resolve();
-  };
-
-  if (selectedLeaf === null)
-    return <RootTreePanel submit={handleSubmitStructure} />;
+  if (selectedLeaf === null) return <RootTreePanel />;
 
   if (selectedLeaf.Parameters.length === 0)
     return <EmptyParametersPanel />;

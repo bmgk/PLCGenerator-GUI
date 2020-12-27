@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   acceptManyParameters,
   acceptSingleParameter,
-} from '../acceptParameters';
+} from '../acceptParameter';
 
 const selectedLeafValueArray = {
   Parameters: [

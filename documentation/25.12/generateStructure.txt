@@ -1,0 +1,4 @@
+do enpointa jako argument przeslij lokalizacje folderu gdzie ma byc wygenerowaney projekt (projectGenerateAndExport pierwsza aplikacja) request :{ path: "sciezka" }
+response to tablica sciezek, ktora ma byc wykorzystana jako argument do aplikacji (druga aplkiacja)
+
+Zapisz strukture drzewa jako JSON i istnieje juz endpoint, ktory przyjmuje JSON-a zeby kontunuowac prace. (nazwa PLCGENERATOR-${data}.json)

@@ -2,9 +2,11 @@ import React from 'react';
 import {
   render,
   screen,
-  fireEvent,
   waitFor,
+  fireEvent,
 } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
 import HomeForm from '../HomeForm';
 
 describe('HomeForm', () => {
@@ -24,12 +26,11 @@ describe('HomeForm', () => {
       type: 'image/png',
     });
 
-    const fileInput = screen.getByLabelText('Upload File');
-    const projectNameInput = screen.getByTestId('projectName');
-    fireEvent.change(fileInput, { target: { files: [file] } });
-    fireEvent.change(projectNameInput, {
-      target: { value: 'Project Name' },
-    });
+    userEvent.upload(screen.getByLabelText('Upload File'), [file]);
+    userEvent.type(
+      screen.getByLabelText('Project Name'),
+      'Project Name',
+    );
 
     await waitFor(() => {
       fireEvent.submit(screen.getByTestId('homeForm'));
@@ -48,10 +49,7 @@ describe('HomeForm', () => {
       type: 'image/png',
     });
 
-    const fileInput = screen.getByLabelText('Upload File');
-    await waitFor(() => {
-      fireEvent.change(fileInput, { target: { files: [file] } });
-    });
+    userEvent.upload(screen.getByLabelText('Upload File'), file);
     expect(screen.queryByText('chucknorris.png')).not.toBeNull();
 
     await waitFor(() => {

@@ -3,8 +3,12 @@ export const dashbaordNotificationTranslations = {
     'Parameter has been updated',
   'dashboard.notification.dashboardTree.parameter.error':
     'Error while updating parameter',
-  'dashboard.notification.dashboardTree.structure.success':
-    'Strucutre has been updated',
-  'dashboard.notification.dashboardTree.structure.error':
-    'Error while updating structure',
+  'dashboard.notification.menu.generateStructure.success':
+    'Structure has been created',
+  'dashboard.notification.menu.generateStructure.error':
+    'Error while creating structure',
+  'dashboard.notification.menu.saveDraft.success':
+    'Draft has been saved',
+  'dashboard.notification.menu.saveDraft.error':
+    'Error while saving draft',
 };
