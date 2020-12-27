@@ -27,7 +27,11 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontSize: '3rem',
   },
-  formControl: { margin: theme.spacing(1), width: '100%' },
+  formControl: {
+    margin: theme.spacing(1),
+    width: '100%',
+    '& label': { width: '100%' },
+  },
   selectEmpty: { marginTop: theme.spacing(2) },
   cell: { width: '50%' },
   tableContainer: { margin: '2rem 0' },

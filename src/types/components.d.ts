@@ -25,22 +25,26 @@ export type DashboardTreePanelCreateTableBody = {
   carousele: number;
   selectedLeaf: SelectedLeaf;
 };
+
 export type DashboardParameterArrayTableBodyBody = {
   initialValues: any;
   carousele: number;
   index: number;
   selectedLeaf: SelectedLeaf;
 };
+
 export type DashboardParameterSingleTableBodyBody = {
   initialValues: any;
   carousele: number;
   selectedLeaf: SelectedLeaf;
 };
+
 export type DashboardTreePanelHeader = {
   selectedLeaf: SelectedLeaf;
   index: number;
   setIndex: React.Dispatch<React.SetStateAction<number>>;
 };
+
 export type DashboardSelectProps = {
   testId?: string;
   isCreate?: boolean;
@@ -51,9 +55,11 @@ export type DashboardSelectProps = {
     option?: SelectOption | SelectOption[],
   ) => void;
 };
+
 export type DashboardInputProps = {
   testId?: string;
   values: any;
+  isCreate?: boolean;
   el: HomeResponseTreeAvailableValues;
   handleChange:
     | ((
@@ -67,6 +73,21 @@ export type DashboardInputProps = {
 export type CardSubmitPanelProps = {
   submit: () => Promise<void>;
 };
-export type RootPanelProps = {
-  submit: () => Promise<void>;
+
+export type DashboardNavigationProps = {
+  value: number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
+};
+
+export type DashboardMenuProps = {
+  submitStructure: () => void;
+  saveDraft: () => void;
+  showSettings: () => void;
+};
+
+export type NotificationProps = {
+  success: string;
+  setSucces: React.Dispatch<React.SetStateAction<string>>;
+  error: string;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 };

@@ -87,7 +87,7 @@ describe('DashboardTree', () => {
     userEvent.click(screen.getByText('KGBHTS'));
     expect(
       screen.getByText(
-        'You have choosed root, pick another tree element or accept current structure',
+        'You have choosed root, pick another tree element',
       ),
     ).toBeDefined();
   });
@@ -224,19 +224,20 @@ describe('DashboardTree', () => {
     ).toBeNull();
   });
 
-  it('Do not preserve value when change tree item, when same structure', async () => {
+  it.only('Do not preserve value when change tree item, when same structure', async () => {
     userEvent.click(screen.getByText('121050V01'));
+    userEvent.clear(screen.getByLabelText('Name-create'));
     userEvent.type(
-      screen.getByTestId('Name-input-create'),
+      screen.getByLabelText('Name-create'),
       'Marjan Kaleta ubija kotleta',
     );
     //@ts-ignore
-    expect(screen.getByTestId('Name-input-create').value).toBe(
+    expect(screen.getByLabelText('Name-create').value).toBe(
       'Marjan Kaleta ubija kotleta',
     );
     userEvent.click(screen.getByText('121050V02'));
     //@ts-ignore
-    expect(screen.getByTestId('Name-input-create').value).not.toBe(
+    expect(screen.getByLabelText('Name-create').value).not.toBe(
       'Marjan Kaleta ubija kotleta',
     );
   });

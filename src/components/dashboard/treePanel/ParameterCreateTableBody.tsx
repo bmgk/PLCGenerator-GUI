@@ -34,13 +34,12 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
   const { t } = useTranslation();
   const classes = useStyles();
   const parameter = selectedLeaf.Parameters[carousele];
-
   const dispatch = useDashboardDispatch();
+  const [disabled, setDisabled] = useState(true);
   const [values, reducerDispatch] = useReducer(
     reducer,
     initValues(parameter.AvailableValues),
   );
-  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     const disabled = Object.keys(values).some(
@@ -51,7 +50,7 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
     setDisabled(disabled);
   }, [values]);
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     const selectedLeafClone: SelectedLeaf = JSON.parse(
       JSON.stringify(selectedLeaf),
     );
@@ -123,6 +122,7 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
                   >
                     {Array.isArray(el.Value) ? (
                       <DashboardSelect
+                        key={disabled + ''}
                         testId={`${el.Name}-select-create`}
                         values={values}
                         el={el}
@@ -135,6 +135,7 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
                         values={values}
                         el={el}
                         handleChange={handleChangeInput(el.Name)}
+                        isCreate
                       />
                     )}
                   </TableCell>
@@ -149,7 +150,7 @@ export const ParameterCreateTableBody: React.FC<DashboardTreePanelCreateTableBod
           disabled={disabled}
           aria-label="create"
           color="primary"
-          onClick={handleClick}
+          onClick={handleSubmit}
         >
           <AddIcon fontSize="large" />
         </IconButton>
