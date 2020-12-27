@@ -48,21 +48,22 @@ const isDisabled = (values: HomeFormValues) => {
   return values.eplanTags.length === 0 || values.projectName === '';
 };
 
-const handleChange = (push: (element: EplanTag) => void) => (
-  event: React.ChangeEvent<HTMLInputElement>,
-) => {
-  event.persist();
-  const file = (event.target.files && event.target.files[0]) || null;
-  if (file != null) {
-    const element: EplanTag = { name: file.name, path: file.path };
-    push(element);
-  }
-};
-
 export const HomeForm: React.FC<HomeFormProps> = (props) => {
   const { handleSubmit } = props;
   const { t } = useTranslation();
   const classes = useStyles();
+
+  const handleChange = (push: (element: EplanTag) => void) => (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    event.persist();
+    const file =
+      (event.target.files && event.target.files[0]) || null;
+    if (file != null) {
+      const element: EplanTag = { name: file.name, path: file.path };
+      push(element);
+    }
+  };
 
   return (
     <Card className={classes.formContainer}>
@@ -138,5 +139,3 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
     </Card>
   );
 };
-
-export default HomeForm;

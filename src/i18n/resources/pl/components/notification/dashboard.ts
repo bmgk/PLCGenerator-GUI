@@ -4,7 +4,7 @@ export const dashbaordNotificationTranslations = {
   'dashboard.notification.dashboardTree.error':
     'Błąd podczas aktualizowania parametru',
   'dashboard.notification.menu.generateStructure.success':
-    'Structure została stworzona',
+    'Struktura została stworzona',
   'dashboard.notification.menu.generateStructure.error':
     'Bład podczas generowania struktury',
   'dashboard.notification.menu.saveDraft.success':

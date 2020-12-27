@@ -6,7 +6,7 @@ export const dashbaordNotificationTranslations = {
   'dashboard.notification.menu.generateStructure.success':
     'Structure has been created',
   'dashboard.notification.menu.generateStructure.error':
-    'Error while generating structure',
+    'Error while creating structure',
   'dashboard.notification.menu.saveDraft.success':
     'Draft has been saved',
   'dashboard.notification.menu.saveDraft.error':

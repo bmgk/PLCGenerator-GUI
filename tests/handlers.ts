@@ -19,7 +19,10 @@ export const handlers = [
     return res(ctx.json({}), ctx.status(200));
   }),
   rest.post(/Api\/Project\/GenerateAndExport/, (req, res, ctx) => {
-    ctx.delay(1000);
-    return res(ctx.json(generateAndExport), ctx.status(200));
+    return res(
+      ctx.delay(1000),
+      ctx.json(generateAndExport),
+      ctx.status(200),
+    );
   }),
 ];

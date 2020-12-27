@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import {
-  Backdrop,
-  Box,
-  CircularProgress,
-  makeStyles,
-} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper/Paper';
 import Tabs from '@material-ui/core/Tabs/Tabs';
 import Tab from '@material-ui/core/Tab/Tab';
@@ -63,10 +61,10 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
         return generateStructure(res);
       })
       .then((res) => {
+        invokeProjectImporter(res[0]);
         setSucces(
           'dashboard.notification.menu.generateStructure.success',
-        ),
-          invokeProjectImporter(res[0]);
+        );
       })
       .catch(() =>
         setError(
@@ -96,7 +94,11 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
         error={error}
         setError={setError}
       />
-      <Backdrop className={classes.backdrop} open={openBackdrop}>
+      <Backdrop
+        className={classes.backdrop}
+        open={openBackdrop}
+        data-testid="spinner"
+      >
         <CircularProgress color="inherit" />
       </Backdrop>
       <Paper className={classes.root}>
