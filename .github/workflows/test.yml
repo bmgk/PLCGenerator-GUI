@@ -1,0 +1,21 @@
+name: Test
+
+# tutaj podajemi liste wydarzeń które będą załączać nasz workflow.
+on: [push]
+
+jobs:
+  # tutaj podajemy klucz dla naszego job-a.
+  test:
+    # tutaj podajemy nazwe, jak pominiemy, to klucz jest nazwą job-a.
+    name: Test
+    # ustawiamy typ virtualnej maszyny na której załączony zostanie nasz job.
+    runs-on: ubuntu-16.04
+    steps:
+      # tutaj mozemy wykorzystać akcje z github workshop-a, ta akcja wywołuje checkout-a na brancha z którego został wywołany push
+      - uses: actions/checkout@v1
+      - name: Install Dependencies
+        # możemy wywołać wszystkie skrypty z poziomu package.json jak również install.
+        run: npm install
+      - name: Unit Tests
+        # jednorazowy wywołanie wszystkich testów, bez flagą watchAll na false, żeby proces się zakończył po sprawdzeniu testów.
+        run: npm run test
