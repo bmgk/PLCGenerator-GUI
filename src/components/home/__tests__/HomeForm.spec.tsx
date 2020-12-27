@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import HomeForm from '../HomeForm';
+import { HomeForm } from '../HomeForm';
 
 describe('HomeForm', () => {
   it('initial render', () => {
