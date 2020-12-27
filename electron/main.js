@@ -5,7 +5,7 @@ import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer';
 
-let mainWindow: Electron.BrowserWindow | null;
+let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({

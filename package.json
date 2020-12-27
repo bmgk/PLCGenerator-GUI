@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "description": "PLCGenerator-GUI",
   "main": "./dist/main.js",
+  "build": {
+    "appId": "PLCGenerator.gui.app",
+    "files": [
+      "dist/**/*",
+      "package.json"
+    ]
+  },
   "scripts": {
     "dev": "npm-run-all -p dev:react electron:serve",
     "dev:electron": "cross-env NODE_ENV=development webpack --config webpack/electron.webpack.js --mode development && npm run start:electron",
@@ -15,6 +22,7 @@
     "build:react": "webpack --config webpack/react.webpack.js",
     "package": "npm-run-all build package:dist",
     "package:dist": "electron-builder --dir",
+    "dist": "electron-builder",
     "test": "jest",
     "watch": "jest --watch"
   },
