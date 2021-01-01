@@ -224,7 +224,7 @@ describe('DashboardTree', () => {
     ).toBeNull();
   });
 
-  it.only('Do not preserve value when change tree item, when same structure', async () => {
+  it('Do not preserve value when change tree item, when same structure', async () => {
     userEvent.click(screen.getByText('121050V01'));
     userEvent.clear(screen.getByLabelText('Name-create'));
     userEvent.type(
@@ -332,34 +332,6 @@ describe('DashboardTree', () => {
       expect(screen.getByTestId('121050V02BGT22')).toHaveStyle({
         color: 'green',
       });
-    });
-
-    it('Yellow -> Green', async () => {
-      userEvent.click(screen.getByText('121050DT1AE1'));
-      userEvent.click(
-        screen.getByRole('button', {
-          name: /next-parameter/i,
-        }),
-      );
-      userEvent.click(
-        screen.getByRole('button', {
-          name: /next-parameter/i,
-        }),
-      );
-      selectOption('Type', 'SEW_AMA_BIN');
-      expect(screen.getByTestId('121050DT1AE1')).toHaveStyle({
-        color: 'yellow',
-      });
-      userEvent.click(
-        screen.getByRole('button', {
-          name: /accept-leaf/i,
-        }),
-      );
-      await waitFor(() =>
-        expect(screen.getByTestId('121050DT1AE1')).toHaveStyle({
-          color: 'green',
-        }),
-      );
     });
   });
 });

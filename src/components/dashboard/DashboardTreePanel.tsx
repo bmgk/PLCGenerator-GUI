@@ -4,9 +4,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Box from '@material-ui/core/Box';
 import { acceptSingleParameter } from '../../api/dashboard';
+import { submitHomeFormTree } from '../../api/home';
 
 import {
-  replaceLeafInTree,
+  setTree,
   useDashboardDispatch,
   useDashboardStore,
 } from './context';
@@ -62,10 +63,12 @@ export const DashboardTreePanel = () => {
   );
 
   const handleSubmitParameter = (): Promise<void> => {
-    return acceptSingleParameter(selectedLeaf, index).then(() => {
-      dispatch(replaceLeafInTree());
-      return Promise.resolve();
-    });
+    return acceptSingleParameter(selectedLeaf, index)
+      .then(submitHomeFormTree)
+      .then((res) => {
+        dispatch(setTree(res));
+        return Promise.resolve();
+      });
   };
 
   return (

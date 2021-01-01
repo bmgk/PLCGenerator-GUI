@@ -14,6 +14,10 @@ const options = (t: TFunction) => [
     display: t('dashboard.menu.SUBMIT_STRUCTURE'),
   },
   { value: 'SAVE_DRAFT', display: t('dashboard.menu.SAVE_DRAFT') },
+  {
+    value: 'IMPORT_DRAFT',
+    display: t('dashboard.menu.IMPORT_DRAFT'),
+  },
   { value: 'SETTINGS', display: t('dashboard.menu.SETTINGS') },
 ];
 
@@ -22,7 +26,12 @@ const ITEM_HEIGHT = 48;
 export const DashboardMenu: React.FC<DashboardMenuProps> = (
   props,
 ) => {
-  const { submitStructure, saveDraft, showSettings } = props;
+  const {
+    submitStructure,
+    saveDraft,
+    showSettings,
+    importDraft,
+  } = props;
   const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(
     null,
@@ -31,6 +40,7 @@ export const DashboardMenu: React.FC<DashboardMenuProps> = (
   const handleMenuClick = (value: string) => {
     if (value === 'SUBMIT_STRUCTURE') submitStructure();
     if (value === 'SAVE_DRAFT') saveDraft();
+    if (value === 'IMPORT_DRAFT') importDraft();
     if (value === 'SETTINGS') showSettings();
     setAnchorEl(null);
   };
@@ -61,7 +71,7 @@ export const DashboardMenu: React.FC<DashboardMenuProps> = (
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
+            width: '30ch',
           },
         }}
       >

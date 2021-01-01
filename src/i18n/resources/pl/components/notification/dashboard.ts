@@ -4,11 +4,15 @@ export const dashbaordNotificationTranslations = {
   'dashboard.notification.dashboardTree.error':
     'Błąd podczas aktualizowania parametru',
   'dashboard.notification.menu.generateStructure.success':
-    'Struktura została stworzona',
+    'Generowanie zostało zakończone',
   'dashboard.notification.menu.generateStructure.error':
-    'Bład podczas generowania struktury',
+    'Bład podczas generowania',
   'dashboard.notification.menu.saveDraft.success':
-    'Kopia zapasowa została stworzona',
+    'Export konfiguracji został zakończony',
   'dashboard.notification.menu.saveDraft.error':
-    'Bład poczasz zapisywania kopii zapasowej',
+    'Bład poczasz exportowania konfiguracji',
+  'dashboard.notification.menu.importDraft.success':
+    'Import konfiguracji został zakończony',
+  'dashboard.notification.menu.importDraft.error':
+    'Bład poczasz importowania konfiguracji',
 };
