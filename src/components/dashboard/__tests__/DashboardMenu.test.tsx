@@ -8,6 +8,7 @@ describe('DashboardMenu', () => {
   const submitStructure = jest.fn();
   const saveDraft = jest.fn();
   const showSettings = jest.fn();
+  const importDraft = jest.fn();
 
   beforeEach(() => {
     render(
@@ -15,6 +16,7 @@ describe('DashboardMenu', () => {
         submitStructure={submitStructure}
         saveDraft={saveDraft}
         showSettings={showSettings}
+        importDraft={importDraft}
       />,
     );
     return userEvent.click(
@@ -27,25 +29,31 @@ describe('DashboardMenu', () => {
   });
 
   it('initial render', () => {
-    expect(screen.queryByText('Generate structure')).toBeDefined();
-    expect(screen.queryByText('Save draft')).toBeDefined();
+    expect(screen.queryByText('Generate')).toBeDefined();
+    expect(screen.queryByText('Export configuration')).toBeDefined();
+    expect(screen.queryByText('Import configuration')).toBeDefined();
     expect(screen.queryByText('Settings')).toBeDefined();
   });
 
-  it('click Submit structure', () => {
+  it('click Submit generate', () => {
     userEvent.click(
-      screen.getByRole('menuitem', { name: /generate structure/i }),
+      screen.getByRole('menuitem', { name: /generate/i }),
     );
     expect(submitStructure).toBeCalled();
   });
 
-  it('click saveDraft', () => {
+  it('click Export', () => {
     userEvent.click(
-      screen.getByRole('menuitem', { name: /save draft/i }),
+      screen.getByRole('menuitem', { name: /export configuration/i }),
     );
     expect(saveDraft).toBeCalled();
   });
-
+  it('click import', () => {
+    userEvent.click(
+      screen.getByRole('menuitem', { name: /import configuration/i }),
+    );
+    expect(importDraft).toBeCalled();
+  });
   it('click showSettings', () => {
     userEvent.click(
       screen.getByRole('menuitem', { name: /settings/i }),

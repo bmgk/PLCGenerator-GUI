@@ -1,2 +1,2 @@
 export * from './acceptParameter';
-export * from './generateStructure';
+export * from './menu';

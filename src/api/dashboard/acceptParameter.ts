@@ -24,6 +24,8 @@ const parseSingleValue = (value: any) => {
 };
 
 const parseToNumberIfPossible = (element: string) => {
+  if (Number.isFinite(element) === true) return element;
+
   return element !== null && element.match(/^[0-9]+$/) != null
     ? parseInt(element)
     : element;

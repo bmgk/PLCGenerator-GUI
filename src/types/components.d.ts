@@ -83,6 +83,7 @@ export type DashboardMenuProps = {
   submitStructure: () => void;
   saveDraft: () => void;
   showSettings: () => void;
+  importDraft: () => void;
 };
 
 export type NotificationProps = {

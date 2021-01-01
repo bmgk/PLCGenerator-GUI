@@ -2,7 +2,8 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import * as apiDashboard from '../../../api/dashboard/generateStructure';
+import { homeFormSubmitTreeForTests } from '../../../../tests/responses';
+import * as apiDashboard from '../../../api/dashboard/menu';
 import * as electronService from '../../../services/electron/dashboard';
 import { DashboardProvider } from '../context';
 import { DashboardNavigation } from '../DashboardNavigation';
@@ -13,6 +14,7 @@ jest.mock('../../../services/electron', () => ({
   invokeProjectImporter: () => Promise.resolve(),
   pickFolder: () => Promise.resolve('c:\\data'),
   saveDraft: (tree: HomeFormTreeResponse) => Promise.resolve(),
+  pickDraftJSON: () => Promise.resolve(homeFormSubmitTreeForTests),
 }));
 
 describe('DashboardNavigation', () => {
@@ -48,7 +50,7 @@ describe('DashboardNavigation', () => {
   it('Generate structure success', async () => {
     userEvent.click(screen.getByRole('button', { name: /more/i }));
     userEvent.click(
-      screen.getByRole('menuitem', { name: /generate structure/i }),
+      screen.getByRole('menuitem', { name: /generate/i }),
     );
     await waitFor(() =>
       expect(screen.queryByTestId('spinner')).toHaveStyle(
@@ -58,7 +60,7 @@ describe('DashboardNavigation', () => {
 
     await waitFor(() =>
       expect(
-        screen.queryByText('Structure has been created'),
+        screen.queryByText('Generating has been completed'),
       ).toBeDefined(),
     );
     await waitFor(() =>
@@ -68,14 +70,14 @@ describe('DashboardNavigation', () => {
     );
   });
 
-  it('Generate structure error', async () => {
+  it('Generate error', async () => {
     jest
       .spyOn(apiDashboard, 'generateStructure')
       .mockRejectedValue(new Error('Async error'));
 
     userEvent.click(screen.getByRole('button', { name: /more/i }));
     userEvent.click(
-      screen.getByRole('menuitem', { name: /generate structure/i }),
+      screen.getByRole('menuitem', { name: /generate/i }),
     );
     await waitFor(() =>
       expect(screen.queryByTestId('spinner')).toHaveStyle(
@@ -85,7 +87,7 @@ describe('DashboardNavigation', () => {
 
     await waitFor(() =>
       expect(
-        screen.queryByText('Error while creating structure'),
+        screen.queryByText('Error while generating'),
       ).toBeDefined(),
     );
     await waitFor(() =>
@@ -95,31 +97,63 @@ describe('DashboardNavigation', () => {
     );
   });
 
-  it('Save draft success', async () => {
+  it('Export configuration success', async () => {
     userEvent.click(screen.getByRole('button', { name: /more/i }));
     userEvent.click(
-      screen.getByRole('menuitem', { name: /save draft/i }),
+      screen.getByRole('menuitem', { name: 'Export configuration' }),
     );
 
     await waitFor(() =>
       expect(
-        screen.queryByText('Draft has been saved'),
+        screen.queryByText('Configuration has been exported'),
       ).toBeDefined(),
     );
   });
 
-  it('Save draft error', async () => {
+  it('Export configuration error', async () => {
     jest
       .spyOn(electronService, 'saveDraft')
       .mockRejectedValue(new Error('Async error'));
 
     userEvent.click(screen.getByRole('button', { name: /more/i }));
     userEvent.click(
-      screen.getByRole('menuitem', { name: /save draft/i }),
+      screen.getByRole('menuitem', { name: 'Export configuration' }),
     );
 
     await waitFor(() =>
-      expect(screen.queryByText('Error while saving draft')),
+      expect(
+        screen.queryByText('Error while exporting configuration'),
+      ),
+    );
+  });
+
+  it('Import configuration success', async () => {
+    userEvent.click(screen.getByRole('button', { name: /more/i }));
+    userEvent.click(
+      screen.getByRole('menuitem', { name: 'Import configuration' }),
+    );
+
+    await waitFor(() =>
+      expect(
+        screen.queryByText('Configuration has been imported'),
+      ).toBeDefined(),
+    );
+  });
+
+  it('Import configuration error', async () => {
+    jest
+      .spyOn(electronService, 'pickDraftJSON')
+      .mockRejectedValue(new Error('Async error'));
+
+    userEvent.click(screen.getByRole('button', { name: /more/i }));
+    userEvent.click(
+      screen.getByRole('menuitem', { name: 'Import configuration' }),
+    );
+
+    await waitFor(() =>
+      expect(
+        screen.queryByText('Error while importing configuration'),
+      ),
     );
   });
 });

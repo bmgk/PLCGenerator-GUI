@@ -10,9 +10,16 @@ import userEvent from '@testing-library/user-event';
 import { HomeForm } from '../HomeForm';
 
 describe('HomeForm', () => {
-  it('initial render', () => {
-    const handleSubmit = jest.fn();
+  const handleSubmit = jest.fn();
+  beforeEach(() => {
     render(<HomeForm handleSubmit={handleSubmit} />);
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  it('initial render', () => {
     expect(screen.getByText('Project Name')).toBeInTheDocument();
     expect(
       screen.getByText(/Create/i).closest('button'),
@@ -20,8 +27,6 @@ describe('HomeForm', () => {
   });
 
   it('Fill Form and submit', async () => {
-    const handleSubmit = jest.fn();
-    render(<HomeForm handleSubmit={handleSubmit} />);
     const file = new File(['(⌐□_□)'], 'chucknorris.png', {
       type: 'image/png',
     });
@@ -43,8 +48,6 @@ describe('HomeForm', () => {
   });
 
   it('Remove file from list', async () => {
-    const handleSubmit = jest.fn();
-    render(<HomeForm handleSubmit={handleSubmit} />);
     const file = new File(['(⌐□_□)'], 'chucknorris.png', {
       type: 'image/png',
     });

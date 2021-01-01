@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { IP } from '../config';
 
+import { HomeFormTreeResponse } from 'types';
+
 export const generateStructure = (Path: string) => {
   return axios
     .post(
@@ -11,4 +13,10 @@ export const generateStructure = (Path: string) => {
       },
     )
     .then((res) => res.data);
+};
+
+export const importDraft = (tree: HomeFormTreeResponse) => {
+  return axios.post(`${IP}/Api/Configure`, tree, {
+    headers: { 'Content-type': 'application/json' },
+  });
 };
