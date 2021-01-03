@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { IP } from './../config';
-import { SelectedLeaf } from 'types';
+import { GenericErrorResponse, SelectedLeaf } from 'types';
 
 const parseValue = (value: any[] | any) => {
   if (Array.isArray(value)) {

@@ -1,22 +1,26 @@
-import React, { useMemo } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TreeView from "@material-ui/lab/TreeView";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import TreeItem from "@material-ui/lab/TreeItem";
+import React, { useMemo } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TreeView from '@material-ui/lab/TreeView';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import TreeItem from '@material-ui/lab/TreeItem';
 
-import DashboardTreePanel from "./DashboardTreePanel";
-import { setLeaf, useDashboardDispatch, useDashboardStore } from "./context";
+import DashboardTreePanel from './DashboardTreePanel';
+import {
+  setLeaf,
+  useDashboardDispatch,
+  useDashboardStore,
+} from './context';
 
 import {
   HomeResponseTreeChildren,
   HomeFormTreeResponse,
-} from "types";
+} from 'types';
 
 const useStyles = makeStyles({
   treeRoot: { height: 110 },
-  treeContainer: { height: "90vh", overflowY: "scroll", flex: 2 },
-  container: { width: "100vw", margin: "0 auto", display: "flex" },
+  treeContainer: { height: '90vh', overflowY: 'scroll', flex: 2 },
+  container: { width: '100vw', margin: '0 auto', display: 'flex' },
   label: {},
   labelBold: { fontWeight: 800 },
 });
@@ -28,69 +32,77 @@ const createLeaf = (nodes: HomeResponseTreeChildren) => ({
 
 const getIdTree = (
   nodes: HomeFormTreeResponse | HomeFormTreeResponse,
-  ids: string[]
+  ids: string[],
 ) => {
   ids.push(nodes.Name);
   Array.isArray(nodes.Children)
     ? nodes.Children.map((node: HomeResponseTreeChildren) =>
-      getIdTree(node, ids)
-    )
+        getIdTree(node, ids),
+      )
     : null;
   return ids;
 };
 
 const isYellow = ({ Parameters }: HomeResponseTreeChildren) => {
-  return Parameters.some(el => {
-    if (Array.isArray(el.Value)) {
-      return el.Value.length === 0
-    } else {
-      return Object.keys(el.Value).length === 0;
-    }
-  }) && Parameters.some(el => {
-    if (Array.isArray(el.Value)) {
-      return el.Value.length >= 1
-    } else {
-      return Object.keys(el.Value).length !== 0;
-    }
-  })
-}
+  return (
+    Parameters.some((el) => {
+      if (Array.isArray(el.Value)) {
+        return el.Value.length === 0;
+      } else {
+        return Object.keys(el.Value).length === 0;
+      }
+    }) &&
+    Parameters.some((el) => {
+      if (Array.isArray(el.Value)) {
+        return el.Value.length >= 1;
+      } else {
+        return Object.keys(el.Value).length !== 0;
+      }
+    })
+  );
+};
 
 const isGreen = ({ Parameters }: HomeResponseTreeChildren) => {
-  return Parameters.every(el => {
+  return Parameters.every((el) => {
     if (Array.isArray(el.Value)) {
-      return el.Value.length >= 1
+      return el.Value.length >= 1;
     } else {
       return Object.keys(el.Value).length !== 0;
     }
-  })
-}
+  });
+};
 
 const isPurple = ({ Parameters }: HomeResponseTreeChildren) => {
-  return Parameters.some(el => {
+  return Parameters.some((el) => {
     if (Array.isArray(el.Value)) {
-      return el.Value.length === 0 && el.AvailableValues.length !== 0
+      return el.Value.length === 0 && el.AvailableValues.length !== 0;
     } else {
-      return Object.keys(el.Value).length === 0 && el.AvailableValues.length !== 0;
+      return (
+        Object.keys(el.Value).length === 0 &&
+        el.AvailableValues.length !== 0
+      );
     }
-  })
-}
+  });
+};
 
 const isBlack = ({ Parameters }: HomeResponseTreeChildren) => {
-  return Parameters.length === 0
-}
+  return Parameters.length === 0;
+};
 
-const pickStyles = (node: HomeResponseTreeChildren): {
-  color: 'black' | 'green' | 'yellow' | 'purple',
+const pickStyles = (
+  node: HomeResponseTreeChildren,
+): {
+  color: 'black' | 'green' | 'yellow' | 'purple';
 } => {
-  if (isBlack(node)) return { color: 'black', }
-  if (isYellow(node)) return { color: 'yellow', }
-  if (isGreen(node)) return { color: 'green', }
-  if (isPurple(node)) return { color: 'purple', }
-  return { color: 'black' }
-}
+  if (isBlack(node)) return { color: 'black' };
+  if (isYellow(node)) return { color: 'yellow' };
+  if (isGreen(node)) return { color: 'green' };
+  if (isPurple(node)) return { color: 'purple' };
+  return { color: 'black' };
+};
 
 export const DashboardTree: React.FC = () => {
-  const { tree } = useDashboardStore();
+  const { tree, selectedLeaf } = useDashboardStore();
   const dispatch = useDashboardDispatch();
   const classes = useStyles();
   const expanded = useMemo(() => getIdTree(tree, []), [tree]);
@@ -107,8 +119,8 @@ export const DashboardTree: React.FC = () => {
       >
         {Array.isArray(nodes.Children)
           ? nodes.Children.map((node: HomeResponseTreeChildren) =>
-            renderTree(node)
-          )
+              renderTree(node),
+            )
           : null}
       </TreeItem>
     );
@@ -123,16 +135,23 @@ export const DashboardTree: React.FC = () => {
         key={nodes.Name}
         nodeId={`${nodes.Name}`}
         label={nodes.Name}
-        onClick={() => dispatch(setLeaf(createLeaf(JSON.parse(JSON.stringify(nodes)))))}
+        onClick={() =>
+          dispatch(
+            setLeaf(createLeaf(JSON.parse(JSON.stringify(nodes)))),
+          )
+        }
         style={styles}
         classes={{
-          label: styles.color !== 'black' ? classes.labelBold : classes.label
+          label:
+            styles.color !== 'black'
+              ? classes.labelBold
+              : classes.label,
         }}
       >
         {Array.isArray(nodes.Children)
           ? nodes.Children.map((node: HomeResponseTreeChildren) =>
-            renderTree(node)
-          )
+              renderTree(node),
+            )
           : null}
       </TreeItem>
     );
@@ -152,7 +171,10 @@ export const DashboardTree: React.FC = () => {
           {treeMemo}
         </TreeView>
       </div>
-      <DashboardTreePanel />
+      <DashboardTreePanel
+        key={selectedLeaf?.Name || 'Root'}
+        selectedLeaf={selectedLeaf}
+      />
     </div>
   );
 };

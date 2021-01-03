@@ -6,11 +6,7 @@ import Box from '@material-ui/core/Box';
 import { acceptSingleParameter } from '../../api/dashboard';
 import { submitHomeFormTree } from '../../api/home';
 
-import {
-  setTree,
-  useDashboardDispatch,
-  useDashboardStore,
-} from './context';
+import { setTree, useDashboardDispatch } from './context';
 import {
   CardHeaderPanel,
   EmptyParametersPanel,
@@ -20,7 +16,11 @@ import {
   CardSubmitPanel,
   ParameterSingleTableBody,
 } from './treePanel';
-import { SelectedLeaf } from 'types';
+import {
+  DashboardTreePanelProps,
+  GenericErrorResponse,
+  SelectedLeaf,
+} from 'types';
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
@@ -45,10 +45,12 @@ const extractInitialValue = (
   return initialValues;
 };
 
-export const DashboardTreePanel = () => {
+export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
+  props,
+) => {
+  const { selectedLeaf } = props;
   const classes = useStyles();
   const [index, setIndex] = useState(0);
-  const { selectedLeaf } = useDashboardStore();
   const dispatch = useDashboardDispatch();
 
   if (selectedLeaf === null) return <RootTreePanel />;
@@ -62,7 +64,7 @@ export const DashboardTreePanel = () => {
     setIndex,
   );
 
-  const handleSubmitParameter = (): Promise<void> => {
+  const handleSubmitParameter = (): Promise<void | GenericErrorResponse> => {
     return acceptSingleParameter(selectedLeaf, index)
       .then(submitHomeFormTree)
       .then((res) => {
