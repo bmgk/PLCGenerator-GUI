@@ -73,39 +73,6 @@ describe('DashboardNavigation', () => {
     );
   });
 
-  it('Generate error', async () => {
-    const cannotSetWithYourself = /Cannot Set Interlock With/i;
-    const duplicated = /The following values/i;
-
-    jest.spyOn(apiDashboard, 'generateStructure').mockRejectedValue({
-      response: { data: exampleErrorAcceptParameter2 },
-    });
-
-    userEvent.click(screen.getByRole('button', { name: /more/i }));
-    userEvent.click(
-      screen.getByRole('menuitem', { name: /generate/i }),
-    );
-    await waitFor(() =>
-      expect(screen.queryByTestId('spinner')).toHaveStyle(
-        'opacity: 1;',
-      ),
-    );
-
-    await waitFor(() =>
-      expect(
-        screen.queryAllByText(cannotSetWithYourself).length,
-      ).toBeGreaterThan(0),
-    );
-    expect(screen.queryAllByText(duplicated).length).toBeGreaterThan(
-      0,
-    );
-    await waitFor(() =>
-      expect(screen.queryByTestId('spinner')).toHaveStyle(
-        'opacity: 0;',
-      ),
-    );
-  });
-
   it('Export configuration success', async () => {
     userEvent.click(screen.getByRole('button', { name: /more/i }));
     userEvent.click(
@@ -119,23 +86,6 @@ describe('DashboardNavigation', () => {
     );
   });
 
-  it('Export configuration error', async () => {
-    jest
-      .spyOn(electronService, 'saveDraft')
-      .mockRejectedValue(new Error('Async error'));
-
-    userEvent.click(screen.getByRole('button', { name: /more/i }));
-    userEvent.click(
-      screen.getByRole('menuitem', { name: 'Export configuration' }),
-    );
-
-    await waitFor(() =>
-      expect(
-        screen.queryByText('Error while exporting configuration'),
-      ),
-    );
-  });
-
   it('Import configuration success', async () => {
     userEvent.click(screen.getByRole('button', { name: /more/i }));
     userEvent.click(
@@ -146,23 +96,6 @@ describe('DashboardNavigation', () => {
       expect(
         screen.queryByText('Configuration has been imported'),
       ).toBeDefined(),
-    );
-  });
-
-  it('Import configuration error', async () => {
-    jest
-      .spyOn(electronService, 'pickDraftJSON')
-      .mockRejectedValue(new Error('Async error'));
-
-    userEvent.click(screen.getByRole('button', { name: /more/i }));
-    userEvent.click(
-      screen.getByRole('menuitem', { name: 'Import configuration' }),
-    );
-
-    await waitFor(() =>
-      expect(
-        screen.queryByText('Error while importing configuration'),
-      ),
     );
   });
 });

@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { GenericErrorResponse, ErrorRule } from 'types';
 
 export const extractErrorRequest = (error: any) => {
