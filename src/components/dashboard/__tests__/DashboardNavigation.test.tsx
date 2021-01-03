@@ -2,7 +2,10 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { homeFormSubmitTreeForTests } from '../../../../tests/responses';
+import {
+  exampleErrorAcceptParameter2,
+  homeFormSubmitTreeForTests,
+} from '../../../../tests/responses';
 import * as apiDashboard from '../../../api/dashboard/menu';
 import * as electronService from '../../../services/electron/dashboard';
 import { DashboardProvider } from '../context';
@@ -71,9 +74,12 @@ describe('DashboardNavigation', () => {
   });
 
   it('Generate error', async () => {
-    jest
-      .spyOn(apiDashboard, 'generateStructure')
-      .mockRejectedValue(new Error('Async error'));
+    const cannotSetWithYourself = /Cannot Set Interlock With/i;
+    const duplicated = /The following values/i;
+
+    jest.spyOn(apiDashboard, 'generateStructure').mockRejectedValue({
+      response: { data: exampleErrorAcceptParameter2 },
+    });
 
     userEvent.click(screen.getByRole('button', { name: /more/i }));
     userEvent.click(
@@ -87,8 +93,11 @@ describe('DashboardNavigation', () => {
 
     await waitFor(() =>
       expect(
-        screen.queryByText('Error while generating'),
-      ).toBeDefined(),
+        screen.queryAllByText(cannotSetWithYourself).length,
+      ).toBeGreaterThan(0),
+    );
+    expect(screen.queryAllByText(duplicated).length).toBeGreaterThan(
+      0,
     );
     await waitFor(() =>
       expect(screen.queryByTestId('spinner')).toHaveStyle(

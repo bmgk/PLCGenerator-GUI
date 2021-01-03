@@ -8,6 +8,14 @@ import Tabs from '@material-ui/core/Tabs/Tabs';
 import Tab from '@material-ui/core/Tab/Tab';
 import { useTranslation } from 'react-i18next';
 
+import { DashboardMenu } from './DashboardMenu';
+import {
+  useDashboardDispatch,
+  useDashboardStore,
+  setTree,
+} from './context';
+import { SnackbarNotification } from '../common';
+
 import {
   generateStructure,
   importDraft,
@@ -18,14 +26,8 @@ import {
   pickDraftJSON,
   pickFolder,
   saveDraft,
-} from '../../services/electron';
-import { SnackbarNotification } from '../common';
-import { DashboardMenu } from './DashboardMenu';
-import {
-  useDashboardDispatch,
-  useDashboardStore,
-  setTree,
-} from './context';
+  extractErrorRequest,
+} from '../../services';
 
 import { DashboardNavigationProps } from 'types';
 
@@ -73,25 +75,19 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
       .then((res) => {
         invokeProjectImporter(res[0]);
         setSucces(
-          'dashboard.notification.menu.generateStructure.success',
+          t('dashboard.notification.menu.generateStructure.success'),
         );
       })
-      .catch(() =>
-        setError(
-          'dashboard.notification.menu.generateStructure.error',
-        ),
-      )
+      .catch((error) => setError(extractErrorRequest(error)))
       .finally(() => setOpenBackdrop(false));
   };
 
   const handleSaveDraft = () => {
     saveDraft(tree)
       .then(() =>
-        setSucces('dashboard.notification.menu.saveDraft.success'),
+        setSucces(t('dashboard.notification.menu.saveDraft.success')),
       )
-      .catch(() =>
-        setError('dashboard.notification.menu.saveDraft.error'),
-      );
+      .catch((error) => setError(extractErrorRequest(error)));
   };
 
   const handleImportDraft = () => {
@@ -103,11 +99,11 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
         return Promise.resolve();
       })
       .then(() =>
-        setSucces('dashboard.notification.menu.importDraft.success'),
+        setSucces(
+          t('dashboard.notification.menu.importDraft.success'),
+        ),
       )
-      .catch(() =>
-        setError('dashboard.notification.menu.importDraft.error'),
-      );
+      .catch((error) => setError(extractErrorRequest(error)));
   };
 
   const showSettings = () => {};

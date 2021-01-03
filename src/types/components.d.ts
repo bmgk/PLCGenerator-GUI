@@ -7,7 +7,7 @@ import {
   HomeResponseTreeAvailableValues,
 } from './responses';
 
-import { SelectedLeaf } from 'types';
+import { SelectedLeaf, GenericErrorResponse } from 'types';
 
 export type HomeFormProps = {
   handleSubmit: (
@@ -45,6 +45,10 @@ export type DashboardTreePanelHeader = {
   setIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
+export type DashboardTreePanelProps = {
+  selectedLeaf: SelectedLeaf | null;
+};
+
 export type DashboardSelectProps = {
   testId?: string;
   isCreate?: boolean;
@@ -71,7 +75,7 @@ export type DashboardInputProps = {
 };
 
 export type CardSubmitPanelProps = {
-  submit: () => Promise<void>;
+  submit: () => Promise<void | GenericErrorResponse>;
 };
 
 export type DashboardNavigationProps = {

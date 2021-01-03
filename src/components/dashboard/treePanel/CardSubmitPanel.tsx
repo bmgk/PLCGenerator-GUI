@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import { useTranslation } from 'react-i18next';
 import { SnackbarNotification } from '../../common';
+import { extractErrorRequest } from '../../../services';
 import { useStyles } from './utils';
 
 import { CardSubmitPanelProps } from 'types';
@@ -20,14 +21,10 @@ export const CardSubmitPanel: React.FC<CardSubmitPanelProps> = (
     submit()
       .then(() =>
         setSucces(
-          'dashboard.notification.dashboardTree.parameter.success',
+          t('dashboard.notification.dashboardTree.parameter.success'),
         ),
       )
-      .catch(() =>
-        setError(
-          'dashboard.notification.dashboardTree.parameter.error',
-        ),
-      );
+      .catch((error) => setError(extractErrorRequest(error)));
   };
 
   return (

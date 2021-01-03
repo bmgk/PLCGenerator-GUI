@@ -39,3 +39,10 @@ export type HomeFormTreeResponse = {
   Name: string;
   Children: HomeResponseTreeChildren[];
 };
+
+export type ErrorArg = { [key: string]: string };
+export type ErrorRule = { ErrorCode: string; Args: ErrorArg };
+export type ErrorBody = { FieldName: string; Rules: ErrorRule[] };
+export type GenericErrorResponse = {
+  Errors: ErrorBody[];
+};
