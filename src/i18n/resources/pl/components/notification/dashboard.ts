@@ -1,7 +1,7 @@
 export const dashbaordNotificationTranslations = {
-  'dashboard.notification.dashboardTree.success':
+  'dashboard.notification.dashboardTree.parameter.success':
     'Parametr został zaktualizowany',
-  'dashboard.notification.dashboardTree.error':
+  'dashboard.notification.dashboardTree.parameter.error':
     'Błąd podczas aktualizowania parametru',
   'dashboard.notification.menu.generateStructure.success':
     'Generowanie zostało zakończone',
