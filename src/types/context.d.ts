@@ -4,6 +4,7 @@ import {
   SET_TABLE,
   SET_SELECTED_LEAF,
   REPLACE_LEAF_IN_TREE,
+  APPEND_NEW_VALUES,
 } from 'components/dashboard';
 
 import {
@@ -16,7 +17,11 @@ export type DashboardSetTreeAction = {
   type: typeof SET_TREE;
   tree: HomeFormTreeResponse;
 };
-
+export type DashboardAppendNewAvaliableValuesAction = {
+  type: typeof APPEND_NEW_VALUES;
+  newAvaliableValues: string[];
+  removeFromAvaliableValues: string;
+};
 export type DashboardSetRowsAction = {
   type: typeof SET_TABLE;
   rows: HomeFormReponseWithId;
@@ -33,6 +38,7 @@ export type DashboardReplaceLeaf = {
 
 export type DashboardAction =
   | DashboardSetTreeAction
+  | DashboardAppendNewAvaliableValuesAction
   | DashboardSetRowsAction
   | DashboardSetLeaf
   | DashboardReplaceLeaf;
@@ -40,6 +46,7 @@ export type DashboardAction =
 export type DashboardDispatch = (action: DashboardAction) => void;
 
 export type DashboardState = {
+  newAvaliableValues: string[];
   tree: HomeFormTreeResponse;
   rows: HomeFormReponseWithId;
   selectedLeaf: SelectedLeaf | null;

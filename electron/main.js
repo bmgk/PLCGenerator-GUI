@@ -1,9 +1,12 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import kill from 'tree-kill';
 import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer';
+
+import { runServer } from '../src/services/electron/';
 
 let mainWindow;
 
@@ -28,10 +31,6 @@ function createWindow() {
       }),
     );
   }
-
-  mainWindow.on('closed', () => {
-    mainWindow = null;
-  });
 }
 
 app
@@ -43,5 +42,15 @@ app
         .then((name) => console.log(`Added Extension:  ${name}`))
         .catch((err) => console.log('An error occurred: ', err));
     }
+    return runServer();
+  })
+  .then((server) => {
+    app.on('quit', () => {
+      kill(server.pid);
+    });
+    app.on('window-all-closed', () => {
+      kill(server.pid);
+    });
   });
+
 app.allowRendererProcessReuse = true;

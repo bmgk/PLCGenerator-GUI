@@ -8,15 +8,26 @@ import Tabs from '@material-ui/core/Tabs/Tabs';
 import Tab from '@material-ui/core/Tab/Tab';
 import { useTranslation } from 'react-i18next';
 
-import { generateStructure } from '../../api/dashboard';
+import { DashboardMenu } from './DashboardMenu';
+import {
+  useDashboardDispatch,
+  useDashboardStore,
+  setTree,
+} from './context';
+import { SnackbarNotification } from '../common';
+
+import {
+  generateStructure,
+  importDraft,
+  submitHomeFormTree,
+} from '../../api';
 import {
   invokeProjectImporter,
+  pickDraftJSON,
   pickFolder,
   saveDraft,
-} from '../../services/electron';
-import { SnackbarNotification } from '../common';
-import { DashboardMenu } from './DashboardMenu';
-import { useDashboardStore } from './context';
+  extractErrorRequest,
+} from '../../services';
 
 import { DashboardNavigationProps } from 'types';
 
@@ -45,6 +56,7 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
   const [error, setError] = useState('');
   const { t } = useTranslation();
   const { tree } = useDashboardStore();
+  const dispatch = useDashboardDispatch();
   const classes = useStyles();
 
   const handleChange = (
@@ -63,25 +75,35 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
       .then((res) => {
         invokeProjectImporter(res[0]);
         setSucces(
-          'dashboard.notification.menu.generateStructure.success',
+          t('dashboard.notification.menu.generateStructure.success'),
         );
       })
-      .catch(() =>
-        setError(
-          'dashboard.notification.menu.generateStructure.error',
-        ),
-      )
+      .catch((error) => setError(extractErrorRequest(error)))
       .finally(() => setOpenBackdrop(false));
   };
 
   const handleSaveDraft = () => {
     saveDraft(tree)
       .then(() =>
-        setSucces('dashboard.notification.menu.saveDraft.success'),
+        setSucces(t('dashboard.notification.menu.saveDraft.success')),
       )
-      .catch(() =>
-        setError('dashboard.notification.menu.saveDraft.error'),
-      );
+      .catch((error) => setError(extractErrorRequest(error)));
+  };
+
+  const handleImportDraft = () => {
+    pickDraftJSON()
+      .then(importDraft)
+      .then(submitHomeFormTree)
+      .then((res) => {
+        dispatch(setTree(res));
+        return Promise.resolve();
+      })
+      .then(() =>
+        setSucces(
+          t('dashboard.notification.menu.importDraft.success'),
+        ),
+      )
+      .catch((error) => setError(extractErrorRequest(error)));
   };
 
   const showSettings = () => {};
@@ -124,6 +146,7 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
             <DashboardMenu
               submitStructure={handleSubmitStructure}
               saveDraft={handleSaveDraft}
+              importDraft={handleImportDraft}
               showSettings={showSettings}
             />
           </Box>

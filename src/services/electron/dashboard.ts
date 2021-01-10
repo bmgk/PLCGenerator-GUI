@@ -26,6 +26,24 @@ export const saveDraft = (tree: HomeFormTreeResponse) => {
   });
 };
 
+export const pickDraftJSON = () => {
+  return pickJson().then((fileName) => {
+    try {
+      const tree = fs.readFileSync(fileName, 'utf-8');
+      return Promise.resolve(JSON.parse(tree));
+    } catch (e) {
+      console.error(e);
+      return Promise.reject(e);
+    }
+  });
+};
+
+const pickJson = () => {
+  return electron.remote.dialog
+    .showOpenDialog({})
+    .then((el) => el.filePaths[0]);
+};
+
 export const pickFolder = () => {
   return electron.remote.dialog
     .showOpenDialog({

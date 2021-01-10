@@ -1,5 +1,12 @@
 export const dashboardMenuTranslations = {
-  'dashboard.menu.SUBMIT_STRUCTURE': 'Wygeneruj strukturę',
-  'dashboard.menu.SAVE_DRAFT': 'Utwórz kopie zapasową',
+  'dashboard.menu.SUBMIT_STRUCTURE': 'Generuj',
+  'dashboard.menu.SAVE_DRAFT': 'Exportuj konfiguracje',
+  'dashboard.menu.IMPORT_DRAFT': 'Importuj konfiguracje',
   'dashboard.menu.SETTINGS': 'Ustawienia',
+  'dashboard.menu.SAVE_DRAFT.confirmation.title':
+    'Potwierdzenie exportowania konfiguracji',
+  'dashboard.menu.SAVE_DRAFT.confirmation.description':
+    'Jesteś pewien, że chcesz wyeksportować konfiguracje?',
+  'dashboard.menu.SAVE_DRAFT.confirmation.accept': 'Zaakceptuj',
+  'dashboard.menu.SAVE_DRAFT.confirmation.reject': 'Odrzuć',
 };

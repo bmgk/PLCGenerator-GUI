@@ -4,11 +4,12 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Box from '@material-ui/core/Box';
 import { acceptSingleParameter } from '../../api/dashboard';
+import { submitHomeFormTree } from '../../api/home';
 
 import {
-  replaceLeafInTree,
+  appendNewAvaliableValues,
+  setTree,
   useDashboardDispatch,
-  useDashboardStore,
 } from './context';
 import {
   CardHeaderPanel,
@@ -19,7 +20,11 @@ import {
   CardSubmitPanel,
   ParameterSingleTableBody,
 } from './treePanel';
-import { SelectedLeaf } from 'types';
+import {
+  DashboardTreePanelProps,
+  GenericErrorResponse,
+  SelectedLeaf,
+} from 'types';
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
@@ -44,10 +49,12 @@ const extractInitialValue = (
   return initialValues;
 };
 
-export const DashboardTreePanel = () => {
+export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
+  props,
+) => {
+  const { selectedLeaf } = props;
   const classes = useStyles();
   const [index, setIndex] = useState(0);
-  const { selectedLeaf } = useDashboardStore();
   const dispatch = useDashboardDispatch();
 
   if (selectedLeaf === null) return <RootTreePanel />;
@@ -61,11 +68,24 @@ export const DashboardTreePanel = () => {
     setIndex,
   );
 
-  const handleSubmitParameter = (): Promise<void> => {
-    return acceptSingleParameter(selectedLeaf, index).then(() => {
-      dispatch(replaceLeafInTree());
-      return Promise.resolve();
-    });
+  const handleSubmitParameter = (): Promise<void | GenericErrorResponse> => {
+    return acceptSingleParameter(selectedLeaf, index)
+      .then((response) => {
+        const newAvaliableValues = response.map(
+          (el) => el.ElementName,
+        );
+        dispatch(
+          appendNewAvaliableValues(
+            newAvaliableValues,
+            selectedLeaf.Name,
+          ),
+        );
+        return submitHomeFormTree();
+      })
+      .then((res) => {
+        dispatch(setTree(res));
+        return Promise.resolve();
+      });
   };
 
   return (

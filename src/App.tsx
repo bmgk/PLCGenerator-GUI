@@ -6,8 +6,7 @@ import {
   Route,
 } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
-
-import { DashboardProvider } from './components/dashboard';
+import { DashboardProvider } from './components/dashboard/context';
 import { Home, Dashboard } from './pages';
 
 import './i18n/i18n';
