@@ -46,3 +46,7 @@ export type ErrorBody = { FieldName: string; Rules: ErrorRule[] };
 export type GenericErrorResponse = {
   Errors: ErrorBody[];
 };
+
+export type AcceptSingleParameterResponse = [
+  { ElementName: string; ParameterName: string },
+];

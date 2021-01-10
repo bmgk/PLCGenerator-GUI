@@ -89,11 +89,20 @@ const isBlack = ({ Parameters }: HomeResponseTreeChildren) => {
   return Parameters.length === 0;
 };
 
+const isRed = (
+  node: HomeResponseTreeChildren,
+  newAvaliableValues: string[],
+) => {
+  return newAvaliableValues.includes(node.Name);
+};
+
 const pickStyles = (
   node: HomeResponseTreeChildren,
+  newAvaliableValues: string[],
 ): {
-  color: 'black' | 'green' | 'yellow' | 'purple';
+  color: 'black' | 'green' | 'yellow' | 'purple' | 'red';
 } => {
+  if (isRed(node, newAvaliableValues)) return { color: 'red' };
   if (isBlack(node)) return { color: 'black' };
   if (isYellow(node)) return { color: 'yellow' };
   if (isGreen(node)) return { color: 'green' };
@@ -102,7 +111,11 @@ const pickStyles = (
 };
 
 export const DashboardTree: React.FC = () => {
-  const { tree, selectedLeaf } = useDashboardStore();
+  const {
+    tree,
+    selectedLeaf,
+    newAvaliableValues,
+  } = useDashboardStore();
   const dispatch = useDashboardDispatch();
   const classes = useStyles();
   const expanded = useMemo(() => getIdTree(tree, []), [tree]);
@@ -127,7 +140,7 @@ export const DashboardTree: React.FC = () => {
   };
 
   const renderTree = (nodes: HomeResponseTreeChildren) => {
-    const styles = pickStyles(nodes);
+    const styles = pickStyles(nodes, newAvaliableValues);
 
     return (
       <TreeItem

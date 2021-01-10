@@ -2,12 +2,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import {
-  exampleErrorAcceptParameter2,
-  homeFormSubmitTreeForTests,
-} from '../../../../tests/responses';
-import * as apiDashboard from '../../../api/dashboard/menu';
-import * as electronService from '../../../services/electron/dashboard';
+import { homeFormSubmitTreeForTests } from '../../../../tests/responses';
 import { DashboardProvider } from '../context';
 import { DashboardNavigation } from '../DashboardNavigation';
 
@@ -25,7 +20,14 @@ describe('DashboardNavigation', () => {
   const setValue = jest.fn();
   beforeEach(() => {
     render(
-      <DashboardProvider>
+      <DashboardProvider
+        initial={{
+          tree: { Name: '', Children: [] },
+          newAvaliableValues: ['test'],
+          rows: [],
+          selectedLeaf: null,
+        }}
+      >
         <DashboardNavigation value={value} setValue={setValue} />
       </DashboardProvider>,
     );
@@ -51,7 +53,7 @@ describe('DashboardNavigation', () => {
   });
 
   it('Generate structure success', async () => {
-    userEvent.click(screen.getByRole('button', { name: /more/i }));
+    userEvent.click(screen.getByRole('button', { name: /menu/i }));
     userEvent.click(
       screen.getByRole('menuitem', { name: /generate/i }),
     );
@@ -74,11 +76,18 @@ describe('DashboardNavigation', () => {
   });
 
   it('Export configuration success', async () => {
-    userEvent.click(screen.getByRole('button', { name: /more/i }));
+    userEvent.click(screen.getByRole('button', { name: /menu/i }));
     userEvent.click(
       screen.getByRole('menuitem', { name: 'Export configuration' }),
     );
 
+    await waitFor(() =>
+      expect(
+        screen.queryByText('Do you want to save draft?'),
+      ).toBeDefined(),
+    );
+
+    userEvent.click(screen.getByRole('button', { name: /accept/i }));
     await waitFor(() =>
       expect(
         screen.queryByText('Configuration has been exported'),
@@ -87,7 +96,7 @@ describe('DashboardNavigation', () => {
   });
 
   it('Import configuration success', async () => {
-    userEvent.click(screen.getByRole('button', { name: /more/i }));
+    userEvent.click(screen.getByRole('button', { name: /menu/i }));
     userEvent.click(
       screen.getByRole('menuitem', { name: 'Import configuration' }),
     );

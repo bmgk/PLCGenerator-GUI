@@ -6,7 +6,11 @@ import Box from '@material-ui/core/Box';
 import { acceptSingleParameter } from '../../api/dashboard';
 import { submitHomeFormTree } from '../../api/home';
 
-import { setTree, useDashboardDispatch } from './context';
+import {
+  appendNewAvaliableValues,
+  setTree,
+  useDashboardDispatch,
+} from './context';
 import {
   CardHeaderPanel,
   EmptyParametersPanel,
@@ -66,7 +70,18 @@ export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
 
   const handleSubmitParameter = (): Promise<void | GenericErrorResponse> => {
     return acceptSingleParameter(selectedLeaf, index)
-      .then(submitHomeFormTree)
+      .then((response) => {
+        const newAvaliableValues = response.map(
+          (el) => el.ElementName,
+        );
+        dispatch(
+          appendNewAvaliableValues(
+            newAvaliableValues,
+            selectedLeaf.Name,
+          ),
+        );
+        return submitHomeFormTree();
+      })
       .then((res) => {
         dispatch(setTree(res));
         return Promise.resolve();
