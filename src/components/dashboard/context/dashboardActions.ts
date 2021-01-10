@@ -6,9 +6,11 @@ import {
   DashboardSetLeaf,
   DashboardReplaceLeaf,
   HomeFormReponseWithId,
+  DashboardAppendNewAvaliableValuesAction,
 } from 'types';
 
 export const SET_TREE = 'SET_TREE';
+export const APPEND_NEW_VALUES = 'APPEND_NEW_VALUES';
 export const SET_TABLE = 'SET_TABLE';
 export const SET_SELECTED_LEAF = 'SET_SELECTED_LEAF';
 export const SET_WORKING_TREE = 'SET_WORKING_TREE';
@@ -19,6 +21,15 @@ export const setTree = (
 ): DashboardSetTreeAction => ({
   type: SET_TREE,
   tree,
+});
+
+export const appendNewAvaliableValues = (
+  newAvaliableValues: string[],
+  removeFromAvaliableValues: string,
+): DashboardAppendNewAvaliableValuesAction => ({
+  type: APPEND_NEW_VALUES,
+  newAvaliableValues,
+  removeFromAvaliableValues,
 });
 
 export const setRows = (

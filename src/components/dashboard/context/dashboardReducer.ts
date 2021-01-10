@@ -3,6 +3,7 @@ import {
   SET_TABLE,
   SET_TREE,
   REPLACE_LEAF_IN_TREE,
+  APPEND_NEW_VALUES,
 } from './dashboardActions';
 
 import {
@@ -34,6 +35,18 @@ export const dashboardReducer = (
   switch (action.type) {
     case SET_TREE: {
       return { ...state, tree: action.tree };
+    }
+    case APPEND_NEW_VALUES: {
+      const newAvaliableValues = new Set([
+        ...state.newAvaliableValues,
+        ...action.newAvaliableValues,
+      ]);
+      newAvaliableValues.delete(action.removeFromAvaliableValues);
+
+      return {
+        ...state,
+        newAvaliableValues: Array.from(newAvaliableValues),
+      };
     }
     case SET_TABLE: {
       return { ...state, rows: action.rows };

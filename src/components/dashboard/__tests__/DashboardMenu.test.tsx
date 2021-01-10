@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { DashboardMenu } from '../';
+import { DashboardMenu, DashboardProvider } from '../';
 
 describe('DashboardMenu', () => {
   const submitStructure = jest.fn();
@@ -12,15 +12,17 @@ describe('DashboardMenu', () => {
 
   beforeEach(() => {
     render(
-      <DashboardMenu
-        submitStructure={submitStructure}
-        saveDraft={saveDraft}
-        showSettings={showSettings}
-        importDraft={importDraft}
-      />,
+      <DashboardProvider>
+        <DashboardMenu
+          submitStructure={submitStructure}
+          saveDraft={saveDraft}
+          showSettings={showSettings}
+          importDraft={importDraft}
+        />
+      </DashboardProvider>,
     );
     return userEvent.click(
-      screen.getByRole('button', { name: /more/i }),
+      screen.getByRole('button', { name: /menu/i }),
     );
   });
 

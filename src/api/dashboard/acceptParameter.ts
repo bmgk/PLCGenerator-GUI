@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { IP } from './../config';
-import { GenericErrorResponse, SelectedLeaf } from 'types';
+import { AcceptSingleParameterResponse, SelectedLeaf } from 'types';
 
 const parseValue = (value: any[] | any) => {
   if (Array.isArray(value)) {
@@ -50,16 +50,18 @@ export const acceptManyParameters = (
 export const acceptSingleParameter = (
   selectedLeaf: SelectedLeaf,
   index: number,
-): Promise<void> => {
-  return axios.post(
-    `${IP}/Api/Configure/Single`,
-    {
-      ElementName: selectedLeaf.Name,
-      Name: selectedLeaf.Parameters[index].Name,
-      Value: parseValue(selectedLeaf.Parameters[index].Value),
-    },
-    {
-      headers: { 'Content-type': 'application/json' },
-    },
-  );
+): Promise<AcceptSingleParameterResponse> => {
+  return axios
+    .post(
+      `${IP}/Api/Configure/Single`,
+      {
+        ElementName: selectedLeaf.Name,
+        Name: selectedLeaf.Parameters[index].Name,
+        Value: parseValue(selectedLeaf.Parameters[index].Value),
+      },
+      {
+        headers: { 'Content-type': 'application/json' },
+      },
+    )
+    .then((res) => res.data);
 };
