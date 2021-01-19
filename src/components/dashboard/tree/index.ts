@@ -7,5 +7,5 @@ export * from './RootTreePanel';
 export * from './CardSubmitPanel';
 export * from './DashboardSelect';
 export * from './DashboardInput';
-export * from './SearchTree';
+export * from './TreeSearch';
 export * from './utils';

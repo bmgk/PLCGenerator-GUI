@@ -12,7 +12,7 @@ import {
   useDashboardStore,
 } from './context';
 
-import { SearchTree } from './tree';
+import { TreeSearch } from './tree';
 import {
   getIdTree,
   pickStyles,
@@ -122,7 +122,7 @@ export const DashboardTree: React.FC = () => {
   return (
     <div className={classes.container}>
       <div className={classes.treeContainer}>
-        <SearchTree onChange={handleChange} quantity={quantity} />
+        <TreeSearch onChange={handleChange} quantity={quantity} />
         <TreeView
           className={classes.treeRoot}
           defaultCollapseIcon={<ExpandMoreIcon />}

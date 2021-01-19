@@ -22,7 +22,7 @@ const count = (quantity: number) => {
   return 3;
 };
 
-export const SearchTree: React.FC<
+export const TreeSearch: React.FC<
   TextFieldProps & { quantity: number }
 > = ({ onChange, quantity, ...props }) => {
   const { t } = useTranslation();
