@@ -79,7 +79,7 @@ export const DashboardTable: React.FC = () => {
 
   return (
     <div className={classes.tableContainer}>
-      <DataGrid rows={rows} columns={columns(t)} pageSize={10} />
+      <DataGrid rows={rows} columns={columns(t)} pageSize={25} />
     </div>
   );
 };
