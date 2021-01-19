@@ -3,7 +3,7 @@ import { render, screen, act, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { exampleErrorAcceptParameter2 } from '../../../../tests/responses';
 
-import { CardSubmitPanel } from '../treePanel';
+import { CardSubmitPanel } from '../tree';
 
 describe('CardSubmitPannel', () => {
   it('initial render', () => {
