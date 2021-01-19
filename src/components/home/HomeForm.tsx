@@ -67,7 +67,10 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
 
   return (
     <Card className={classes.formContainer}>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik<HomeFormValues>
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+      >
         {(formik) => (
           <Form className={classes.form} data-testid="homeForm">
             <FormControl className={classes.formControl}>
@@ -105,20 +108,22 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                   </FormControl>
                   <List dense={true} className={classes.list}>
                     {formik.values.eplanTags.map((el, index) => (
-                      <ListItem disableGutters key={el.name}>
-                        <ListItemText primary={el.name} />
-                        <ListItemSecondaryAction>
-                          <IconButton
-                            edge="end"
-                            aria-label="delete"
-                            onClick={() => remove(index)}
-                          >
-                            <DeleteIcon
-                              data-testid={`file-${index}`}
-                            />
-                          </IconButton>
-                        </ListItemSecondaryAction>
-                      </ListItem>
+                      <React.Fragment key={el.name}>
+                        <ListItem disableGutters>
+                          <ListItemText primary={el.name} />
+                          <ListItemSecondaryAction>
+                            <IconButton
+                              edge="end"
+                              aria-label="delete"
+                              onClick={() => remove(index)}
+                            >
+                              <DeleteIcon
+                                data-testid={`file-${index}`}
+                              />
+                            </IconButton>
+                          </ListItemSecondaryAction>
+                        </ListItem>
+                      </React.Fragment>
                     ))}
                   </List>
                 </>

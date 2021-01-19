@@ -1,4 +1,4 @@
 export const dashboardNavigationTranslations = {
-  'dashboard.navigation.tab.table': 'Table',
-  'dashboard.navigation.tab.tree': 'Tree',
+  'dashboard.navigation.tab.table': 'Unused Symbols',
+  'dashboard.navigation.tab.tree': 'Structure',
 };
