@@ -19,7 +19,7 @@ import {
   RootTreePanel,
   CardSubmitPanel,
   ParameterSingleTableBody,
-} from './treePanel';
+} from './tree';
 import {
   DashboardTreePanelProps,
   GenericErrorResponse,

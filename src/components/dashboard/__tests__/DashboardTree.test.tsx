@@ -56,6 +56,8 @@ const coloredKeys = [
   '121050DT1',
 ];
 
+const searchSelected = { background: '#3D9970' };
+
 const names = getNames(homeFormSubmitTreeForTests, []);
 
 describe('DashboardTree', () => {
@@ -331,6 +333,23 @@ describe('DashboardTree', () => {
       expect(screen.getByTestId('121050V02BGT22')).toHaveStyle({
         color: 'green',
       });
+    });
+
+    it('Search functionallity 2 results', async () => {
+      const input = screen.getByLabelText('Search elements');
+      userEvent.type(input, '121050V02BGT20');
+
+      expect(await screen.findByText('2 results')).toBeDefined();
+      const first = await screen.findByTestId('121050V02BGT20');
+      const second = await screen.findByTestId('121050V02BGT20a');
+      expect(first.children[0]).toHaveStyle(searchSelected);
+      expect(second.children[0]).toHaveStyle(searchSelected);
+    });
+
+    it('Search functionallity 0 results', async () => {
+      const input = screen.getByLabelText('Search elements');
+      userEvent.type(input, '121050V02BGT20223434');
+      expect(await screen.findByText('0 result')).toBeDefined();
     });
   });
 });

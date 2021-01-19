@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -12,6 +12,15 @@ import {
   useDashboardStore,
 } from './context';
 
+import { SearchTree } from './tree';
+import {
+  getIdTree,
+  pickStyles,
+  checkSearch,
+  createLeaf,
+  searchQuantityResults,
+} from './utils';
+
 import {
   HomeResponseTreeChildren,
   HomeFormTreeResponse,
@@ -23,92 +32,8 @@ const useStyles = makeStyles({
   container: { width: '100vw', margin: '0 auto', display: 'flex' },
   label: {},
   labelBold: { fontWeight: 800 },
+  searchContent: { background: '#3D9970' },
 });
-
-const createLeaf = (nodes: HomeResponseTreeChildren) => ({
-  Parameters: nodes.Parameters,
-  Name: nodes.Name,
-});
-
-const getIdTree = (
-  nodes: HomeFormTreeResponse | HomeFormTreeResponse,
-  ids: string[],
-) => {
-  ids.push(nodes.Name);
-  Array.isArray(nodes.Children)
-    ? nodes.Children.map((node: HomeResponseTreeChildren) =>
-        getIdTree(node, ids),
-      )
-    : null;
-  return ids;
-};
-
-const isYellow = ({ Parameters }: HomeResponseTreeChildren) => {
-  return (
-    Parameters.some((el) => {
-      if (Array.isArray(el.Value)) {
-        return el.Value.length === 0;
-      } else {
-        return Object.keys(el.Value).length === 0;
-      }
-    }) &&
-    Parameters.some((el) => {
-      if (Array.isArray(el.Value)) {
-        return el.Value.length >= 1;
-      } else {
-        return Object.keys(el.Value).length !== 0;
-      }
-    })
-  );
-};
-
-const isGreen = ({ Parameters }: HomeResponseTreeChildren) => {
-  return Parameters.every((el) => {
-    if (Array.isArray(el.Value)) {
-      return el.Value.length >= 1;
-    } else {
-      return Object.keys(el.Value).length !== 0;
-    }
-  });
-};
-
-const isPurple = ({ Parameters }: HomeResponseTreeChildren) => {
-  return Parameters.some((el) => {
-    if (Array.isArray(el.Value)) {
-      return el.Value.length === 0 && el.AvailableValues.length !== 0;
-    } else {
-      return (
-        Object.keys(el.Value).length === 0 &&
-        el.AvailableValues.length !== 0
-      );
-    }
-  });
-};
-
-const isBlack = ({ Parameters }: HomeResponseTreeChildren) => {
-  return Parameters.length === 0;
-};
-
-const isRed = (
-  node: HomeResponseTreeChildren,
-  newAvaliableValues: string[],
-) => {
-  return newAvaliableValues.includes(node.Name);
-};
-
-const pickStyles = (
-  node: HomeResponseTreeChildren,
-  newAvaliableValues: string[],
-): {
-  color: 'black' | 'green' | 'yellow' | 'purple' | 'red';
-} => {
-  if (isRed(node, newAvaliableValues)) return { color: 'red' };
-  if (isBlack(node)) return { color: 'black' };
-  if (isYellow(node)) return { color: 'yellow' };
-  if (isGreen(node)) return { color: 'green' };
-  if (isPurple(node)) return { color: 'purple' };
-  return { color: 'black' };
-};
 
 export const DashboardTree: React.FC = () => {
   const {
@@ -116,11 +41,20 @@ export const DashboardTree: React.FC = () => {
     selectedLeaf,
     newAvaliableValues,
   } = useDashboardStore();
+  const [search, setSearch] = useState('');
   const dispatch = useDashboardDispatch();
   const classes = useStyles();
   const expanded = useMemo(() => getIdTree(tree, []), [tree]);
+  const handleChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  ) => {
+    setSearch(event.target.value);
+  };
 
-  const renderTreeRoot = (nodes: HomeFormTreeResponse) => {
+  const renderTreeRoot = (
+    nodes: HomeFormTreeResponse,
+    search: string,
+  ) => {
     return (
       <TreeItem
         data-testid={nodes.Name}
@@ -132,15 +66,19 @@ export const DashboardTree: React.FC = () => {
       >
         {Array.isArray(nodes.Children)
           ? nodes.Children.map((node: HomeResponseTreeChildren) =>
-              renderTree(node),
+              renderTree(node, search),
             )
           : null}
       </TreeItem>
     );
   };
 
-  const renderTree = (nodes: HomeResponseTreeChildren) => {
+  const renderTree = (
+    nodes: HomeResponseTreeChildren,
+    search: string,
+  ) => {
     const styles = pickStyles(nodes, newAvaliableValues);
+    const isMatch = checkSearch(nodes, search);
 
     return (
       <TreeItem
@@ -159,29 +97,39 @@ export const DashboardTree: React.FC = () => {
             styles.color !== 'black'
               ? classes.labelBold
               : classes.label,
+          content: isMatch ? classes.searchContent : '',
         }}
       >
         {Array.isArray(nodes.Children)
           ? nodes.Children.map((node: HomeResponseTreeChildren) =>
-              renderTree(node),
+              renderTree(node, search),
             )
           : null}
       </TreeItem>
     );
   };
 
-  const treeMemo = useMemo(() => renderTreeRoot(tree), [tree]);
+  const quantity = useMemo(
+    () => searchQuantityResults(tree, search),
+    [tree, search],
+  );
+
+  const treeItems = useMemo(() => renderTreeRoot(tree, search), [
+    tree,
+    search,
+  ]);
 
   return (
     <div className={classes.container}>
       <div className={classes.treeContainer}>
+        <SearchTree onChange={handleChange} quantity={quantity} />
         <TreeView
           className={classes.treeRoot}
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
           expanded={expanded}
         >
-          {treeMemo}
+          {treeItems}
         </TreeView>
       </div>
       <DashboardTreePanel
