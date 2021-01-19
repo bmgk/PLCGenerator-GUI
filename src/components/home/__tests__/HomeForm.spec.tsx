@@ -31,7 +31,9 @@ describe('HomeForm', () => {
       type: 'image/png',
     });
 
-    userEvent.upload(screen.getByLabelText('Upload File'), [file]);
+    fireEvent.change(screen.getByLabelText('Upload File'), {
+      target: { files: [file] },
+    });
     userEvent.type(
       screen.getByLabelText('Project Name'),
       'Project Name',
@@ -52,7 +54,9 @@ describe('HomeForm', () => {
       type: 'image/png',
     });
 
-    userEvent.upload(screen.getByLabelText('Upload File'), file);
+    fireEvent.change(screen.getByLabelText('Upload File'), {
+      target: { files: [file] },
+    });
     expect(screen.queryByText('chucknorris.png')).not.toBeNull();
 
     await waitFor(() => {

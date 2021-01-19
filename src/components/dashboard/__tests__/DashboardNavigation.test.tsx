@@ -38,17 +38,17 @@ describe('DashboardNavigation', () => {
   });
 
   it('initial render', () => {
-    expect(screen.queryByText(/table/i)).toBeDefined();
-    expect(screen.queryByText(/tree/i)).toBeDefined();
+    expect(screen.queryByText(/Unused Symbols/i)).toBeDefined();
+    expect(screen.queryByText(/Structure/i)).toBeDefined();
   });
 
-  it('Change tab to Table', () => {
-    userEvent.click(screen.getByText(/table/i));
+  it('Change tab to Unsued symbols', () => {
+    userEvent.click(screen.getByText(/Unused Symbols/i));
     expect(setValue).toBeCalledWith(0);
   });
 
-  it('Change tab to Tree', () => {
-    userEvent.click(screen.getByText(/tree/i));
+  it('Change tab to Structure', () => {
+    userEvent.click(screen.getByText(/Structure/i));
     expect(setValue).toBeCalledWith(1);
   });
 
