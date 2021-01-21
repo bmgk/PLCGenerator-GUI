@@ -48,11 +48,11 @@ export const TreeSearch: React.FC<
 
   return (
     <Box
-      padding="0.2rem 0 0 0"
+      padding="1rem"
       display="flex"
       flexDirection="row"
       alignItems="baseline"
-      justifyContent="space-evenly"
+      justifyContent="space-between"
     >
       <TextField
         value={value}

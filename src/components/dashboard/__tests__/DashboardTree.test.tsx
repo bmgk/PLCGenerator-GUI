@@ -342,8 +342,10 @@ describe('DashboardTree', () => {
       expect(await screen.findByText('2 results')).toBeDefined();
       const first = await screen.findByTestId('121050V02BGT20');
       const second = await screen.findByTestId('121050V02BGT20a');
+      const third = await screen.findByTestId('121050V02BGT18');
       expect(first.children[0]).toHaveStyle(searchSelected);
       expect(second.children[0]).toHaveStyle(searchSelected);
+      expect(third.children[0]).not.toHaveStyle(searchSelected);
     });
 
     it('Search functionallity 0 results', async () => {
