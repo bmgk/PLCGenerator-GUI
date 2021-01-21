@@ -88,7 +88,7 @@ export const pickStyles = (
   return { color: 'black' };
 };
 
-export const checkSearch = (
+export const isMatch = (
   node: HomeResponseTreeChildren,
   search: string,
 ) => {
@@ -96,26 +96,60 @@ export const checkSearch = (
   return node.Name.toLowerCase().includes(search.toLowerCase());
 };
 
-export const searchQuantityResults = (
+export const findQuantity = (
   nodes: HomeFormTreeResponse,
   search: string,
 ) => {
-  let quantity: string[] = [];
+  let matches: string[] = [nodes.Name];
+  nodes.Children.map((node: HomeResponseTreeChildren) => {
+    searchTreeQuantity(node, search, matches);
+  });
+  return matches;
+};
+
+const searchTreeQuantity = (
+  nodes: HomeResponseTreeChildren,
+  search: string,
+  matches: string[],
+) => {
+  if (isMatch(nodes, search)) {
+    matches.push(nodes.Name);
+  }
   nodes.Children.map((node: HomeResponseTreeChildren) =>
-    searchTree(node, search, quantity),
+    searchTreeQuantity(node, search, matches),
   );
-  return quantity.length;
+};
+
+export const findMatches = (
+  nodes: HomeFormTreeResponse,
+  search: string,
+) => {
+  let matches: string[] = [nodes.Name];
+  nodes.Children.map((node: HomeResponseTreeChildren) =>
+    searchTree(node, search, matches),
+  );
+  return matches;
 };
 
 const searchTree = (
   nodes: HomeResponseTreeChildren,
   search: string,
-  quantity: string[],
+  matches: string[],
 ) => {
   if (checkSearch(nodes, search)) {
-    quantity.push(nodes.Name);
+    matches.push(nodes.Name);
   }
   nodes.Children.map((node: HomeResponseTreeChildren) =>
-    searchTree(node, search, quantity),
+    searchTree(node, search, matches),
   );
+};
+
+export const checkSearch = (
+  node: HomeResponseTreeChildren,
+  search: string,
+): boolean => {
+  if (isMatch(node, search)) {
+    return true;
+  }
+  return node.Children.some((child) => checkSearch(child, search));
 };

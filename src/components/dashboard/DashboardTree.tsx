@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -16,9 +16,10 @@ import { TreeSearch } from './tree';
 import {
   getIdTree,
   pickStyles,
-  checkSearch,
   createLeaf,
-  searchQuantityResults,
+  findMatches,
+  isMatch,
+  findQuantity,
 } from './utils';
 
 import {
@@ -44,11 +45,25 @@ export const DashboardTree: React.FC = () => {
   const [search, setSearch] = useState('');
   const dispatch = useDashboardDispatch();
   const classes = useStyles();
-  const expanded = useMemo(() => getIdTree(tree, []), [tree]);
+  const [matches, setMatches] = useState<string[]>([]);
+
+  useEffect(() => {
+    setMatches(findMatches(tree, search));
+  }, [tree, search]);
+
   const handleChange = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
     setSearch(event.target.value);
+  };
+
+  const handleClick = (id: string) => {
+    setMatches((matches) => {
+      if (matches.includes(id)) {
+        return matches.filter((single) => single !== id);
+      }
+      return [...matches, id];
+    });
   };
 
   const renderTreeRoot = (
@@ -78,7 +93,7 @@ export const DashboardTree: React.FC = () => {
     search: string,
   ) => {
     const styles = pickStyles(nodes, newAvaliableValues);
-    const isMatch = checkSearch(nodes, search);
+    const match = isMatch(nodes, search);
 
     return (
       <TreeItem
@@ -86,18 +101,19 @@ export const DashboardTree: React.FC = () => {
         key={nodes.Name}
         nodeId={`${nodes.Name}`}
         label={nodes.Name}
-        onClick={() =>
+        onClick={() => {
           dispatch(
             setLeaf(createLeaf(JSON.parse(JSON.stringify(nodes)))),
-          )
-        }
+          );
+          handleClick(nodes.Name);
+        }}
         style={styles}
         classes={{
           label:
             styles.color !== 'black'
               ? classes.labelBold
               : classes.label,
-          content: isMatch ? classes.searchContent : '',
+          content: match ? classes.searchContent : '',
         }}
       >
         {Array.isArray(nodes.Children)
@@ -109,25 +125,30 @@ export const DashboardTree: React.FC = () => {
     );
   };
 
-  const quantity = useMemo(
-    () => searchQuantityResults(tree, search),
-    [tree, search],
-  );
+  const quantity = useMemo(() => findQuantity(tree, search), [
+    tree,
+    search,
+  ]);
 
   const treeItems = useMemo(() => renderTreeRoot(tree, search), [
     tree,
     search,
   ]);
 
+  const expanded = useMemo(() => getIdTree(tree, []), [tree]);
+
   return (
     <div className={classes.container}>
       <div className={classes.treeContainer}>
-        <TreeSearch onChange={handleChange} quantity={quantity} />
+        <TreeSearch
+          onChange={handleChange}
+          quantity={quantity.length - 1}
+        />
         <TreeView
           className={classes.treeRoot}
           defaultCollapseIcon={<ExpandMoreIcon />}
           defaultExpandIcon={<ChevronRightIcon />}
-          expanded={expanded}
+          expanded={search === '' ? expanded : matches}
         >
           {treeItems}
         </TreeView>
