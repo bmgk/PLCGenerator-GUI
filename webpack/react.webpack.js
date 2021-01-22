@@ -40,7 +40,7 @@ module.exports = (env) => ({
     publicPath: './',
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({ title: 'VASS6 PLC Creator' }),
     new webpack.DefinePlugin({
       'process.env.IP': JSON.stringify(IP),
     }),

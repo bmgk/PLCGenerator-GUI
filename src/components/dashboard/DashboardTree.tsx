@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -20,6 +20,7 @@ import {
   findMatches,
   isMatch,
   findQuantity,
+  handleExpand,
 } from './utils';
 
 import {
@@ -29,7 +30,13 @@ import {
 
 const useStyles = makeStyles({
   treeRoot: { height: 110 },
-  treeContainer: { height: '90vh', overflowY: 'scroll', flex: 2 },
+  treeContainer: {
+    height: '90vh',
+    overflowY: 'scroll',
+    resize: 'horizontal',
+    width: '40vw',
+    minWidth: '20vw',
+  },
   container: { width: '100vw', margin: '0 auto', display: 'flex' },
   label: {},
   labelBold: { fontWeight: 800 },
@@ -46,6 +53,11 @@ export const DashboardTree: React.FC = () => {
   const dispatch = useDashboardDispatch();
   const classes = useStyles();
   const [matches, setMatches] = useState<string[]>([]);
+  const [expanded, setExpanded] = useState<string[]>([]);
+
+  useEffect(() => {
+    setExpanded(getIdTree(tree, []));
+  }, [tree]);
 
   useEffect(() => {
     setMatches(findMatches(tree, search));
@@ -58,12 +70,11 @@ export const DashboardTree: React.FC = () => {
   };
 
   const handleClick = (id: string) => {
-    setMatches((matches) => {
-      if (matches.includes(id)) {
-        return matches.filter((single) => single !== id);
-      }
-      return [...matches, id];
-    });
+    if (search === '') {
+      setExpanded((expanded) => handleExpand(expanded, id));
+    } else {
+      setMatches((expanded) => handleExpand(expanded, id));
+    }
   };
 
   const renderTreeRoot = (
@@ -134,8 +145,6 @@ export const DashboardTree: React.FC = () => {
     tree,
     search,
   ]);
-
-  const expanded = useMemo(() => getIdTree(tree, []), [tree]);
 
   return (
     <div className={classes.container}>
