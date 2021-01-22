@@ -8,7 +8,7 @@ import { HomeFormTreeResponse } from 'types';
 const generatePath = (filePath: string) => {
   return `${filePath}${
     path.sep
-  }PLCGENERATOR-${new Date()
+  }VASS6-PLC-Creator-${new Date()
     .toISOString()
     .substr(0, 10)}-${Math.random().toString().substr(0, 10)}.json`;
 };

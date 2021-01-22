@@ -13,6 +13,6 @@ describe('dashboard-electron', () => {
     const result = elektronDashboard.saveDraft(
       homeFormSubmitTreeForTests,
     );
-    expect(result).resolves.toMatch(/PLCGENERATOR/i);
+    expect(result).resolves.toMatch(/VASS6-PLC-Creator/i);
   });
 });
