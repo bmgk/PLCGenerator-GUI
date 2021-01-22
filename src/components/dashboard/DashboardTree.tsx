@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TreeView from '@material-ui/lab/TreeView';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -29,7 +29,13 @@ import {
 
 const useStyles = makeStyles({
   treeRoot: { height: 110 },
-  treeContainer: { height: '90vh', overflowY: 'scroll', flex: 2 },
+  treeContainer: {
+    height: '90vh',
+    overflowY: 'scroll',
+    resize: 'horizontal',
+    width: '40vw',
+    minWidth: '20vw',
+  },
   container: { width: '100vw', margin: '0 auto', display: 'flex' },
   label: {},
   labelBold: { fontWeight: 800 },

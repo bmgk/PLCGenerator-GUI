@@ -1,3 +1,0 @@
-Dodanie menu z dwiema opcjami ( po prawej stronie navigacji )
-Zapisz obecną strukturę jako draft (Z obecnej struktury zrob plik)
-Zaakcpetuj obecną strkture (odpal nowy process)

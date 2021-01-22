@@ -1,9 +1,0 @@
-dołączyć podczas uruchamiania aplikacji, zeby uruchomić server, oraz skopiować aplikacje wpf.
-przygotować mechanism do aktualizacji avaliableValues (czerwony)
-
-Mechanizm pozwalający załadować drafta (Import configuration)
-/Api/Configure (wartość pliku json), 
-po załadowaniu uderz w /Api/Structure.
-
-Save draft -> export configuration
-
