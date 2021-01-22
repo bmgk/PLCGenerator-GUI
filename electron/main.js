@@ -14,6 +14,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1100,
     height: 700,
+    title: 'VASS6 PLC Creator',
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
