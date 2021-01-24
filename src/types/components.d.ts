@@ -53,10 +53,7 @@ export type DashboardSelectProps = {
   testId?: string;
   values: any;
   avaliableValues: HomeResponseTreeAvailableValues;
-  handleChange: (
-    value: string | string[],
-    option?: SelectOption | SelectOption[],
-  ) => void;
+  handleChange: (event: any, value: string | string[] | null) => void;
 };
 
 export type DashboardInputProps = {
