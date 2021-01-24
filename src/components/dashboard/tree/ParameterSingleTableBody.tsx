@@ -45,10 +45,14 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
   }, [values]);
 
   const handleChangeSelect = (name: string) => (
-    value: string | string[],
-    option?: SelectOption | SelectOption[],
+    event: any,
+    value: string | string[] | null,
   ) => {
-    reducerDispatch(setValues(name, value));
+    if (value === null) {
+      reducerDispatch(setValues(name, ''));
+    } else {
+      reducerDispatch(setValues(name, value));
+    }
   };
 
   const handleChangeInput = (name: string) => (

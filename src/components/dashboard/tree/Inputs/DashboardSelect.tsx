@@ -1,17 +1,10 @@
 import React from 'react';
-import FormControl from '@material-ui/core/FormControl';
-import ReactSelectMaterialUi from 'react-select-material-ui';
-import { StylesConfig } from 'react-select';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/Box';
 
 import { useStyles } from '../utils';
 import { DashboardSelectProps } from 'types';
-
-const styles: StylesConfig = {
-  menu: (base: any) => ({
-    ...base,
-    position: '',
-  }),
-};
 
 export const DashboardSelect: React.FC<DashboardSelectProps> = (
   props,
@@ -24,34 +17,34 @@ export const DashboardSelect: React.FC<DashboardSelectProps> = (
   } = props;
   const classes = useStyles();
 
-  const label = avaliableValues.Name;
-
   const optionsSelect = avaliableValues.Value.map(
     (el: string | number) => el + '',
   );
-  const selectValue = Array.isArray(values[avaliableValues.Name])
+  const value = Array.isArray(values[avaliableValues.Name])
     ? values[avaliableValues.Name].map(
-        (el: string | number) => avaliableValues + '',
+        (singleValue: string | number) => singleValue + '',
       )
     : values[avaliableValues.Name] + '';
 
+  const multiple = Array.isArray(values[avaliableValues.Name]);
+
   return (
-    <FormControl className={classes.formControl}>
-      <ReactSelectMaterialUi
-        data-testid={testId}
+    <Box className={classes.formControl}>
+      <Autocomplete
+        multiple={multiple}
         id={testId}
-        label={label}
         options={optionsSelect}
-        value={selectValue}
-        values={selectValue}
-        fullWidth
-        SelectProps={{
-          isClearable: true,
-          isMulti: avaliableValues.MultiSelect,
-          styles,
-        }}
+        value={value}
         onChange={handleChange}
+        getOptionLabel={(option: string) => option}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            InputLabelProps={{ htmlFor: avaliableValues.Name }}
+            label={avaliableValues.Name}
+          />
+        )}
       />
-    </FormControl>
+    </Box>
   );
 };

@@ -6,7 +6,11 @@ import {
   Route,
 } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+
 import { DashboardProvider } from './components/dashboard/context';
+import theme from './components/common/Theme';
+
 import { Home, Dashboard } from './pages';
 
 import './i18n/i18n';
@@ -17,19 +21,21 @@ document.body.appendChild(mainElement);
 
 const App = () => {
   return (
-    <DashboardProvider>
-      <CssBaseline />
-      <Router>
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-        </Switch>
-      </Router>
-    </DashboardProvider>
+    <MuiThemeProvider theme={theme}>
+      <DashboardProvider>
+        <CssBaseline />
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+          </Switch>
+        </Router>
+      </DashboardProvider>
+    </MuiThemeProvider>
   );
 };
 
