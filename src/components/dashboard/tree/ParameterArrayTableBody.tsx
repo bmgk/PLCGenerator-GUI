@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useRef } from 'react';
 import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
@@ -6,18 +6,26 @@ import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
-import { useTranslation } from 'react-i18next';
+import RemoveIcon from '@material-ui/icons/Remove';
+import IconButton from '@material-ui/core/IconButton';
 
+import { useTranslation } from 'react-i18next';
+import { SelectOption } from 'react-select-material-ui';
+
+import { DashboardSelect } from './Inputs/DashboardSelect';
+import { DashboardInput } from './Inputs/DashboardInput';
 import { useDashboardDispatch, setLeaf } from '../context';
-import { DashboardSelect } from './DashboardSelect';
-import { DashboardInput } from './DashboardInput';
-import { reducer, setValues, useStyles } from './utils';
+import {
+  reducer,
+  setInitialValues,
+  setValues,
+  useStyles,
+} from './utils';
 
 import {
   DashboardParameterArrayTableBodyBody,
   SelectedLeaf,
 } from 'types';
-import { SelectOption } from 'react-select-material-ui';
 
 export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyBody> = (
   props,
@@ -25,8 +33,7 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
   const { initialValues, carousele, index, selectedLeaf } = props;
   const { t } = useTranslation();
   const classes = useStyles();
-  const parameter = selectedLeaf.Parameters[carousele];
-
+  const timer = useRef<number | null>(null);
   const dispatch = useDashboardDispatch();
   const [values, reducerDispatch] = useReducer(
     reducer,
@@ -34,11 +41,28 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
   );
 
   useEffect(() => {
-    const selectedLeafClone: SelectedLeaf = JSON.parse(
-      JSON.stringify(selectedLeaf),
-    );
-    selectedLeafClone.Parameters[carousele].Value[index] = values;
-    dispatch(setLeaf(selectedLeafClone));
+    if (JSON.stringify(values) !== JSON.stringify(initialValues)) {
+      reducerDispatch(setInitialValues(initialValues));
+    }
+  }, [initialValues]);
+
+  useEffect(() => {
+    if (timer.current !== null) clearTimeout(timer.current);
+
+    //@ts-ignore
+    timer.current = setTimeout(() => {
+      if (
+        JSON.stringify(
+          selectedLeaf.Parameters[carousele].Value[index],
+        ) !== JSON.stringify(values)
+      ) {
+        const selectedLeafClone: SelectedLeaf = JSON.parse(
+          JSON.stringify(selectedLeaf),
+        );
+        selectedLeafClone.Parameters[carousele].Value[index] = values;
+        dispatch(setLeaf(selectedLeafClone));
+      }
+    }, 500);
   }, [values]);
 
   const handleChangeSelect = (name: string) => (
@@ -52,6 +76,22 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
     reducerDispatch(setValues(name, event.target.value));
+  };
+
+  const handleRemove = () => {
+    if (Array.isArray(selectedLeaf.Parameters[carousele].Value)) {
+      const selectedLeafClone: SelectedLeaf = JSON.parse(
+        JSON.stringify(selectedLeaf),
+      );
+
+      selectedLeafClone.Parameters[
+        carousele
+      ].Value = selectedLeaf.Parameters[carousele].Value.filter(
+        (arrValue: any) =>
+          JSON.stringify(values) !== JSON.stringify(arrValue),
+      );
+      dispatch(setLeaf(selectedLeafClone));
+    }
   };
 
   return (
@@ -76,41 +116,64 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
             >
               {t('dashboard.dashboardTree.header.value')}
             </TableCell>
+            <TableCell
+              className={classes.cell}
+              component="th"
+              align="center"
+            >
+              <IconButton
+                aria-label={`remove-${selectedLeaf.Name}-${index}`}
+                color="primary"
+                onClick={handleRemove}
+              >
+                <RemoveIcon fontSize="large" />
+              </IconButton>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {parameter.AvailableValues.map((el) => {
-            return (
-              <TableRow key={`${el.Name}-${index}`}>
-                <TableCell
-                  className={classes.cell}
-                  align="center"
-                  component="td"
+          {selectedLeaf.Parameters[carousele].AvailableValues.map(
+            (avaliableValues) => {
+              return (
+                <TableRow
+                  key={`${avaliableValues.Name}-${index}`}
+                  aria-label={`${avaliableValues.Name}-${index}`}
                 >
-                  {el.Name}
-                </TableCell>
-                <TableCell
-                  className={classes.cell}
-                  align="center"
-                  component="td"
-                >
-                  {Array.isArray(el.Value) ? (
-                    <DashboardSelect
-                      values={values}
-                      el={el}
-                      handleChange={handleChangeSelect(el.Name)}
-                    />
-                  ) : (
-                    <DashboardInput
-                      values={values}
-                      el={el}
-                      handleChange={handleChangeInput(el.Name)}
-                    />
-                  )}
-                </TableCell>
-              </TableRow>
-            );
-          })}
+                  <TableCell
+                    className={classes.cell}
+                    align="center"
+                    component="td"
+                  >
+                    {avaliableValues.Name}
+                  </TableCell>
+                  <TableCell
+                    className={classes.cell}
+                    align="center"
+                    component="td"
+                  >
+                    {Array.isArray(avaliableValues.Value) ? (
+                      <DashboardSelect
+                        key={JSON.stringify(values)}
+                        values={values}
+                        avaliableValues={avaliableValues}
+                        handleChange={handleChangeSelect(
+                          avaliableValues.Name,
+                        )}
+                      />
+                    ) : (
+                      <DashboardInput
+                        values={values}
+                        avaliableValues={avaliableValues}
+                        handleChange={handleChangeInput(
+                          avaliableValues.Name,
+                        )}
+                      />
+                    )}
+                  </TableCell>
+                </TableRow>
+              );
+            },
+          )}
         </TableBody>
       </Table>
     </TableContainer>

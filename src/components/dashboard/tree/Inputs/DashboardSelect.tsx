@@ -2,9 +2,8 @@ import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import ReactSelectMaterialUi from 'react-select-material-ui';
 import { StylesConfig } from 'react-select';
-import { useTranslation } from 'react-i18next';
 
-import { useStyles } from './utils';
+import { useStyles } from '../utils';
 import { DashboardSelectProps } from 'types';
 
 const styles: StylesConfig = {
@@ -19,24 +18,22 @@ export const DashboardSelect: React.FC<DashboardSelectProps> = (
 ) => {
   const {
     values,
-    el,
+    avaliableValues,
     handleChange,
-    testId = el.Name,
-    isCreate = false,
+    testId = avaliableValues.Name,
   } = props;
-  const { t } = useTranslation();
   const classes = useStyles();
 
-  const label = !isCreate
-    ? el.Name
-    : `${el.Name}-${t(`dashboard.select.create`)}`;
+  const label = avaliableValues.Name;
 
-  const optionsSelect = el.Value.map(
+  const optionsSelect = avaliableValues.Value.map(
     (el: string | number) => el + '',
   );
-  const selectValue = Array.isArray(values[el.Name])
-    ? values[el.Name].map((el: string | number) => el + '')
-    : values[el.Name] + '';
+  const selectValue = Array.isArray(values[avaliableValues.Name])
+    ? values[avaliableValues.Name].map(
+        (el: string | number) => avaliableValues + '',
+      )
+    : values[avaliableValues.Name] + '';
 
   return (
     <FormControl className={classes.formControl}>
@@ -50,7 +47,7 @@ export const DashboardSelect: React.FC<DashboardSelectProps> = (
         fullWidth
         SelectProps={{
           isClearable: true,
-          isMulti: el.MultiSelect,
+          isMulti: avaliableValues.MultiSelect,
           styles,
         }}
         onChange={handleChange}

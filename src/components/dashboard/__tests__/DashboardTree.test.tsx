@@ -31,17 +31,6 @@ const getNames = (
   return names;
 };
 
-const selectOption = (label: string, option: string) => {
-  const select = screen.getByLabelText(label);
-  fireEvent.focus(select);
-  fireEvent.keyDown(select, {
-    key: 'ArrowDown',
-    keyCode: 40,
-    code: 40,
-  });
-  fireEvent.click(screen.getByText(option));
-};
-
 const coloredKeys = [
   '121050V01',
   '121050DT1AE1',
@@ -67,8 +56,23 @@ const searchSelected = { background: '#3D9970' };
 
 const names = getNames(homeFormSubmitTreeForTests, []);
 
+const create = () => {
+  userEvent.click(
+    screen.getByRole('button', {
+      name: /create/i,
+    }),
+  );
+  jest.advanceTimersByTime(1000);
+};
+
 describe('DashboardTree', () => {
+  afterEach(() => {
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
+
   beforeEach(() => {
+    jest.useFakeTimers();
     const initial = {
       tree: homeFormSubmitTreeForTests,
       newAvaliableValues: ['121050V02'],
@@ -102,24 +106,27 @@ describe('DashboardTree', () => {
     expect(screen.getByText('Parameters are empty')).toBeDefined();
   });
 
-  it('Display not empty parameter tree panel, single parameter', () => {
+  it('Display not empty parameter tree panel, single parameter', async () => {
     userEvent.click(screen.getByText('121050V02'));
-    expect(screen.getByText('FmList')).toBeDefined();
-    expect(screen.queryAllByText('Name').length).toBe(2);
-    expect(screen.queryAllByText('Value').length).toBe(1);
+    expect(
+      screen.getByRole('button', {
+        name: /create/i,
+      }),
+    ).toBeDefined();
   });
 
   it('Display not empty parameter tree panel, multiple parameter, next element', () => {
     userEvent.click(screen.getByText('121050DT1AE1'));
     expect(screen.getByText('Positions')).toBeDefined();
-    expect(screen.queryAllByText('Name').length).toBe(3);
-    expect(screen.queryAllByText('Value').length).toBe(3);
+    expect(screen.queryAllByText('Name').length).toBe(2);
+    expect(screen.queryAllByText('Value').length).toBe(2);
     userEvent.click(
       screen.getByRole('button', {
         name: /next-parameter/i,
       }),
     );
     expect(screen.getByText('Controller')).toBeDefined();
+
     expect(screen.queryAllByText('Name').length).toBe(1);
     expect(screen.queryAllByText('Value').length).toBe(1);
   });
@@ -127,8 +134,8 @@ describe('DashboardTree', () => {
   it('Display not empty parameter tree panel, multiple parameter, prev element', () => {
     userEvent.click(screen.getByText('121050DT1AE1'));
     expect(screen.getByText('Positions')).toBeDefined();
-    expect(screen.queryAllByText('Name').length).toBe(3);
-    expect(screen.queryAllByText('Value').length).toBe(3);
+    expect(screen.queryAllByText('Name').length).toBe(2);
+    expect(screen.queryAllByText('Value').length).toBe(2);
     userEvent.click(
       screen.getByRole('button', {
         name: /previous-parameter/i,
@@ -142,8 +149,8 @@ describe('DashboardTree', () => {
   it('Display not empty parameter tree panel, multiple parameter, prev element and then next element', () => {
     userEvent.click(screen.getByText('121050DT1AE1'));
     expect(screen.getByText('Positions')).toBeDefined();
-    expect(screen.queryAllByText('Name').length).toBe(3);
-    expect(screen.queryAllByText('Value').length).toBe(3);
+    expect(screen.queryAllByText('Name').length).toBe(2);
+    expect(screen.queryAllByText('Value').length).toBe(2);
     userEvent.click(
       screen.getByRole('button', {
         name: /previous-parameter/i,
@@ -158,45 +165,22 @@ describe('DashboardTree', () => {
       }),
     );
     expect(screen.getByText('Positions')).toBeDefined();
+    expect(screen.queryAllByText('Name').length).toBe(2);
+    expect(screen.queryAllByText('Value').length).toBe(2);
+  });
+
+  it('Create new table item', () => {
+    userEvent.click(screen.getByText('121050DT1AE1'));
+    create();
     expect(screen.queryAllByText('Name').length).toBe(3);
     expect(screen.queryAllByText('Value').length).toBe(3);
   });
 
-  it('Create button not disabled after filling form', () => {
+  it('Create new item, then change parameter and return', () => {
     userEvent.click(screen.getByText('121050DT1AE1'));
-    selectOption('SensorName-create', 'BGE02999');
-    selectOption('Index-create', '999');
-    expect(
-      screen.getByRole('button', {
-        name: /create/i,
-      }),
-    ).not.toBeDisabled();
-  });
-
-  it('Create new table item, uses select', () => {
-    userEvent.click(screen.getByText('121050DT1AE1'));
-    selectOption('SensorName-create', 'BGE02999');
-    selectOption('Index-create', '999');
-    userEvent.click(
-      screen.getByRole('button', {
-        name: /create/i,
-      }),
-    );
-    expect(screen.queryAllByText('Name').length).toBe(4);
-    expect(screen.queryAllByText('Value').length).toBe(4);
-  });
-
-  it('Create new table item uses select and prev element and then next element ', () => {
-    userEvent.click(screen.getByText('121050DT1AE1'));
-    selectOption('SensorName-create', 'BGE02999');
-    selectOption('Index-create', '999');
-    userEvent.click(
-      screen.getByRole('button', {
-        name: /create/i,
-      }),
-    );
-    expect(screen.queryAllByText('Name').length).toBe(4);
-    expect(screen.queryAllByText('Value').length).toBe(4);
+    create();
+    expect(screen.queryAllByText('Name').length).toBe(3);
+    expect(screen.queryAllByText('Value').length).toBe(3);
     userEvent.click(
       screen.getByRole('button', {
         name: /previous-parameter/i,
@@ -205,14 +189,13 @@ describe('DashboardTree', () => {
     expect(screen.getByText('Technology')).toBeDefined();
     expect(screen.queryAllByText('Name').length).toBe(1);
     expect(screen.queryAllByText('Value').length).toBe(1);
-
     userEvent.click(
       screen.getByRole('button', {
         name: /next-parameter/i,
       }),
     );
-    expect(screen.queryAllByText('Name').length).toBe(4);
-    expect(screen.queryAllByText('Value').length).toBe(4);
+    expect(screen.queryAllByText('Name').length).toBe(3);
+    expect(screen.queryAllByText('Value').length).toBe(3);
   });
 
   it('Check when value is not array, then do not display create icon', () => {
@@ -231,19 +214,18 @@ describe('DashboardTree', () => {
 
   it('Do not preserve value when change tree item, when same structure', async () => {
     userEvent.click(screen.getByText('121050V01'));
-    userEvent.clear(screen.getByLabelText('Name-create'));
     userEvent.type(
-      screen.getByLabelText('Name-create'),
+      screen.getByLabelText('Name'),
       'Marjan Kaleta ubija kotleta',
     );
     //@ts-ignore
-    expect(screen.getByLabelText('Name-create').value).toBe(
-      'Marjan Kaleta ubija kotleta',
+    expect(screen.getByLabelText('Name').value).toBe(
+      'Marjan ubija koteltaMarjan Kaleta ubija kotleta',
     );
     userEvent.click(screen.getByText('121050V02'));
     //@ts-ignore
-    expect(screen.getByLabelText('Name-create').value).not.toBe(
-      'Marjan Kaleta ubija kotleta',
+    expect(screen.getByLabelText('Name').value).not.toBe(
+      'Marjan ubija koteltaMarjan Kaleta ubija kotleta',
     );
   });
 
@@ -341,7 +323,8 @@ describe('DashboardTree', () => {
         color: 'green',
       });
     });
-
+  });
+  describe('Search functionallity', () => {
     it('Search functionallity 2 results', async () => {
       const input = screen.getByLabelText('Search elements');
       userEvent.type(input, '121050V02BGT20');
