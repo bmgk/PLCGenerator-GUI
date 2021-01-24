@@ -1,4 +1,7 @@
-import { HomeFormReponseSingleElementWithId, HomeFormTreeResponse } from 'types';
+import {
+  HomeFormReponseSingleElementWithId,
+  HomeFormTreeResponse,
+} from 'types';
 
 export const homeFormSubmitTree: HomeFormTreeResponse = {
   Children: [
@@ -1931,6 +1934,44 @@ export const homeFormSubmitTreeForTests: HomeFormTreeResponse = {
                 },
                 {
                   Parameters: [
+                    {
+                      Name: 'Parts',
+                      Value: [
+                        { Index: 1, Name: 'Marjan ubija kotelta' },
+                      ],
+                      AvailableValues: [
+                        {
+                          Name: 'Name',
+                          Type: 'String',
+                          MultiSelect: false,
+                          Value: null,
+                        },
+                        {
+                          Name: 'Index',
+                          Type: 'UInt16',
+                          MultiSelect: false,
+                          Value: [
+                            999,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            10,
+                            11,
+                            12,
+                            13,
+                            14,
+                            15,
+                            16,
+                          ],
+                        },
+                      ],
+                    },
                     {
                       Name: 'FmList',
                       Value: [],

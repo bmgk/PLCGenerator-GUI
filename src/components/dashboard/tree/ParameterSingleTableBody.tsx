@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { SelectOption } from 'react-select-material-ui';
 
 import { useDashboardDispatch, setLeaf } from '../context';
-import { DashboardSelect } from './DashboardSelect';
-import { DashboardInput } from './DashboardInput';
+import { DashboardSelect } from './Inputs/DashboardSelect';
+import { DashboardInput } from './Inputs/DashboardInput';
 import { reducer, setValues, useStyles } from './utils';
 
 import {
@@ -25,8 +25,6 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
   const { initialValues, carousele, selectedLeaf } = props;
   const { t } = useTranslation();
   const classes = useStyles();
-  const parameter = selectedLeaf.Parameters[carousele];
-
   const dispatch = useDashboardDispatch();
   const [values, reducerDispatch] = useReducer(
     reducer,
@@ -34,11 +32,16 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
   );
 
   useEffect(() => {
-    const selectedLeafClone: SelectedLeaf = JSON.parse(
-      JSON.stringify(selectedLeaf),
-    );
-    selectedLeafClone.Parameters[carousele].Value = values;
-    dispatch(setLeaf(selectedLeafClone));
+    if (
+      JSON.stringify(selectedLeaf.Parameters[carousele].Value) !==
+      JSON.stringify(values)
+    ) {
+      const selectedLeafClone: SelectedLeaf = JSON.parse(
+        JSON.stringify(selectedLeaf),
+      );
+      selectedLeafClone.Parameters[carousele].Value = values;
+      dispatch(setLeaf(selectedLeafClone));
+    }
   }, [values]);
 
   const handleChangeSelect = (name: string) => (
@@ -54,7 +57,8 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
     reducerDispatch(setValues(name, event.target.value));
   };
 
-  const el = parameter.AvailableValues[0];
+  const avaliableValues =
+    selectedLeaf.Parameters[carousele].AvailableValues[0];
 
   return (
     <TableContainer
@@ -81,30 +85,34 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow key={`${el.Name}`}>
+          <TableRow key={`${avaliableValues.Name}`}>
             <TableCell
               className={classes.cell}
               align="center"
               component="td"
             >
-              {el.Name}
+              {avaliableValues.Name}
             </TableCell>
             <TableCell
               className={classes.cell}
               align="center"
               component="td"
             >
-              {Array.isArray(el.Value) ? (
+              {Array.isArray(avaliableValues.Value) ? (
                 <DashboardSelect
                   values={values}
-                  el={el}
-                  handleChange={handleChangeSelect(el.Name)}
+                  avaliableValues={avaliableValues}
+                  handleChange={handleChangeSelect(
+                    avaliableValues.Name,
+                  )}
                 />
               ) : (
                 <DashboardInput
                   values={values}
-                  el={el}
-                  handleChange={handleChangeInput(el.Name)}
+                  avaliableValues={avaliableValues}
+                  handleChange={handleChangeInput(
+                    avaliableValues.Name,
+                  )}
                 />
               )}
             </TableCell>

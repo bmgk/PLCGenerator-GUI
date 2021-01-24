@@ -76,10 +76,6 @@ export const setValues = (name: string, value: any) => ({
   value,
 });
 
-export const clearValues = () => ({
-  type: CLEAR_VALUES,
-});
-
 export const setInitialValues = (initialValues: any) => ({
   type: SET_ALL_VALUES,
   initialValues,

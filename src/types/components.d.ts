@@ -21,7 +21,7 @@ export type DashboardProps = {
   rows: HomeFormReponseWithId[];
 };
 
-export type DashboardTreePanelCreateTableBody = {
+export type ParameterCreateProps = {
   carousele: number;
   selectedLeaf: SelectedLeaf;
 };
@@ -51,9 +51,8 @@ export type DashboardTreePanelProps = {
 
 export type DashboardSelectProps = {
   testId?: string;
-  isCreate?: boolean;
   values: any;
-  el: HomeResponseTreeAvailableValues;
+  avaliableValues: HomeResponseTreeAvailableValues;
   handleChange: (
     value: string | string[],
     option?: SelectOption | SelectOption[],
@@ -63,8 +62,7 @@ export type DashboardSelectProps = {
 export type DashboardInputProps = {
   testId?: string;
   values: any;
-  isCreate?: boolean;
-  el: HomeResponseTreeAvailableValues;
+  avaliableValues: HomeResponseTreeAvailableValues;
   handleChange:
     | ((
         event: React.ChangeEvent<

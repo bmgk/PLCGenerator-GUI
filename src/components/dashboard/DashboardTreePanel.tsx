@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -14,7 +14,7 @@ import {
 import {
   CardHeaderPanel,
   EmptyParametersPanel,
-  ParameterCreateTableBody,
+  ParameterCreate,
   ParameterArrayTableBody,
   RootTreePanel,
   CardSubmitPanel,
@@ -54,7 +54,7 @@ export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
 ) => {
   const { selectedLeaf } = props;
   const classes = useStyles();
-  const [index, setIndex] = useState(0);
+  const [carousele, setCarousele] = useState(0);
   const dispatch = useDashboardDispatch();
 
   if (selectedLeaf === null) return <RootTreePanel />;
@@ -62,14 +62,13 @@ export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
   if (selectedLeaf.Parameters.length === 0)
     return <EmptyParametersPanel />;
 
-  const initialValues = extractInitialValue(
-    selectedLeaf,
-    index,
-    setIndex,
+  const initialValues = useMemo(
+    () => extractInitialValue(selectedLeaf, carousele, setCarousele),
+    [selectedLeaf, carousele, setCarousele],
   );
 
   const handleSubmitParameter = (): Promise<void | GenericErrorResponse> => {
-    return acceptSingleParameter(selectedLeaf, index)
+    return acceptSingleParameter(selectedLeaf, carousele)
       .then((response) => {
         const newAvaliableValues = response.map(
           (el) => el.ElementName,
@@ -93,32 +92,34 @@ export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
       <Card className={classes.cardContainer}>
         <CardHeaderPanel
           selectedLeaf={selectedLeaf}
-          index={index}
-          setIndex={setIndex}
+          index={carousele}
+          setIndex={setCarousele}
         />
-        <CardContent key={`${index}-${selectedLeaf.Name}`}>
+        <CardContent key={`${carousele}-${selectedLeaf.Name}`}>
           {Array.isArray(initialValues) ? (
-            initialValues.map((el: any, i: number) => (
-              <ParameterArrayTableBody
-                key={`${i}-${selectedLeaf.Name}`}
-                selectedLeaf={selectedLeaf}
-                initialValues={el}
-                carousele={index}
-                index={i}
-              />
-            ))
+            initialValues.map(
+              (singleInitialValues: any, index: number) => (
+                <ParameterArrayTableBody
+                  key={`${index}-${selectedLeaf.Name}`}
+                  selectedLeaf={selectedLeaf}
+                  initialValues={singleInitialValues}
+                  carousele={carousele}
+                  index={index}
+                />
+              ),
+            )
           ) : (
             <ParameterSingleTableBody
               selectedLeaf={selectedLeaf}
               initialValues={initialValues}
-              carousele={index}
+              carousele={carousele}
             />
           )}
           {Array.isArray(initialValues) ? (
-            <ParameterCreateTableBody
-              key={`${index}-${selectedLeaf.Name}`}
+            <ParameterCreate
+              key={`${carousele}-${selectedLeaf.Name}`}
               selectedLeaf={selectedLeaf}
-              carousele={index}
+              carousele={carousele}
             />
           ) : null}
           <Box
