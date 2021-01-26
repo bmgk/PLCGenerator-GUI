@@ -10,7 +10,6 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import IconButton from '@material-ui/core/IconButton';
 
 import { useTranslation } from 'react-i18next';
-import { SelectOption } from 'react-select-material-ui';
 
 import { DashboardSelect } from './Inputs/DashboardSelect';
 import { DashboardInput } from './Inputs/DashboardInput';
@@ -91,8 +90,8 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
       selectedLeafClone.Parameters[
         carousele
       ].Value = selectedLeaf.Parameters[carousele].Value.filter(
-        (arrValue: any) =>
-          JSON.stringify(values) !== JSON.stringify(arrValue),
+        (arrValue: any, currentIndex: number) =>
+          index !== currentIndex,
       );
       dispatch(setLeaf(selectedLeafClone));
     }
