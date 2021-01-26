@@ -253,10 +253,10 @@ describe('DashboardTree', () => {
 
     it('Tree element with initial values, but not fully completed', () => {
       expect(screen.getByTestId('121050V01')).toHaveStyle({
-        color: 'ff9800',
+        color: '#ff9800',
       });
       expect(screen.getByTestId('121050DT1AE1')).toHaveStyle({
-        color: 'ff9800',
+        color: '#ff9800',
       });
     });
 

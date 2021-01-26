@@ -34,7 +34,7 @@ export const DashboardSelect: React.FC<DashboardSelectProps> = (
         multiple={multiple}
         id={testId}
         options={optionsSelect}
-        value={value}
+        value={value !== '' && value !== 'undefined' ? value : null}
         onChange={handleChange}
         getOptionLabel={(option: string) => option}
         renderInput={(params) => (
