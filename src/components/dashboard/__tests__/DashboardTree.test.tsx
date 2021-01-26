@@ -253,67 +253,67 @@ describe('DashboardTree', () => {
 
     it('Tree element with initial values, but not fully completed', () => {
       expect(screen.getByTestId('121050V01')).toHaveStyle({
-        color: 'yellow',
+        color: 'ff9800',
       });
       expect(screen.getByTestId('121050DT1AE1')).toHaveStyle({
-        color: 'yellow',
+        color: 'ff9800',
       });
     });
 
     it('Tree element with appended new values from accepting parameters', () => {
       expect(screen.getByTestId('121050V02')).toHaveStyle({
-        color: 'red',
+        color: '#2196f3',
       });
     });
 
     it('Tree element with no initial values, but with avaliable messages', () => {
       expect(screen.getByTestId('1')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050DT1')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V01BGT11')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V01BGT12')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V01BGT13')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V01BGT14')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V01BGT19')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V01BGT21')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V02BGT15')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V02BGT16')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V02BGT17')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V02BGT18')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050V02BGT20')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
       expect(screen.getByTestId('121050DT1')).toHaveStyle({
-        color: 'purple',
+        color: '#f50057',
       });
     });
 
     it('Tree element with values filled and with avaliable messages, completed leaf', () => {
       expect(screen.getByTestId('121050V02BGT22')).toHaveStyle({
-        color: 'green',
+        color: '#43a047',
       });
     });
   });
