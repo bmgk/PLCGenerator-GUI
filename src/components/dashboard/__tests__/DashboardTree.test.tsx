@@ -1,6 +1,11 @@
 import React from 'react';
 import DashboardTree from '../DashboardTree';
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent,
+  render,
+  screen,
+  within,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { DashboardProvider } from '../context';
@@ -239,6 +244,69 @@ describe('DashboardTree', () => {
     ).toBeNull();
   });
 
+  it('Create two additional parameter', async () => {
+    userEvent.click(screen.getByText('121050DT1AE1'));
+    create();
+    create();
+    const tree = screen.getByTestId('tree-items');
+
+    expect(
+      await within(tree).findByRole('button', {
+        name: 'remove-121050DT1AE1-0',
+      }),
+    ).toBeDefined();
+    expect(
+      await within(tree).findByRole('button', {
+        name: 'remove-121050DT1AE1-1',
+      }),
+    ).toBeDefined();
+
+    expect(
+      await within(tree).findByRole('button', {
+        name: 'remove-121050DT1AE1-2',
+      }),
+    ).toBeDefined();
+    expect(
+      await within(tree).findByRole('button', {
+        name: 'remove-121050DT1AE1-3',
+      }),
+    ).toBeDefined();
+  }, 20000);
+
+  it('Create two additional parameter and delete one, one additional remaining', async () => {
+    userEvent.click(screen.getByText('121050DT1AE1'));
+    create();
+    create();
+
+    const tree = screen.getByTestId('tree-items');
+    userEvent.click(
+      await within(tree).findByRole('button', {
+        name: 'remove-121050DT1AE1-3',
+      }),
+    );
+
+    expect(
+      await within(tree).findByRole('button', {
+        name: 'remove-121050DT1AE1-0',
+      }),
+    ).toBeDefined();
+    expect(
+      await within(tree).findByRole('button', {
+        name: 'remove-121050DT1AE1-1',
+      }),
+    ).toBeDefined();
+    expect(
+      await within(tree).findByRole('button', {
+        name: 'remove-121050DT1AE1-2',
+      }),
+    ).toBeDefined();
+    expect(
+      within(tree).queryAllByRole('button', {
+        name: 'remove-121050DT1AE1-3',
+      }).length,
+    ).toBe(0);
+  }, 20000);
+
   describe('Colors in tree', () => {
     it('Check whole tree colors', () => {
       const blackKeys = names.filter(
@@ -317,6 +385,7 @@ describe('DashboardTree', () => {
       });
     });
   });
+
   describe('Search functionallity', () => {
     it('Search functionallity 2 results', async () => {
       const input = screen.getByLabelText('Search elements');
