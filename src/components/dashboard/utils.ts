@@ -21,7 +21,7 @@ export const getIdTree = (
   return ids;
 };
 
-const isYellow = ({ Parameters }: HomeResponseTreeChildren) => {
+const isAmber = ({ Parameters }: HomeResponseTreeChildren) => {
   return (
     Parameters.some((el) => {
       if (Array.isArray(el.Value)) {
@@ -67,7 +67,7 @@ const isBlack = ({ Parameters }: HomeResponseTreeChildren) => {
   return Parameters.length === 0;
 };
 
-const isRed = (
+const isBlue = (
   node: HomeResponseTreeChildren,
   newAvaliableValues: string[],
 ) => {
@@ -78,13 +78,13 @@ export const pickStyles = (
   node: HomeResponseTreeChildren,
   newAvaliableValues: string[],
 ): {
-  color: 'black' | 'green' | 'yellow' | 'purple' | 'red';
+  color: 'black' | '#ff9800' | '#43a047' | '#f50057' | '#2196f3';
 } => {
-  if (isRed(node, newAvaliableValues)) return { color: 'red' };
+  if (isBlue(node, newAvaliableValues)) return { color: '#2196f3' }; //blue
   if (isBlack(node)) return { color: 'black' };
-  if (isYellow(node)) return { color: 'yellow' };
-  if (isGreen(node)) return { color: 'green' };
-  if (isPurple(node)) return { color: 'purple' };
+  if (isAmber(node)) return { color: '#ff9800' }; //amber
+  if (isGreen(node)) return { color: '#43a047' }; //primaryColor
+  if (isPurple(node)) return { color: '#f50057' }; //secondaryColor
   return { color: 'black' };
 };
 
