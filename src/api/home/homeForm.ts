@@ -7,7 +7,7 @@ import {
   HomeFormTreeResponse,
 } from 'types';
 
-export const submitHomeForm = (
+export const submitHomeFormEplanTags = (
   form: HomeFormValues,
 ): Promise<HomeFormReponseWithId> => {
   return axios
@@ -27,6 +27,20 @@ export const submitHomeForm = (
         id,
       })),
     );
+};
+
+export const submitHomeFormSPSMatrix = (
+  form: HomeFormValues,
+): Promise<HomeFormReponseWithId> => {
+  return axios.post(
+    `${IP}/Api/Configure/SpsMatrix`,
+    {
+      Path: form.spsMatrix.map((el) => el.path),
+    },
+    {
+      headers: { 'Content-type': 'application/json' },
+    },
+  );
 };
 
 export const submitHomeFormTree = (): Promise<

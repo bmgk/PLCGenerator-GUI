@@ -147,7 +147,7 @@ export const DashboardTree: React.FC = () => {
   ]);
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="tree-items">
       <div className={classes.treeContainer}>
         <TreeSearch
           onChange={handleChange}

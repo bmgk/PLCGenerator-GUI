@@ -8,7 +8,11 @@ import {
   useDashboardDispatch,
 } from '../components/dashboard/context';
 import { HomeForm } from '../components/home';
-import { submitHomeForm, submitHomeFormTree } from '../api/home';
+import {
+  submitHomeFormEplanTags,
+  submitHomeFormSPSMatrix,
+  submitHomeFormTree,
+} from '../api/home';
 
 import { HomeFormValues } from '../types';
 
@@ -28,8 +32,11 @@ export const Home: React.FC = () => {
     values: HomeFormValues,
     formikHelpers: FormikHelpers<HomeFormValues>,
   ) => {
-    submitHomeForm(values)
-      .then((rows) => Promise.all([rows, submitHomeFormTree()]))
+    submitHomeFormEplanTags(values)
+      .then((rows) =>
+        Promise.all([rows, submitHomeFormSPSMatrix(values)]),
+      )
+      .then(([rows]) => Promise.all([rows, submitHomeFormTree()]))
       .then(([rows, tree]) => {
         dispatch(setTree(tree));
         dispatch(setRows(rows));

@@ -13,7 +13,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import { TextField as TextFieldFormik } from 'formik-material-ui';
 
-import { HomeFormValues, EplanTag, HomeFormProps } from 'types';
+import { HomeFormValues, FileItem, HomeFormProps } from 'types';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -31,9 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  list: {
-    marginTop: '1rem',
-  },
+  uploadButton: { width: '100%' },
   submit: {
     marginTop: '2rem',
   },
@@ -42,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 const initialValues: HomeFormValues = {
   projectName: '',
   eplanTags: [],
+  spsMatrix: [],
 };
 
 const isDisabled = (values: HomeFormValues) => {
@@ -53,14 +53,14 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
   const { t } = useTranslation();
   const classes = useStyles();
 
-  const handleChange = (push: (element: EplanTag) => void) => (
+  const handleChange = (push: (element: FileItem) => void) => (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     event.persist();
     const file =
       (event.target.files && event.target.files[0]) || null;
     if (file != null) {
-      const element: EplanTag = { name: file.name, path: file.path };
+      const element: FileItem = { name: file.name, path: file.path };
       push(element);
     }
   };
@@ -82,6 +82,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                 component={TextFieldFormik}
                 inputProps={{
                   id: 'projectName',
+                  required: true,
                 }}
               />
             </FormControl>
@@ -89,24 +90,26 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
               {({ push, remove }) => (
                 <>
                   <FormControl className={classes.formControl}>
-                    <label htmlFor="upload-photo">
+                    <label htmlFor="upload-eplanTags">
                       <input
                         style={{ display: 'none' }}
-                        id="upload-photo"
+                        id="upload-eplanTags"
                         name="eplanTags"
                         type="file"
                         onChange={handleChange(push)}
+                        required
                       />
                       <Button
                         color="secondary"
                         variant="contained"
                         component="span"
+                        className={classes.uploadButton}
                       >
-                        {t('home.homeForm.uploadButton')}
+                        {t('home.homeForm.uploadEplanButton')}
                       </Button>
                     </label>
                   </FormControl>
-                  <List dense={true} className={classes.list}>
+                  <List dense={true}>
                     {formik.values.eplanTags.map((el, index) => (
                       <React.Fragment key={el.name}>
                         <ListItem disableGutters>
@@ -114,12 +117,56 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                           <ListItemSecondaryAction>
                             <IconButton
                               edge="end"
-                              aria-label="delete"
+                              aria-label={`file-eplan-${index}`}
                               onClick={() => remove(index)}
                             >
-                              <DeleteIcon
-                                data-testid={`file-${index}`}
-                              />
+                              <DeleteIcon />
+                            </IconButton>
+                          </ListItemSecondaryAction>
+                        </ListItem>
+                      </React.Fragment>
+                    ))}
+                  </List>
+                </>
+              )}
+            </FieldArray>
+            <FieldArray name="spsMatrix">
+              {({ push, remove }) => (
+                <>
+                  <FormControl className={classes.formControl}>
+                    <Typography gutterBottom color="textSecondary">
+                      {t('home.homeForm.optional')}
+                    </Typography>
+                    <label htmlFor="upload-spsMatrix">
+                      <input
+                        style={{ display: 'none' }}
+                        id="upload-spsMatrix"
+                        name="spsMatrix"
+                        type="file"
+                        onChange={handleChange(push)}
+                      />
+                      <Button
+                        color="secondary"
+                        variant="contained"
+                        component="span"
+                        className={classes.uploadButton}
+                      >
+                        {t('home.homeForm.uploadSPSMatrixButton')}
+                      </Button>
+                    </label>
+                  </FormControl>
+                  <List dense={true}>
+                    {formik.values.spsMatrix.map((el, index) => (
+                      <React.Fragment key={el.name}>
+                        <ListItem disableGutters>
+                          <ListItemText primary={el.name} />
+                          <ListItemSecondaryAction>
+                            <IconButton
+                              edge="end"
+                              aria-label={`file-sps-${index}`}
+                              onClick={() => remove(index)}
+                            >
+                              <DeleteIcon />
                             </IconButton>
                           </ListItemSecondaryAction>
                         </ListItem>

@@ -44,7 +44,7 @@ describe('Home', () => {
       'Test project',
     );
     userEvent.upload(
-      screen.getByLabelText('Upload File'),
+      screen.getByLabelText('Upload eplan file'),
       new File(['hello'], 'hello.png', { type: 'image/png' }),
     );
     await waitFor(() => {
