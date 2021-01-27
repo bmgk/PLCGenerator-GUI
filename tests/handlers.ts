@@ -18,6 +18,9 @@ export const handlers = [
   rest.post(/Api\/Configure\/Single/, (req, res, ctx) => {
     return res(ctx.json({}), ctx.status(200));
   }),
+  rest.post(/Api\/Configure\/SpsMatrix/, (req, res, ctx) => {
+    return res(ctx.json({}), ctx.status(201));
+  }),
   rest.post(/Api\/Project\/GenerateAndExport/, (req, res, ctx) => {
     return res(
       ctx.delay(1000),
