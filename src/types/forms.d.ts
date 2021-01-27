@@ -1,9 +1,10 @@
-export type EplanTag = {
+export type FileItem = {
   name: string;
   path: string;
 };
 
 export type HomeFormValues = {
   projectName: string;
-  eplanTags: EplanTag[];
+  eplanTags: FileItem[];
+  spsMatrix: FileItem[];
 };
