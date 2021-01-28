@@ -52,8 +52,16 @@ export const pickFolder = () => {
     .then((el) => el.filePaths[0]);
 };
 
-export const invokeProjectImporter = (path: string) => {
-  const tiaWPF = spawn(`powershell.exe`, [
+export const invokeProjectImporterLoop = (paths: string[]) => {
+  invokeProjectImporter(0, paths);
+};
+
+const invokeProjectImporter = (index: number, paths: string[]) => {
+  const path = paths[index];
+  if (path === undefined) {
+    return;
+  }
+  let tiaWPF = spawn(`powershell.exe`, [
     `../Release/TiaWpfProjectImporter.exe /Source ${path}`,
   ]);
 
@@ -71,7 +79,6 @@ export const invokeProjectImporter = (path: string) => {
 
   tiaWPF.on('close', (code) => {
     console.log(`child process exited with code ${code}`);
+    invokeProjectImporter(index + 1, paths);
   });
-
-  return tiaWPF;
 };

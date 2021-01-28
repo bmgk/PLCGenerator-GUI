@@ -22,11 +22,11 @@ import {
   submitHomeFormTree,
 } from '../../api';
 import {
-  invokeProjectImporter,
   pickDraftJSON,
   pickFolder,
   saveDraft,
   extractErrorRequest,
+  invokeProjectImporterLoop,
 } from '../../services';
 
 import { DashboardNavigationProps } from 'types';
@@ -73,7 +73,7 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
         return generateStructure(res);
       })
       .then((res) => {
-        invokeProjectImporter(res[0]);
+        invokeProjectImporterLoop(res);
         setSucces(
           t('dashboard.notification.menu.generateStructure.success'),
         );
