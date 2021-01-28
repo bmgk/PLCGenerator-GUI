@@ -4,6 +4,7 @@ import {
   fireEvent,
   render,
   screen,
+  waitForElementToBeRemoved,
   within,
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -403,7 +404,28 @@ describe('DashboardTree', () => {
     it('Search functionallity 0 results', async () => {
       const input = screen.getByLabelText('Search elements');
       userEvent.type(input, '121050V02BGT20223434');
+
       expect(await screen.findByText('0 result')).toBeDefined();
+    });
+
+    it('Hide tree items', async () => {
+      userEvent.click(screen.getByText('121050V01'));
+      await waitForElementToBeRemoved(() =>
+        screen.getByTestId('121050V01BGT21'),
+      );
+    });
+
+    it('Hide tree items and expand them', async () => {
+      userEvent.click(screen.getByText('121050V01'));
+      await waitForElementToBeRemoved(() =>
+        screen.getByTestId('121050V01BGT21'),
+      );
+      userEvent.click(screen.getByText('121050V01'));
+      expect(
+        await within(screen.getByTestId('121050V01')).findByTestId(
+          '121050V01BGT21',
+        ),
+      ).toBeDefined();
     });
   });
 });

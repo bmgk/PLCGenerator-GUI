@@ -153,3 +153,10 @@ export const checkSearch = (
   }
   return node.Children.some((child) => checkSearch(child, search));
 };
+
+export const handleExpand = (matches: string[], id: string) => {
+  if (matches.includes(id)) {
+    return matches.filter((single) => single !== id);
+  }
+  return [...matches, id];
+};

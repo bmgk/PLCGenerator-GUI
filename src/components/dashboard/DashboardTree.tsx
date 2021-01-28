@@ -20,6 +20,7 @@ import {
   findMatches,
   isMatch,
   findQuantity,
+  handleExpand,
 } from './utils';
 
 import {
@@ -52,6 +53,11 @@ export const DashboardTree: React.FC = () => {
   const dispatch = useDashboardDispatch();
   const classes = useStyles();
   const [matches, setMatches] = useState<string[]>([]);
+  const [expanded, setExpanded] = useState<string[]>([]);
+
+  useEffect(() => {
+    setExpanded(getIdTree(tree, []));
+  }, [tree]);
 
   useEffect(() => {
     setMatches(findMatches(tree, search));
@@ -64,12 +70,11 @@ export const DashboardTree: React.FC = () => {
   };
 
   const handleClick = (id: string) => {
-    setMatches((matches) => {
-      if (matches.includes(id)) {
-        return matches.filter((single) => single !== id);
-      }
-      return [...matches, id];
-    });
+    if (search === '') {
+      setExpanded((expanded) => handleExpand(expanded, id));
+    } else {
+      setMatches((expanded) => handleExpand(expanded, id));
+    }
   };
 
   const renderTreeRoot = (
@@ -140,8 +145,6 @@ export const DashboardTree: React.FC = () => {
     tree,
     search,
   ]);
-
-  const expanded = useMemo(() => getIdTree(tree, []), [tree]);
 
   return (
     <div className={classes.container} data-testid="tree-items">
