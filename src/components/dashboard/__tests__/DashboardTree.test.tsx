@@ -392,7 +392,11 @@ describe('DashboardTree', () => {
       const input = screen.getByLabelText('Search elements');
       userEvent.type(input, '121050V02BGT20');
 
-      expect(await screen.findByText('2 results')).toBeDefined();
+      expect(
+        await screen.findByText('2 results', undefined, {
+          timeout: 5000,
+        }),
+      ).toBeDefined();
       const first = await screen.findByTestId('121050V02BGT20');
       const second = await screen.findByTestId('121050V02BGT20a');
       const third = await screen.findByTestId('121050V02BGT18');

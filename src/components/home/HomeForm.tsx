@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
   formContainer: {
     margin: '0 auto',
     minWidth: '20rem',
-    maxHeight: '30rem',
     padding: '2rem',
   },
   form: {
@@ -53,16 +52,31 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
   const { t } = useTranslation();
   const classes = useStyles();
 
-  const handleChange = (push: (element: FileItem) => void) => (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleChange = (
+    push: (element: FileItem) => void,
+    values: FileItem[],
+  ) => (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
     const file =
       (event.target.files && event.target.files[0]) || null;
+
     if (file != null) {
       const element: FileItem = { name: file.name, path: file.path };
-      push(element);
+      if (
+        !values.some(
+          (file) => JSON.stringify(file) === JSON.stringify(element),
+        )
+      ) {
+        push(element);
+      }
     }
+  };
+
+  const handleClick = (
+    e: React.MouseEvent<HTMLInputElement, MouseEvent>,
+  ) => {
+    //@ts-ignore
+    e.target.value = null;
   };
 
   return (
@@ -71,7 +85,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
         initialValues={initialValues}
         onSubmit={handleSubmit}
       >
-        {(formik) => (
+        {({ values }) => (
           <Form className={classes.form} data-testid="homeForm">
             <FormControl className={classes.formControl}>
               <Field
@@ -93,10 +107,15 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                     <label htmlFor="upload-eplanTags">
                       <input
                         style={{ display: 'none' }}
+                        accept=".sdf"
                         id="upload-eplanTags"
                         name="eplanTags"
                         type="file"
-                        onChange={handleChange(push)}
+                        onChange={handleChange(
+                          push,
+                          values.eplanTags,
+                        )}
+                        onClick={handleClick}
                         required
                       />
                       <Button
@@ -110,7 +129,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                     </label>
                   </FormControl>
                   <List dense={true}>
-                    {formik.values.eplanTags.map((el, index) => (
+                    {values.eplanTags.map((el, index) => (
                       <React.Fragment key={el.name}>
                         <ListItem disableGutters>
                           <ListItemText primary={el.name} />
@@ -140,10 +159,15 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                     <label htmlFor="upload-spsMatrix">
                       <input
                         style={{ display: 'none' }}
+                        accept=".xls,.xlsx,.xlsm"
                         id="upload-spsMatrix"
                         name="spsMatrix"
                         type="file"
-                        onChange={handleChange(push)}
+                        onChange={handleChange(
+                          push,
+                          values.spsMatrix,
+                        )}
+                        onClick={handleClick}
                       />
                       <Button
                         color="secondary"
@@ -156,7 +180,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
                     </label>
                   </FormControl>
                   <List dense={true}>
-                    {formik.values.spsMatrix.map((el, index) => (
+                    {values.spsMatrix.map((el, index) => (
                       <React.Fragment key={el.name}>
                         <ListItem disableGutters>
                           <ListItemText primary={el.name} />
@@ -181,7 +205,7 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
               className={classes.submit}
               color="primary"
               variant="contained"
-              disabled={isDisabled(formik.values)}
+              disabled={isDisabled(values)}
             >
               {t('home.homeForm.createButton')}
             </Button>

@@ -4,10 +4,10 @@ import { initReactI18next } from 'react-i18next';
 import resources, { whitelist } from './resources';
 
 i18n.use(initReactI18next).init({
-  lng: 'pl',
+  lng: 'en',
   keySeparator: false,
   whitelist,
-  fallbackLng: 'pl',
+  fallbackLng: 'en',
   load: 'languageOnly',
   resources: resources,
   interpolation: {

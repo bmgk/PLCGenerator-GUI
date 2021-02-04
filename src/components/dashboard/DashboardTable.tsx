@@ -67,7 +67,7 @@ const columns = (t: TFunction) => [
 const useStyles = makeStyles(() => ({
   tableContainer: {
     height: '90vh',
-    width: '95%',
+    width: '100%',
     margin: '0 auto',
   },
 }));
