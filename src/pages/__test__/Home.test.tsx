@@ -43,10 +43,15 @@ describe('Home', () => {
       screen.getByLabelText('Project Name'),
       'Test project',
     );
+    const file = new File(['(⌐□_□)'], 'chucknorris.sdf', {
+      type: '.sdf',
+    });
+
     userEvent.upload(
-      screen.getByLabelText('Upload eplan file'),
-      new File(['hello'], 'hello.png', { type: 'image/png' }),
+      screen.getByLabelText('Upload Eplan Tags'),
+      file,
     );
+
     await waitFor(() => {
       fireEvent.submit(screen.getByTestId('homeForm'));
     });

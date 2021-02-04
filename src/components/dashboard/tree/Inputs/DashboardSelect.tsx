@@ -16,17 +16,19 @@ export const DashboardSelect: React.FC<DashboardSelectProps> = (
     testId = avaliableValues.Name,
   } = props;
   const classes = useStyles();
+  const name = avaliableValues.Name.replace(' ', '');
 
   const optionsSelect = avaliableValues.Value.map(
     (el: string | number) => el + '',
   );
-  const value = Array.isArray(values[avaliableValues.Name])
-    ? values[avaliableValues.Name].map(
+
+  const value = Array.isArray(values[name])
+    ? values[name].map(
         (singleValue: string | number) => singleValue + '',
       )
-    : values[avaliableValues.Name] + '';
+    : values[name] + '';
 
-  const multiple = Array.isArray(values[avaliableValues.Name]);
+  const multiple = Array.isArray(values[name]);
 
   return (
     <Box className={classes.formControl}>
