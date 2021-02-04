@@ -23,6 +23,7 @@
     "package": "npm-run-all build package:dist",
     "package:dist": "electron-builder --dir",
     "test": "jest",
+    "coverage": "jest --coverage",
     "watch": "jest --watch"
   },
   "repository": {

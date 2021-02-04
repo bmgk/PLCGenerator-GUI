@@ -9,7 +9,7 @@ import { DashboardNavigation } from '../DashboardNavigation';
 import { HomeFormTreeResponse } from 'types';
 
 jest.mock('../../../services/electron', () => ({
-  invokeProjectImporter: () => Promise.resolve(),
+  invokeProjectImporterLoop: (paths: string[]) => Promise.resolve(),
   pickFolder: () => Promise.resolve('c:\\data'),
   saveDraft: (tree: HomeFormTreeResponse) => Promise.resolve(),
   pickDraftJSON: () => Promise.resolve(homeFormSubmitTreeForTests),

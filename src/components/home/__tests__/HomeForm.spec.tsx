@@ -27,11 +27,11 @@ describe('HomeForm', () => {
   });
 
   it('Fill Form and submit', async () => {
-    const file = new File(['(⌐□_□)'], 'chucknorris.png', {
-      type: 'image/png',
+    const file = new File(['(⌐□_□)'], 'chucknorris.sdf', {
+      type: '.sdf',
     });
 
-    fireEvent.change(screen.getByLabelText('Upload eplan file'), {
+    fireEvent.change(screen.getByLabelText('Upload Eplan Tags'), {
       target: { files: [file] },
     });
     userEvent.type(
@@ -50,35 +50,32 @@ describe('HomeForm', () => {
   });
 
   it('Remove eplan file from list', async () => {
-    const file = new File(['(⌐□_□)'], 'chucknorris.png', {
-      type: 'image/png',
+    const file = new File(['(⌐□_□)'], 'chucknorris.sdf', {
+      type: '.sdf',
     });
 
-    fireEvent.change(screen.getByLabelText('Upload eplan file'), {
+    fireEvent.change(screen.getByLabelText('Upload Eplan Tags'), {
       target: { files: [file] },
     });
-    expect(screen.getByText(/chucknorris.png/i)).toBeDefined();
+    expect(screen.getByText(/chucknorris.sdf/i)).toBeDefined();
 
     await waitFor(async () => {
       fireEvent.click(
         await screen.findByRole('button', { name: 'file-eplan-0' }),
       );
     });
-    expect(screen.queryAllByText(/chucknorris.png/i).length).toBe(0);
+    expect(screen.queryAllByText(/chucknorris.sdf/i).length).toBe(0);
   });
 
   it('Remove sps matrix file from list', async () => {
-    const file = new File(['(⌐□_□)'], 'chucknorris.png', {
-      type: 'image/png',
+    const file = new File(['(⌐□_□)'], 'chucknorris.xls', {
+      type: '.xls',
     });
 
-    fireEvent.change(
-      screen.getByLabelText('Upload SPS Matrix file'),
-      {
-        target: { files: [file] },
-      },
-    );
-    expect(screen.getByText(/chucknorris.png/i)).toBeDefined();
+    fireEvent.change(screen.getByLabelText('Upload SPS Matrix'), {
+      target: { files: [file] },
+    });
+    expect(screen.getByText(/chucknorris.xls/i)).toBeDefined();
 
     await waitFor(async () => {
       fireEvent.click(
@@ -87,6 +84,50 @@ describe('HomeForm', () => {
         }),
       );
     });
-    expect(screen.queryAllByText(/chucknorris.png/i).length).toBe(0);
+    expect(screen.queryAllByText(/chucknorris.xls/i).length).toBe(0);
+  });
+
+  it('Remove sps matrix file from list and add again', async () => {
+    const file = new File(['(⌐□_□)'], 'chucknorris.xls', {
+      type: '.xls',
+    });
+
+    fireEvent.change(screen.getByLabelText('Upload SPS Matrix'), {
+      target: { files: [file] },
+    });
+    expect(screen.getByText(/chucknorris.xls/i)).toBeDefined();
+
+    await waitFor(async () => {
+      fireEvent.click(
+        await screen.findByRole('button', {
+          name: 'file-sps-0',
+        }),
+      );
+    });
+    expect(screen.queryAllByText(/chucknorris.xls/i).length).toBe(0);
+
+    fireEvent.change(screen.getByLabelText('Upload SPS Matrix'), {
+      target: { files: [file] },
+    });
+    expect(screen.getByText(/chucknorris.xls/i)).toBeDefined();
+  });
+
+  it('Remove eplan file from list and add again', async () => {
+    const file = new File(['(⌐□_□)'], 'chucknorris.sdf', {
+      type: '.sdf',
+    });
+
+    fireEvent.change(screen.getByLabelText('Upload Eplan Tags'), {
+      target: { files: [file] },
+    });
+    expect(screen.getByText(/chucknorris.sdf/i)).toBeDefined();
+
+    await waitFor(async () => {
+      fireEvent.click(
+        await screen.findByRole('button', { name: 'file-eplan-0' }),
+      );
+    });
+
+    expect(screen.queryAllByText(/chucknorris.sdf/i).length).toBe(0);
   });
 });
