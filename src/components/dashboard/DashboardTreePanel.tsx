@@ -21,8 +21,10 @@ import {
   ParameterSingleTableBody,
 } from './tree';
 import {
+  AcceptSingleParameterResponse,
   DashboardTreePanelProps,
-  GenericErrorResponse,
+  GenericErrorResponse400,
+  HomeFormTreeResponse,
   SelectedLeaf,
 } from 'types';
 
@@ -67,24 +69,28 @@ export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
     [selectedLeaf, carousele, setCarousele],
   );
 
-  const handleSubmitParameter = (): Promise<void | GenericErrorResponse> => {
+  const handleSubmitParameter = (): Promise<void | GenericErrorResponse400> => {
+    const handleAppendNewValues = (
+      response: AcceptSingleParameterResponse,
+    ) => {
+      const newAvaliableValues = response.map((el) => el.ElementName);
+      dispatch(
+        appendNewAvaliableValues(
+          newAvaliableValues,
+          selectedLeaf.Name,
+        ),
+      );
+      return submitHomeFormTree();
+    };
+
+    const handleSaveTree = (res: HomeFormTreeResponse) => {
+      dispatch(setTree(res));
+      return Promise.resolve();
+    };
+
     return acceptSingleParameter(selectedLeaf, carousele)
-      .then((response) => {
-        const newAvaliableValues = response.map(
-          (el) => el.ElementName,
-        );
-        dispatch(
-          appendNewAvaliableValues(
-            newAvaliableValues,
-            selectedLeaf.Name,
-          ),
-        );
-        return submitHomeFormTree();
-      })
-      .then((res) => {
-        dispatch(setTree(res));
-        return Promise.resolve();
-      });
+      .then(handleAppendNewValues)
+      .then(handleSaveTree);
   };
 
   return (

@@ -1,5 +1,4 @@
 import { FormikHelpers } from 'formik';
-import { SelectOption } from 'react-select-material-ui';
 import { HomeFormValues } from './forms';
 import {
   HomeFormReponseWithId,
@@ -7,7 +6,7 @@ import {
   HomeResponseTreeAvailableValues,
 } from './responses';
 
-import { SelectedLeaf, GenericErrorResponse } from 'types';
+import { SelectedLeaf, GenericErrorResponse400 } from 'types';
 
 export type HomeFormProps = {
   handleSubmit: (
@@ -70,7 +69,7 @@ export type DashboardInputProps = {
 };
 
 export type CardSubmitPanelProps = {
-  submit: () => Promise<void | GenericErrorResponse>;
+  submit: () => Promise<void | GenericErrorResponse400>;
 };
 
 export type DashboardNavigationProps = {
