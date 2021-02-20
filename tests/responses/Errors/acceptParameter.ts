@@ -1,6 +1,6 @@
-import { GenericErrorResponse } from 'types';
+import { ErrorBody500, GenericErrorResponse400 } from 'types';
 
-export const exampleErrorAcceptParameter1: GenericErrorResponse = {
+export const exampleErrorAcceptParameter1: GenericErrorResponse400 = {
   Errors: [
     {
       FieldName: 'Robot',
@@ -14,7 +14,7 @@ export const exampleErrorAcceptParameter1: GenericErrorResponse = {
   ],
 };
 
-export const exampleErrorAcceptParameter2 = {
+export const exampleErrorAcceptParameter2: GenericErrorResponse400 = {
   Errors: [
     {
       FieldName: 'Index',
@@ -41,4 +41,10 @@ export const exampleErrorAcceptParameter2 = {
       ],
     },
   ],
+};
+
+export const exampleErrorHomeForm500: ErrorBody500 = {
+  Args: ['2IA1PFK83PIN1,Output,BOOL,0,0,Standmenge'],
+  ErrorCode:
+    'Eplan Can Contain Only One Plc Symbols. Plese Repair Damaged symbols:{0}',
 };

@@ -21,7 +21,7 @@ export const saveDraft = (tree: HomeFormTreeResponse) => {
       return Promise.resolve(fileName);
     } catch (e) {
       console.error(e);
-      return Promise.reject(e);
+      return Promise.reject('FILE_ERROR');
     }
   });
 };
@@ -33,7 +33,7 @@ export const pickDraftJSON = () => {
       return Promise.resolve(JSON.parse(tree));
     } catch (e) {
       console.error(e);
-      return Promise.reject(e);
+      return Promise.reject('FILE_ERROR');
     }
   });
 };

@@ -40,12 +40,19 @@ export type HomeFormTreeResponse = {
   Children: HomeResponseTreeChildren[];
 };
 
-export type ErrorArg = { [key: string]: string };
-export type ErrorRule = { ErrorCode: string; Args: ErrorArg };
-export type ErrorBody = { FieldName: string; Rules: ErrorRule[] };
-export type GenericErrorResponse = {
-  Errors: ErrorBody[];
+export type ErrorArg400 = { [key: string]: string };
+export type ErrorRule400 = { ErrorCode: string; Args: ErrorArg400 };
+export type ErrorBody400 = {
+  FieldName: string;
+  Rules: ErrorRule400[];
 };
+export type GenericErrorResponse400 = {
+  Errors: ErrorBody400[];
+};
+
+export type ErrorArg500 = string[];
+export type ErrorBody500 = { ErrorCode: string; Args: ErrorArg500 };
+export type GenericErrorResponse500 = ErrorBody500;
 
 export type AcceptSingleParameterResponse = [
   { ElementName: string; ParameterName: string },
