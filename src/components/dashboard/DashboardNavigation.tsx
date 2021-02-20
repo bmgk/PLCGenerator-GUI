@@ -25,11 +25,14 @@ import {
   pickDraftJSON,
   pickFolder,
   saveDraft,
-  extractErrorRequest,
+  extractErrorRequest400,
   invokeProjectImporterLoop,
 } from '../../services';
 
-import { DashboardNavigationProps } from 'types';
+import {
+  DashboardNavigationProps,
+  HomeFormTreeResponse,
+} from 'types';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,43 +70,75 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
   };
 
   const handleSubmitStructure = () => {
-    pickFolder()
-      .then((res) => {
-        setOpenBackdrop(true);
-        return generateStructure(res);
-      })
-      .then((res) => {
-        invokeProjectImporterLoop(res);
+    const handleError = (error: string | any) => {
+      if (error === 'FILE_ERROR') {
+        setError(t('dashboard.menu.SUBMIT_STRUCTURE.error.noFile'));
+      } else {
+        setError(extractErrorRequest400(error));
+      }
+    };
+
+    const handleSelectedFolder = (folder: string) => {
+      const handleGenerationLoop = (paths: string[]) => {
+        invokeProjectImporterLoop(paths);
         setSucces(
           t('dashboard.notification.menu.generateStructure.success'),
         );
-      })
-      .catch((error) => setError(extractErrorRequest(error)))
+      };
+
+      if (folder === undefined) {
+        handleError('FILE_ERROR');
+        return Promise.resolve();
+      } else {
+        setOpenBackdrop(true);
+        return generateStructure(folder).then(handleGenerationLoop);
+      }
+    };
+
+    pickFolder()
+      .then(handleSelectedFolder)
+      .catch(handleError)
       .finally(() => setOpenBackdrop(false));
   };
 
   const handleSaveDraft = () => {
+    const handleError = (error: string) => {
+      if (error === 'FILE_ERROR') {
+        setError(t('dashboard.menu.SAVE_DRAFT.error.saving'));
+      }
+    };
+
     saveDraft(tree)
       .then(() =>
         setSucces(t('dashboard.notification.menu.saveDraft.success')),
       )
-      .catch((error) => setError(extractErrorRequest(error)));
+      .catch(handleError);
   };
 
   const handleImportDraft = () => {
+    const handleSetTree = (res: HomeFormTreeResponse) => {
+      dispatch(setTree(res));
+      return Promise.resolve();
+    };
+
+    const handleError = (error: string | any) => {
+      if (error === 'FILE_ERROR') {
+        setError(t('dashboard.menu.IMPORT_DRAFT.error.noFile'));
+      } else {
+        setError(extractErrorRequest400(error));
+      }
+    };
+
     pickDraftJSON()
       .then(importDraft)
       .then(submitHomeFormTree)
-      .then((res) => {
-        dispatch(setTree(res));
-        return Promise.resolve();
-      })
+      .then(handleSetTree)
       .then(() =>
         setSucces(
           t('dashboard.notification.menu.importDraft.success'),
         ),
       )
-      .catch((error) => setError(extractErrorRequest(error)));
+      .catch(handleError);
   };
 
   const showSettings = () => {};
