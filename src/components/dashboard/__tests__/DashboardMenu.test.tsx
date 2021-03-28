@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-import { DashboardMenu, DashboardProvider } from '../';
+import { DashboardProvider } from '../context';
+import DashboardMenu from '../DashboardMenu';
 
 describe('DashboardMenu', () => {
   const submitStructure = jest.fn();

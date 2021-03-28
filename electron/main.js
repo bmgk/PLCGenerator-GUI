@@ -6,7 +6,7 @@ import installExtension, {
   REACT_DEVELOPER_TOOLS,
 } from 'electron-devtools-installer';
 
-import { runServer } from '../src/services/electron/';
+import { runServer } from '../src/services/electron/initial';
 
 let mainWindow;
 

@@ -11,9 +11,13 @@ import IconButton from '@material-ui/core/IconButton';
 
 import { useTranslation } from 'react-i18next';
 
-import { DashboardSelect } from './Inputs/DashboardSelect';
-import { DashboardInput } from './Inputs/DashboardInput';
-import { useDashboardDispatch, setLeaf } from '../context';
+import DashboardSelect from './Inputs/DashboardSelect';
+import DashboardInput from './Inputs/DashboardInput';
+import {
+  useDashboardDispatch,
+  setLeaf,
+  SelectedLeaf,
+} from '../context';
 import {
   reducer,
   setInitialValues,
@@ -21,12 +25,14 @@ import {
   useStyles,
 } from './utils';
 
-import {
-  DashboardParameterArrayTableBodyBody,
-  SelectedLeaf,
-} from 'types';
+type DashboardParameterArrayTableBodyBody = {
+  initialValues: any;
+  carousele: number;
+  index: number;
+  selectedLeaf: SelectedLeaf;
+};
 
-export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyBody> = (
+const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyBody> = (
   props,
 ) => {
   const { initialValues, carousele, index, selectedLeaf } = props;
@@ -182,3 +188,5 @@ export const ParameterArrayTableBody: React.FC<DashboardParameterArrayTableBodyB
     </TableContainer>
   );
 };
+
+export default ParameterArrayTableBody;

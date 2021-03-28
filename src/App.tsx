@@ -5,15 +5,17 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import { DashboardProvider } from './components/dashboard/context';
+import { toastConfig } from './components/common/useNotification';
 import theme from './components/common/Theme';
-
-import { Home, Dashboard } from './pages';
-
+import Dashboard from './pages/Dashboard';
+import Home from './pages/Home';
 import './i18n/i18n';
+import 'react-toastify/dist/ReactToastify.css';
 
 const mainElement = document.createElement('div');
 mainElement.setAttribute('id', 'root');
@@ -35,6 +37,7 @@ const App = () => {
           </Switch>
         </Router>
       </DashboardProvider>
+      <ToastContainer {...toastConfig} />
     </MuiThemeProvider>
   );
 };

@@ -4,11 +4,17 @@ import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/Box';
 
 import { useStyles } from '../utils';
-import { DashboardSelectProps } from 'types';
 
-export const DashboardSelect: React.FC<DashboardSelectProps> = (
-  props,
-) => {
+import { HomeResponseTreeAvailableValues } from 'types';
+
+type DashboardSelectProps = {
+  testId?: string;
+  values: any;
+  avaliableValues: HomeResponseTreeAvailableValues;
+  handleChange: (event: any, value: string | string[] | null) => void;
+};
+
+const DashboardSelect: React.FC<DashboardSelectProps> = (props) => {
   const {
     values,
     avaliableValues,
@@ -50,3 +56,5 @@ export const DashboardSelect: React.FC<DashboardSelectProps> = (
     </Box>
   );
 };
+
+export default DashboardSelect;

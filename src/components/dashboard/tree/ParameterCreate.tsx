@@ -3,14 +3,19 @@ import React, { useMemo } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 
-import { useDashboardDispatch, setLeaf } from '../context';
+import {
+  useDashboardDispatch,
+  setLeaf,
+  SelectedLeaf,
+} from '../context';
 import { initValues, useStyles } from './utils';
 
-import { ParameterCreateProps, SelectedLeaf } from 'types';
+type ParameterCreateProps = {
+  carousele: number;
+  selectedLeaf: SelectedLeaf;
+};
 
-export const ParameterCreate: React.FC<ParameterCreateProps> = (
-  props,
-) => {
+const ParameterCreate: React.FC<ParameterCreateProps> = (props) => {
   const { carousele, selectedLeaf } = props;
   const classes = useStyles();
   const dispatch = useDashboardDispatch();
@@ -44,3 +49,5 @@ export const ParameterCreate: React.FC<ParameterCreateProps> = (
     </div>
   );
 };
+
+export default ParameterCreate;

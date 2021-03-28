@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useStyles } from './utils';
 
-export const EmptyParametersPanel = () => {
+const EmptyParametersPanel = () => {
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -21,3 +21,5 @@ export const EmptyParametersPanel = () => {
     </div>
   );
 };
+
+export default EmptyParametersPanel;

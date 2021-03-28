@@ -14,7 +14,12 @@ import { TFunction } from 'i18next';
 
 import { useDashboardStore } from './context';
 
-import { DashboardMenuProps } from 'types';
+type DashboardMenuProps = {
+  submitStructure: () => void;
+  saveDraft: () => void;
+  showSettings: () => void;
+  importDraft: () => void;
+};
 
 const options = (t: TFunction) => [
   {
@@ -31,9 +36,7 @@ const options = (t: TFunction) => [
 
 const ITEM_HEIGHT = 48;
 
-export const DashboardMenu: React.FC<DashboardMenuProps> = (
-  props,
-) => {
+const DashboardMenu: React.FC<DashboardMenuProps> = (props) => {
   const {
     submitStructure,
     saveDraft,
@@ -137,3 +140,5 @@ export const DashboardMenu: React.FC<DashboardMenuProps> = (
     </>
   );
 };
+
+export default DashboardMenu;

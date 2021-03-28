@@ -4,15 +4,26 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core';
 
 import { useStyles } from '../utils';
-import { DashboardInputProps } from 'types';
+import { HomeResponseTreeAvailableValues } from 'types';
+
+type DashboardInputProps = {
+  testId?: string;
+  values: any;
+  avaliableValues: HomeResponseTreeAvailableValues;
+  handleChange:
+    | ((
+        event: React.ChangeEvent<
+          HTMLTextAreaElement | HTMLInputElement
+        >,
+      ) => void)
+    | undefined;
+};
 
 const useStylesLabel = makeStyles(() => ({
   input: { margin: '0 0 0.5rem 0' },
 }));
 
-export const DashboardInput: React.FC<DashboardInputProps> = (
-  props,
-) => {
+const DashboardInput: React.FC<DashboardInputProps> = (props) => {
   const {
     values,
     avaliableValues,
@@ -40,3 +51,5 @@ export const DashboardInput: React.FC<DashboardInputProps> = (
     </FormControl>
   );
 };
+
+export default DashboardInput;

@@ -3,30 +3,34 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Box from '@material-ui/core/Box';
+
+import CardHeaderPanel from './tree/CardHeaderPanel';
+import CardSubmitPanel from './tree/CardSubmitPanel';
+import EmptyParametersPanel from './tree/EmptyTreePanel';
+import ParameterArrayTableBody from './tree/ParameterArrayTableBody';
+import ParameterCreate from './tree/ParameterCreate';
+import ParameterSingleTableBody from './tree/ParameterSingleTableBody';
+import RootTreePanel from './tree/RootTreePanel';
+
 import { acceptSingleParameter } from '../../api/dashboard';
 import { submitHomeFormTree } from '../../api/home';
 
 import {
   appendNewAvaliableValues,
+  SelectedLeaf,
   setTree,
   useDashboardDispatch,
 } from './context';
-import {
-  CardHeaderPanel,
-  EmptyParametersPanel,
-  ParameterCreate,
-  ParameterArrayTableBody,
-  RootTreePanel,
-  CardSubmitPanel,
-  ParameterSingleTableBody,
-} from './tree';
+
 import {
   AcceptSingleParameterResponse,
-  DashboardTreePanelProps,
   GenericErrorResponse400,
   HomeFormTreeResponse,
-  SelectedLeaf,
 } from 'types';
+
+type DashboardTreePanelProps = {
+  selectedLeaf: SelectedLeaf | null;
+};
 
 const useStyles = makeStyles((theme) => ({
   cardContainer: {
@@ -59,10 +63,13 @@ export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
   const [carousele, setCarousele] = useState(0);
   const dispatch = useDashboardDispatch();
 
-  if (selectedLeaf === null) return <RootTreePanel />;
+  if (selectedLeaf === null) {
+    return <RootTreePanel />;
+  }
 
-  if (selectedLeaf.Parameters.length === 0)
+  if (selectedLeaf.Parameters.length === 0) {
     return <EmptyParametersPanel />;
+  }
 
   const initialValues = useMemo(
     () => extractInitialValue(selectedLeaf, carousele, setCarousele),

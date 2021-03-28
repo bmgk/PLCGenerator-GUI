@@ -72,7 +72,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const DashboardTable: React.FC = () => {
+const DashboardTable: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const { rows } = useDashboardStore();

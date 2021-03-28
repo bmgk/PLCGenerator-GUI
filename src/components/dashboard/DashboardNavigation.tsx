@@ -8,13 +8,13 @@ import Tabs from '@material-ui/core/Tabs/Tabs';
 import Tab from '@material-ui/core/Tab/Tab';
 import { useTranslation } from 'react-i18next';
 
-import { DashboardMenu } from './DashboardMenu';
+import useNotification from '../common/useNotification';
+import DashboardMenu from './DashboardMenu';
 import {
   useDashboardDispatch,
   useDashboardStore,
   setTree,
 } from './context';
-import { SnackbarNotification } from '../common';
 
 import {
   generateStructure,
@@ -22,17 +22,19 @@ import {
   submitHomeFormTree,
 } from '../../api';
 import {
-  pickDraftJSON,
+  invokeProjectImporterLoop,
   pickFolder,
   saveDraft,
-  extractErrorRequest400,
-  invokeProjectImporterLoop,
-} from '../../services';
+  pickDraftJSON,
+} from '../../services/electron/dashboard';
+import { extractErrorRequest400 } from '../../services/errorHandling/request';
 
-import {
-  DashboardNavigationProps,
-  HomeFormTreeResponse,
-} from 'types';
+import { HomeFormTreeResponse } from 'types';
+
+type DashboardNavigationProps = {
+  value: number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,13 +52,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
+const DashboardNavigation: React.FC<DashboardNavigationProps> = (
   props,
 ) => {
   const { value, setValue } = props;
   const [openBackdrop, setOpenBackdrop] = useState(false);
-  const [success, setSucces] = useState('');
-  const [error, setError] = useState('');
+  const {
+    errorNotification,
+    successNotification,
+  } = useNotification();
   const { t } = useTranslation();
   const { tree } = useDashboardStore();
   const dispatch = useDashboardDispatch();
@@ -72,16 +76,18 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
   const handleSubmitStructure = () => {
     const handleError = (error: string | any) => {
       if (error === 'FILE_ERROR') {
-        setError(t('dashboard.menu.SUBMIT_STRUCTURE.error.noFile'));
+        errorNotification(
+          t('dashboard.menu.SUBMIT_STRUCTURE.error.noFile'),
+        );
       } else {
-        setError(extractErrorRequest400(error));
+        errorNotification(extractErrorRequest400(error));
       }
     };
 
     const handleSelectedFolder = (folder: string) => {
       const handleGenerationLoop = (paths: string[]) => {
         invokeProjectImporterLoop(paths);
-        setSucces(
+        successNotification(
           t('dashboard.notification.menu.generateStructure.success'),
         );
       };
@@ -104,13 +110,17 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
   const handleSaveDraft = () => {
     const handleError = (error: string) => {
       if (error === 'FILE_ERROR') {
-        setError(t('dashboard.menu.SAVE_DRAFT.error.saving'));
+        errorNotification(
+          t('dashboard.menu.SAVE_DRAFT.error.saving'),
+        );
       }
     };
 
     saveDraft(tree)
       .then(() =>
-        setSucces(t('dashboard.notification.menu.saveDraft.success')),
+        successNotification(
+          t('dashboard.notification.menu.saveDraft.success'),
+        ),
       )
       .catch(handleError);
   };
@@ -123,9 +133,11 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
 
     const handleError = (error: string | any) => {
       if (error === 'FILE_ERROR') {
-        setError(t('dashboard.menu.IMPORT_DRAFT.error.noFile'));
+        errorNotification(
+          t('dashboard.menu.IMPORT_DRAFT.error.noFile'),
+        );
       } else {
-        setError(extractErrorRequest400(error));
+        errorNotification(extractErrorRequest400(error));
       }
     };
 
@@ -134,7 +146,7 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
       .then(submitHomeFormTree)
       .then(handleSetTree)
       .then(() =>
-        setSucces(
+        successNotification(
           t('dashboard.notification.menu.importDraft.success'),
         ),
       )
@@ -145,12 +157,6 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
 
   return (
     <>
-      <SnackbarNotification
-        success={success}
-        setSucces={setSucces}
-        error={error}
-        setError={setError}
-      />
       <Backdrop
         className={classes.backdrop}
         open={openBackdrop}
@@ -190,3 +196,5 @@ export const DashboardNavigation: React.FC<DashboardNavigationProps> = (
     </>
   );
 };
+
+export default DashboardNavigation;

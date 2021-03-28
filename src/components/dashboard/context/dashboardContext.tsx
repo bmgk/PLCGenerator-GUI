@@ -1,10 +1,28 @@
 import React from 'react';
 import { dashboardReducer } from './dashboardReducer';
+import { DashboardDispatch } from './dashboardActions';
 import {
-  DashboardState,
-  DashboardDispatch,
-  DashboardProviderProps,
+  HomeFormTreeResponse,
+  HomeFormReponseWithId,
+  HomeResponseTreeParameters,
 } from 'types';
+
+export type DashboardState = {
+  newAvaliableValues: string[];
+  tree: HomeFormTreeResponse;
+  rows: HomeFormReponseWithId;
+  selectedLeaf: SelectedLeaf | null;
+};
+
+export type DashboardProviderProps = {
+  children: React.ReactNode;
+  initial?: DashboardState;
+};
+
+export type SelectedLeaf = {
+  Parameters: HomeResponseTreeParameters[];
+  Name: string;
+};
 
 const DashboardStateContext = React.createContext<
   DashboardState | undefined
@@ -18,24 +36,6 @@ const initialDefault: DashboardState = {
   newAvaliableValues: [],
   rows: [],
   selectedLeaf: null,
-};
-
-const DashboardProvider = ({
-  children,
-  initial = initialDefault,
-}: DashboardProviderProps) => {
-  const [state, dispatch] = React.useReducer(
-    dashboardReducer,
-    initial,
-  );
-
-  return (
-    <DashboardStateContext.Provider value={state}>
-      <DashboardDispatchContext.Provider value={dispatch}>
-        {children}
-      </DashboardDispatchContext.Provider>
-    </DashboardStateContext.Provider>
-  );
 };
 
 const useDashboardStore = () => {
@@ -56,6 +56,24 @@ const useDashboardDispatch = () => {
     );
   }
   return context;
+};
+
+const DashboardProvider = ({
+  children,
+  initial = initialDefault,
+}: DashboardProviderProps) => {
+  const [state, dispatch] = React.useReducer(
+    dashboardReducer,
+    initial,
+  );
+
+  return (
+    <DashboardStateContext.Provider value={state}>
+      <DashboardDispatchContext.Provider value={dispatch}>
+        {children}
+      </DashboardDispatchContext.Provider>
+    </DashboardStateContext.Provider>
+  );
 };
 
 export { DashboardProvider, useDashboardStore, useDashboardDispatch };

@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen, act, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { exampleErrorAcceptParameter2 } from '../../../../tests/responses';
+import CardSubmitPanel from '../tree/CardSubmitPanel';
 
-import { CardSubmitPanel } from '../tree';
+import { exampleErrorAcceptParameter2 } from '../../../../tests/responses';
 
 describe('CardSubmitPannel', () => {
   it('initial render', () => {

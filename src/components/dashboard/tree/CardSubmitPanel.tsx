@@ -1,40 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import { useTranslation } from 'react-i18next';
-import { SnackbarNotification } from '../../common';
-import { extractErrorRequest400 } from '../../../services';
+import { extractErrorRequest400 } from '../../../services/errorHandling/request';
+import useNotification from '../../common/useNotification';
+
 import { useStyles } from './utils';
+import { GenericErrorResponse400 } from 'types';
 
-import { CardSubmitPanelProps } from 'types';
+type CardSubmitPanelProps = {
+  submit: () => Promise<void | GenericErrorResponse400>;
+};
 
-export const CardSubmitPanel: React.FC<CardSubmitPanelProps> = (
-  props,
-) => {
+const CardSubmitPanel: React.FC<CardSubmitPanelProps> = (props) => {
   const { submit } = props;
-  const [success, setSucces] = useState('');
-  const [error, setError] = useState('');
+  const {
+    errorNotification,
+    successNotification,
+  } = useNotification();
   const { t } = useTranslation();
   const classes = useStyles();
 
   const handleSubmit = () => {
     submit()
       .then(() =>
-        setSucces(
+        successNotification(
           t('dashboard.notification.dashboardTree.parameter.success'),
         ),
       )
-      .catch((error) => setError(extractErrorRequest400(error)));
+      .catch((error) =>
+        errorNotification(extractErrorRequest400(error)),
+      );
   };
 
   return (
     <>
-      <SnackbarNotification
-        success={success}
-        setSucces={setSucces}
-        error={error}
-        setError={setError}
-      />
       <CardActions classes={{ root: classes.submitButtonContainer }}>
         <Button
           size="small"
@@ -49,3 +49,5 @@ export const CardSubmitPanel: React.FC<CardSubmitPanelProps> = (
     </>
   );
 };
+
+export default CardSubmitPanel;

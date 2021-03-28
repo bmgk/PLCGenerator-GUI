@@ -9,7 +9,7 @@ import userEvent from '@testing-library/user-event';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-import { DashboardProvider } from '../../components';
+import { DashboardProvider } from '../../components/dashboard/context';
 import Home from '../Home';
 
 describe('Home', () => {

@@ -1,22 +1,35 @@
 import React from 'react';
+import {
+  Field,
+  FieldArray,
+  Form,
+  Formik,
+  FormikHelpers,
+} from 'formik';
+import { TextField as TextFieldFormik } from 'formik-material-ui';
 import { useTranslation } from 'react-i18next';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Field, FieldArray, Form, Formik } from 'formik';
-import { TextField as TextFieldFormik } from 'formik-material-ui';
-
-import { HomeFormValues, FileItem, HomeFormProps } from 'types';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme) => ({
+import { HomeFormValues, FileItem } from 'types';
+
+type HomeFormProps = {
+  handleSubmit: (
+    values: HomeFormValues,
+    formikHelpers: FormikHelpers<HomeFormValues>,
+  ) => void;
+};
+
+const useStyles = makeStyles(() => ({
   formControl: {
     display: 'flex',
     flexDirection: 'column',
@@ -47,7 +60,7 @@ const isDisabled = (values: HomeFormValues) => {
   return values.eplanTags.length === 0 || values.projectName === '';
 };
 
-export const HomeForm: React.FC<HomeFormProps> = (props) => {
+const HomeForm: React.FC<HomeFormProps> = (props) => {
   const { handleSubmit } = props;
   const { t } = useTranslation();
   const classes = useStyles();
@@ -215,3 +228,5 @@ export const HomeForm: React.FC<HomeFormProps> = (props) => {
     </Card>
   );
 };
+
+export default HomeForm;

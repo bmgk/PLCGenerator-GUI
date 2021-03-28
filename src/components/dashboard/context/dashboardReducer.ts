@@ -4,14 +4,11 @@ import {
   SET_TREE,
   REPLACE_LEAF_IN_TREE,
   APPEND_NEW_VALUES,
+  DashboardAction,
 } from './dashboardActions';
 
-import {
-  DashboardAction,
-  DashboardState,
-  HomeResponseTreeChildren,
-  SelectedLeaf,
-} from 'types';
+import { DashboardState, SelectedLeaf } from './dashboardContext';
+import { HomeResponseTreeChildren } from 'types';
 
 const replace = (
   nodes: HomeResponseTreeChildren,

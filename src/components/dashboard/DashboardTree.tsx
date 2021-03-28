@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
 
+import TreeSearch from './tree/Inputs/TreeSearch';
 import DashboardTreePanel from './DashboardTreePanel';
 import {
   setLeaf,
@@ -12,7 +13,6 @@ import {
   useDashboardStore,
 } from './context';
 
-import { TreeSearch } from './tree';
 import {
   getIdTree,
   pickStyles,
@@ -43,7 +43,7 @@ const useStyles = makeStyles({
   searchContent: { background: '#3D9970' },
 });
 
-export const DashboardTree: React.FC = () => {
+const DashboardTree: React.FC = () => {
   const {
     tree,
     selectedLeaf,

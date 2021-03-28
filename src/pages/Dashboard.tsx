@@ -1,11 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-
-import {
-  DashboardNavigation,
-  DashboardTable,
-  DashboardTree,
-} from '../components/dashboard';
+import DashboardNavigation from './../components/dashboard/DashboardNavigation';
+import DashboardTable from './../components/dashboard/DashboardTable';
+import DashboardTree from './../components/dashboard/DashboardTree';
 
 const Dashboard: React.FC = () => {
   const [value, setValue] = React.useState(0);

@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useStyles } from './utils';
 
-export const RootTreePanel: React.FC = () => {
+const RootTreePanel: React.FC = () => {
   const { t } = useTranslation();
   const classes = useStyles();
 
@@ -21,3 +21,5 @@ export const RootTreePanel: React.FC = () => {
     </div>
   );
 };
+
+export default RootTreePanel;

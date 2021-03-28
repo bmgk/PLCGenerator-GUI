@@ -1,11 +1,10 @@
 import { dashboardReducer } from './../dashboardReducer';
-
+import { appendNewAvaliableValues } from '../dashboardActions';
+import { DashboardState } from '../dashboardContext';
 import {
   homeFormSubmitWithIds,
   homeFormSubmitTreeForTests,
 } from '../../../../../tests/responses';
-import { appendNewAvaliableValues } from '../dashboardActions';
-import { DashboardState } from 'types';
 
 describe('dashboardReducer', () => {
   it('appendNewAvaliableValues', () => {

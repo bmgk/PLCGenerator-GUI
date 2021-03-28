@@ -2,13 +2,13 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { homeFormSubmitTreeForTests } from '../../../../tests/responses';
 import { DashboardProvider } from '../context';
-import { DashboardNavigation } from '../DashboardNavigation';
+import DashboardNavigation from '../DashboardNavigation';
+import { homeFormSubmitTreeForTests } from '../../../../tests/responses';
 
 import { HomeFormTreeResponse } from 'types';
 
-jest.mock('../../../services/electron', () => ({
+jest.mock('../../../services/electron/dashboard', () => ({
   invokeProjectImporterLoop: (paths: string[]) => Promise.resolve(),
   pickFolder: () => Promise.resolve('c:\\data'),
   saveDraft: (tree: HomeFormTreeResponse) => Promise.resolve(),

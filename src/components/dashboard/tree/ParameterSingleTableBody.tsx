@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
+import { useTranslation } from 'react-i18next';
 import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
@@ -6,20 +7,23 @@ import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
-import { useTranslation } from 'react-i18next';
-import { SelectOption } from 'react-select-material-ui';
 
-import { useDashboardDispatch, setLeaf } from '../context';
-import { DashboardSelect } from './Inputs/DashboardSelect';
-import { DashboardInput } from './Inputs/DashboardInput';
+import DashboardSelect from './Inputs/DashboardSelect';
+import DashboardInput from './Inputs/DashboardInput';
+import {
+  useDashboardDispatch,
+  setLeaf,
+  SelectedLeaf,
+} from '../context';
 import { reducer, setValues, useStyles } from './utils';
 
-import {
-  DashboardParameterSingleTableBodyBody,
-  SelectedLeaf,
-} from 'types';
+type DashboardParameterSingleTableBodyBody = {
+  initialValues: any;
+  carousele: number;
+  selectedLeaf: SelectedLeaf;
+};
 
-export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBodyBody> = (
+const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBodyBody> = (
   props,
 ) => {
   const { initialValues, carousele, selectedLeaf } = props;
@@ -126,3 +130,5 @@ export const ParameterSingleTableBody: React.FC<DashboardParameterSingleTableBod
     </TableContainer>
   );
 };
+
+export default ParameterSingleTableBody;

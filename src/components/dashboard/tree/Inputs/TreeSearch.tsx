@@ -22,9 +22,11 @@ const count = (quantity: number) => {
   return 3;
 };
 
-export const TreeSearch: React.FC<
-  TextFieldProps & { quantity: number }
-> = ({ onChange, quantity, ...props }) => {
+const TreeSearch: React.FC<TextFieldProps & { quantity: number }> = ({
+  onChange,
+  quantity,
+  ...props
+}) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [value, setValue] = useState('');
@@ -73,3 +75,5 @@ export const TreeSearch: React.FC<
     </Box>
   );
 };
+
+export default TreeSearch;
