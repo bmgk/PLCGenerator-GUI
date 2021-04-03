@@ -28,11 +28,11 @@ const App = () => {
         <CssBaseline />
         <Router>
           <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
             <Route path="/dashboard">
               <Dashboard />
+            </Route>
+            <Route path="/" exact>
+              <Home />
             </Route>
           </Switch>
         </Router>

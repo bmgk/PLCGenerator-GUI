@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { DashboardProvider } from '../context';
-import DashboardMenu from '../DashboardMenu';
+import RouteMenu from '../../route/RouteMenu';
 
 describe('DashboardMenu', () => {
   const submitStructure = jest.fn();
@@ -13,7 +13,7 @@ describe('DashboardMenu', () => {
   beforeEach(() => {
     render(
       <DashboardProvider>
-        <DashboardMenu
+        <RouteMenu
           submitStructure={submitStructure}
           saveDraft={saveDraft}
           showSettings={showSettings}

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { IP } from './../config';
-import { SelectedLeaf } from '../../components/dashboard/context';
+import { IP } from 'api/config';
+import { SelectedLeaf } from 'components/dashboard/context';
 import { AcceptSingleParameterResponse } from 'types';
 
 const parseValue = (value: any[] | any) => {

@@ -2,21 +2,21 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { FormikHelpers } from 'formik';
-import useNotification from '../components/common/useNotification';
-import HomeForm from '../components/home/HomeForm';
+import useNotification from 'components/common/useNotification';
+import HomeForm from 'components/home/HomeForm';
 import {
   setRows,
   setTree,
   useDashboardDispatch,
-} from '../components/dashboard/context';
-import { extractErrorRequest500 } from '../services/errorHandling/request';
+} from 'components/dashboard/context';
+import { extractErrorRequest500 } from 'services/errorHandling/request';
 import {
   submitHomeFormEplanTags,
   submitHomeFormSPSMatrix,
   submitHomeFormTree,
-} from '../api/home';
+} from 'api/home';
 
-import { HomeFormValues } from '../types';
+import { HomeFormValues } from 'types';
 
 const useStyles = makeStyles((theme) => ({
   container: {

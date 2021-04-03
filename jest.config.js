@@ -1,4 +1,5 @@
-const path = require("path");
+const path = require('path');
+const rootPath = path.resolve(__dirname, '..');
 
 module.exports = {
   // All imported modules in your tests should be mocked automatically
@@ -63,7 +64,11 @@ module.exports = {
   // maxWorkers: "50%",
 
   // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: ["node_modules"],
+  moduleDirectories: [
+    path.resolve(__dirname, 'src'),
+    path.resolve(__dirname, 'tests'),
+    'node_modules',
+  ],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -88,7 +93,7 @@ module.exports = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  preset: "ts-jest",
+  preset: 'ts-jest',
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -123,7 +128,7 @@ module.exports = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ["./tests/setupTests.ts"],
+  setupFilesAfterEnv: ['./tests/setupTests.ts'],
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
   // snapshotSerializers: [],

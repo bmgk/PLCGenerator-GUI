@@ -1,7 +1,9 @@
 import React from 'react';
 import { render, screen, act, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import CardSubmitPanel from '../tree/CardSubmitPanel';
+import { ToastContainer } from 'react-toastify';
+import { toastConfig } from 'components/common/useNotification';
+import CardSubmitPanel from 'components/dashboard/tree/CardSubmitPanel';
 
 import { exampleErrorAcceptParameter2 } from '../../../../tests/responses';
 
@@ -10,7 +12,12 @@ describe('CardSubmitPannel', () => {
     const promise = Promise.resolve();
     const submit = jest.fn().mockResolvedValue(() => promise);
 
-    render(<CardSubmitPanel submit={submit} />);
+    render(
+      <>
+        <CardSubmitPanel submit={submit} />
+        <ToastContainer {...toastConfig} />
+      </>,
+    );
     expect(screen.getByText('Accept parameter')).toBeDefined();
   });
 
@@ -18,7 +25,12 @@ describe('CardSubmitPannel', () => {
     const promise = Promise.resolve();
     const submit = jest.fn().mockResolvedValue(() => promise);
 
-    render(<CardSubmitPanel submit={submit} />);
+    render(
+      <>
+        <CardSubmitPanel submit={submit} />
+        <ToastContainer {...toastConfig} />
+      </>,
+    );
     userEvent.click(screen.getByText('Accept parameter'));
     await act(() => promise);
     expect(submit).toBeCalled();
@@ -28,11 +40,16 @@ describe('CardSubmitPannel', () => {
     const promise = Promise.resolve();
     const submit = jest.fn().mockResolvedValue(() => promise);
 
-    render(<CardSubmitPanel submit={submit} />);
+    render(
+      <>
+        <CardSubmitPanel submit={submit} />
+        <ToastContainer {...toastConfig} />
+      </>,
+    );
     userEvent.click(screen.getByText('Accept parameter'));
     await act(() => promise);
     expect(
-      screen.getByText('Parameter has been updated'),
+      await screen.findByText('Parameter has been updated'),
     ).toBeDefined();
   });
 
@@ -45,7 +62,12 @@ describe('CardSubmitPannel', () => {
       response: { data: exampleErrorAcceptParameter2 },
     });
 
-    render(<CardSubmitPanel submit={submit} />);
+    render(
+      <>
+        <CardSubmitPanel submit={submit} />
+        <ToastContainer {...toastConfig} />
+      </>,
+    );
     userEvent.click(screen.getByText('Accept parameter'));
     await act(() => promise);
     await waitFor(() =>
@@ -53,8 +75,10 @@ describe('CardSubmitPannel', () => {
         screen.queryAllByText(cannotSetWithYourself).length,
       ).toBeGreaterThan(0),
     );
-    expect(screen.queryAllByText(duplicated).length).toBeGreaterThan(
-      0,
+    await waitFor(() =>
+      expect(
+        screen.queryAllByText(duplicated).length,
+      ).toBeGreaterThan(0),
     );
   });
 });

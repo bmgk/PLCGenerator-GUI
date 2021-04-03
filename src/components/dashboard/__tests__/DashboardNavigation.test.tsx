@@ -3,7 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { DashboardProvider } from '../context';
-import DashboardNavigation from '../DashboardNavigation';
+import RouteNavigation from '../../route/RouteNavigation';
 import { homeFormSubmitTreeForTests } from '../../../../tests/responses';
 
 import { HomeFormTreeResponse } from 'types';
@@ -28,7 +28,7 @@ describe('DashboardNavigation', () => {
           selectedLeaf: null,
         }}
       >
-        <DashboardNavigation value={value} setValue={setValue} />
+        <RouteNavigation value={value} setValue={setValue} />
       </DashboardProvider>,
     );
   });

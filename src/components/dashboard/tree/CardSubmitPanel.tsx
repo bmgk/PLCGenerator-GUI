@@ -2,8 +2,8 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import { useTranslation } from 'react-i18next';
-import { extractErrorRequest400 } from '../../../services/errorHandling/request';
-import useNotification from '../../common/useNotification';
+import { extractErrorRequest400 } from 'services/errorHandling/request';
+import useNotification from 'components/common/useNotification';
 
 import { useStyles } from './utils';
 import { GenericErrorResponse400 } from 'types';

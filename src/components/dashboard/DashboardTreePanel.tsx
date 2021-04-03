@@ -12,8 +12,8 @@ import ParameterCreate from './tree/ParameterCreate';
 import ParameterSingleTableBody from './tree/ParameterSingleTableBody';
 import RootTreePanel from './tree/RootTreePanel';
 
-import { acceptSingleParameter } from '../../api/dashboard';
-import { submitHomeFormTree } from '../../api/home';
+import { acceptSingleParameter } from 'api/dashboard';
+import { submitHomeFormTree } from 'api/home';
 
 import {
   appendNewAvaliableValues,
@@ -55,7 +55,7 @@ const extractInitialValue = (
   return initialValues;
 };
 
-export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
+const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
   props,
 ) => {
   const { selectedLeaf } = props;
