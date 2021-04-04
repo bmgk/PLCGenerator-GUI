@@ -21,10 +21,10 @@ describe('dashboardReducer', () => {
         '121060R01',
       ),
     );
-    expect(result.newAvaliableValues.sort()).toEqual(
+    expect([...result.newAvaliableValues].sort()).toEqual(
       ['121060', '123456', 'OMG_WTF', '121050'].sort(),
     );
-    expect(result.newAvaliableValues.sort()).not.toEqual(
+    expect([...result.newAvaliableValues].sort()).not.toEqual(
       ['121060R01'].sort(),
     );
   });

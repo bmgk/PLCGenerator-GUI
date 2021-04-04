@@ -1,3 +1,4 @@
+import { isDeepEqual } from 'utils/objectUtils';
 import { FileItem, HomeFormValues } from 'types';
 
 export const initialValues: HomeFormValues = {
@@ -19,11 +20,7 @@ export const handleFileAppend = (
 
   if (file != null) {
     const element: FileItem = { name: file.name, path: file.path };
-    if (
-      !values.some(
-        (file) => JSON.stringify(file) === JSON.stringify(element),
-      )
-    ) {
+    if (!values.some((file) => isDeepEqual(file, element))) {
       push(element);
     }
   }

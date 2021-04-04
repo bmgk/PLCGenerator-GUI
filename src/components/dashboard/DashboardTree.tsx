@@ -5,6 +5,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import TreeItem from '@material-ui/lab/TreeItem';
 
+import { cloneDeep } from 'utils/objectUtils';
 import TreeSearch from './tree/Inputs/TreeSearch';
 import DashboardTreePanel from './DashboardTreePanel';
 import {
@@ -113,9 +114,7 @@ const DashboardTree: React.FC = () => {
         nodeId={`${nodes.Name}`}
         label={nodes.Name}
         onClick={() => {
-          dispatch(
-            setLeaf(createLeaf(JSON.parse(JSON.stringify(nodes)))),
-          );
+          dispatch(setLeaf(createLeaf(cloneDeep(nodes))));
           handleClick(nodes.Name);
         }}
         style={styles}
