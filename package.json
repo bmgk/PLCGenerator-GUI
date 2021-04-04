@@ -92,6 +92,7 @@
     "axios": "^0.21.0",
     "formik": "^2.2.5",
     "formik-material-ui": "^3.0.0",
+    "formik-material-ui-lab": "^0.0.8",
     "i18next": "^19.8.4",
     "immer": "^9.0.1",
     "lodash": "^4.17.21",

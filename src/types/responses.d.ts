@@ -58,16 +58,17 @@ export type ProcessActionSingle = {
 export type ProcessActionResponse = {
   AvailableActions: ProcessActionSingle;
 };
+export type ProcessDefinitionAction = {
+  Element: string;
+  ToolType: string;
+  ActionName: string;
+  ToolName: string;
+  TypeConditions: null;
+};
 export type ProcessDefinictionStep = {
   ShortcutName: string;
   Comment: string;
-  Actions: {
-    Element: string;
-    ToolType: string;
-    ActionName: string;
-    ToolName: string;
-    TypeConditions: null;
-  }[];
+  Actions: ProcessDefinitionAction[];
 };
 export type ProcessDefinictionResponse = {
   Element: string;

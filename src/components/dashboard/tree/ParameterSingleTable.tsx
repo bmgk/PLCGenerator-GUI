@@ -6,7 +6,7 @@ import TableBody from '@material-ui/core/TableBody';
 
 import { cloneDeep, isDeepEqual } from 'utils/objectUtils';
 import ParameterSingleTableHeader from './ParameterSingleTableHeader';
-import ParameterSingleTableItem from './ParameterSingleTableItemProps';
+import ParameterSingleTableItem from './ParameterSingleTableItem';
 import {
   useDashboardDispatch,
   setLeaf,

@@ -10,7 +10,7 @@ import {
   RESET_CURRENT_PROCESS_DEFINITION_STEP,
 } from './processActions';
 import { ProcessState } from './processContext';
-import { createEmptyStep } from './utils';
+import { createEmptyStep } from '../utils';
 
 export const processReducer = (
   state: ProcessState,

@@ -18,7 +18,7 @@ const ProcessDefinitionBack: React.FC = () => {
       display="flex"
       flexDirection="row"
       flex="1"
-      minWidth="100vw"
+      minWidth="90vw"
       justifyContent="flex-start"
     >
       <IconButton
