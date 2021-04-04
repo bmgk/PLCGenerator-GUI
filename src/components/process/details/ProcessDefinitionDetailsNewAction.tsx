@@ -3,8 +3,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
-import ProcessDefinitionStepDetailsActionModal from './ProcessDefinitionStepDetailsActionModal';
-import ProcessDefinitionStepDetailsActionForm from './ProcessDefinitionStepDetailsActionForm';
+import ProcessDefinitionStepDetailsActionModal from './ProcessDefinitionDetailsActionModal';
+import ProcessDefinitionStepDetailsActionForm from './ProcessDefinitionDetailsActionForm';
 import { useStyles } from './utils';
 import { ProcessDefinitionAction } from 'types';
 

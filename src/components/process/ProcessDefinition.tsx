@@ -1,12 +1,20 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import ProcessDefinitionCreate from './ProcessDefinitionCreate';
-import ProcessDefinitionSteps from './ProcessDefinitionSteps';
-import ProcessDefinitionStepDetails from './ProcessDefinitionStepDetails';
+import ProcessDefinitionDetails from './details/ProcessDefinitionDetails';
+import ProcessDefinitionCreateNewProcessDefinitionStep from './ProcessDefinitionCreateNewStep';
+import ProcessDefinitionStepsList from './ProcessDefinitionList';
 import useProcessAction from './useProcess';
+import ProcessDefinitionSubmit from './ProcessDefinitionSubmit';
 
 const ProcessDefinition = () => {
-  const { isLoading, isError, isSelected, step } = useProcessAction();
+  const {
+    isLoading,
+    isError,
+    isSelected,
+    step,
+    setProcessDefinition,
+    selectedProcessDefinitionItem,
+  } = useProcessAction();
 
   if (isLoading) return <>Loading...</>;
   if (isError) return <>Error...</>;
@@ -21,10 +29,18 @@ const ProcessDefinition = () => {
       margin="2rem 5vw"
     >
       {step !== null ? (
-        <ProcessDefinitionStepDetails key={step} />
-      ) : null}
-      {step === null ? <ProcessDefinitionSteps /> : null}
-      {step === null ? <ProcessDefinitionCreate /> : null}
+        <ProcessDefinitionDetails
+          key={step}
+          initialValues={selectedProcessDefinitionItem}
+          onSubmit={setProcessDefinition(step)}
+        />
+      ) : (
+        <>
+          <ProcessDefinitionStepsList />
+          <ProcessDefinitionCreateNewProcessDefinitionStep />
+          <ProcessDefinitionSubmit />
+        </>
+      )}
     </Box>
   );
 };

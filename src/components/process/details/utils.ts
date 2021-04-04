@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, Theme } from '@material-ui/core/styles';
 import produce from 'immer';
 import {
   ProcessDefinictionStep,
@@ -9,6 +9,10 @@ export const SET_PROCESS_DEFFINITION_VALUE =
   'SET_PROCESS_DEFFINITION_VALUE';
 export const APPEND_PROCESS_DEFFINITION_VALUE =
   'APPEND_PROCESS_DEFFINITION_VALUE';
+export const EDIT_PROCESS_DEFFINITION_VALUE =
+  'EDIT_PROCESS_DEFFINITION_VALUE';
+export const DELETE_PROCESS_DEFFINITION_VALUE =
+  'DELETE_PROCESS_DEFFINITION_VALUE';
 
 export type ProcessDefinitionTable = ProcessDefinictionStep;
 
@@ -23,9 +27,21 @@ type ProcessDefinitionAppendActionAction = {
   value: ProcessDefinitionAction;
 };
 
+type ProcessDefinitionEditActionAction = {
+  type: typeof EDIT_PROCESS_DEFFINITION_VALUE;
+  index: number;
+  value: ProcessDefinitionAction;
+};
+type ProcessDefinitionDeleteActionAction = {
+  type: typeof DELETE_PROCESS_DEFFINITION_VALUE;
+  index: number;
+};
+
 type ProcessDefinictionActions =
   | ProcessDefinitionSetValueAction
-  | ProcessDefinitionAppendActionAction;
+  | ProcessDefinitionAppendActionAction
+  | ProcessDefinitionEditActionAction
+  | ProcessDefinitionDeleteActionAction;
 
 export const setValue = (
   name: keyof Omit<ProcessDefinitionTable, 'Actions'>,
@@ -43,6 +59,22 @@ export const appendAction = (
   value,
 });
 
+export const editAction = (
+  index: number,
+  value: ProcessDefinitionAction,
+): ProcessDefinitionEditActionAction => ({
+  type: EDIT_PROCESS_DEFFINITION_VALUE,
+  index,
+  value,
+});
+
+export const deleteAction = (
+  index: number,
+): ProcessDefinitionDeleteActionAction => ({
+  type: DELETE_PROCESS_DEFFINITION_VALUE,
+  index,
+});
+
 export const createEmptyStep = (): ProcessDefinictionStep => ({
   ShortcutName: '',
   Comment: '',
@@ -57,8 +89,22 @@ export const createEmptyAction = (): ProcessDefinitionAction => ({
   TypeConditions: null,
 });
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme: Theme) => ({
+  displayAction: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+  },
   cell: { width: '50%' },
+  actionCell: {
+    width: '100%',
+    display: 'flex !important',
+  },
+  icon: {
+    cursor: 'pointer',
+    lineHeight: 0,
+  },
 }));
 
 export const reducer = (
@@ -74,6 +120,16 @@ export const reducer = (
     case APPEND_PROCESS_DEFFINITION_VALUE: {
       return produce(state, (draft) => {
         draft.Actions.push(action.value);
+      });
+    }
+    case EDIT_PROCESS_DEFFINITION_VALUE: {
+      return produce(state, (draft) => {
+        draft.Actions[action.index] = action.value;
+      });
+    }
+    case DELETE_PROCESS_DEFFINITION_VALUE: {
+      return produce(state, (draft) => {
+        draft.Actions.splice(action.index, 1);
       });
     }
     default: {

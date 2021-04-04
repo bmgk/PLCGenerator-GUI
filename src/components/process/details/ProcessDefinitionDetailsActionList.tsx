@@ -1,15 +1,17 @@
 import React from 'react';
-import ProcessDefinitionStepDetailsActionItemList from './ProcessDefinitionStepDetailsActionItemList';
+import ProcessDefinitionStepDetailsActionItemList from './ProcessDefinitionDetailsActionItemList';
 import { ProcessDefinitionAction } from 'types';
 
 type ProcessDefinitionStepDetailsActionListProps = {
   actions: ProcessDefinitionAction[];
+  onEdit: (index: number) => (value: ProcessDefinitionAction) => void;
+  onDelete: (index: number) => () => void;
 };
 
 const ProcessDefinitionStepDetailsActionList: React.FC<ProcessDefinitionStepDetailsActionListProps> = (
   props,
 ) => {
-  const { actions } = props;
+  const { actions, onEdit, onDelete } = props;
 
   return (
     <>
@@ -18,6 +20,8 @@ const ProcessDefinitionStepDetailsActionList: React.FC<ProcessDefinitionStepDeta
           key={action.Element}
           action={action}
           label={`Action[${index}]`}
+          onEdit={onEdit(index)}
+          onDelete={onDelete(index)}
         />
       ))}
     </>

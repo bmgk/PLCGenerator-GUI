@@ -43,15 +43,15 @@ const ProcessPlacesList = () => {
 
   return (
     <List className={classes.list}>
-      {places.map((el) => (
+      {places.map((place) => (
         <ListItem
-          key={el.Name}
-          selected={isDeepEqual(el, selectedPlace)}
+          key={place.Name}
+          selected={isDeepEqual(place, selectedPlace)}
           button
           className={classes.place}
-          onClick={() => handleSelectItem(el)}
+          onClick={() => handleSelectItem(place)}
         >
-          {el.Name}
+          {place.Name}
         </ListItem>
       ))}
     </List>

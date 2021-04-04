@@ -1,20 +1,23 @@
 import {
   ProcessPlacesResoponse,
   ProcessPlaceSingle,
-  ProcessActionSingle,
+  ProcessActionSelectOptions,
   ProcessDefinictionResponse,
+  ProcessDefinictionStep,
 } from 'types';
 
 export const SET_PROCESS_PLACES = 'SET_PROCESS_PLACES';
 export const SET_CURRENT_PLACE = 'SET_CURRENT_PLACE';
-export const SET_CURRENT_ACTIONS = 'SET_CURRENT_ACTIONS';
+export const SET_CURRENT_PLACE_SELECT_OPTIONS =
+  'SET_CURRENT_PLACE_SELECT_OPTIONS';
 export const RESET_CURRENT_PROCESS_DEFINITION_STEP =
   'RESET_CURRENT_PROCESS_DEFINITION_STEP';
 export const SET_CURRENT_PROCESS_DEFINITION =
   'SET_CURRENT_PROCESS_DEFINITION';
 export const SET_CURRENT_PROCESS_DEFINITION_STEP =
   'SET_CURRENT_PROCESS_DEFINITION_STEP';
-export const CREATE_NEW_STEP = 'CREATE_NEW_STEP';
+export const CREATE_NEW_PROCESS_DEFINITION = 'CREATE_NEW_STEP';
+export const SUBMIT_ACTION_FORM = 'SUBMIT_ACTION_FORM';
 
 export type ProcessSetProcessPlacesAction = {
   type: typeof SET_PROCESS_PLACES;
@@ -26,18 +29,14 @@ export type ProcessSetCurrentPlaceAction = {
   place: ProcessPlaceSingle;
 };
 
-export type ProcessSetCurrentPlaceActionsAction = {
-  type: typeof SET_CURRENT_ACTIONS;
-  actions: ProcessActionSingle;
+export type ProcessSetCurrentPlaceSelectOptionsAction = {
+  type: typeof SET_CURRENT_PLACE_SELECT_OPTIONS;
+  actions: ProcessActionSelectOptions;
 };
 
 export type ProcessSetCurrentProcessDefinitionAction = {
   type: typeof SET_CURRENT_PROCESS_DEFINITION;
   process: ProcessDefinictionResponse;
-};
-
-export type ProcessCreateNewStepAction = {
-  type: typeof CREATE_NEW_STEP;
 };
 
 export type ProcessResetCurrentProcessDefinitionStepAction = {
@@ -49,14 +48,25 @@ export type ProcessSetCurrentProcessDefinitionStepAction = {
   step: number;
 };
 
+export type ProcessCreateNewSingleProcessDefinitionAction = {
+  type: typeof CREATE_NEW_PROCESS_DEFINITION;
+};
+
+export type ProcessSubmitActionFormAction = {
+  type: typeof SUBMIT_ACTION_FORM;
+  index: number;
+  value: ProcessDefinictionStep;
+};
+
 export type ProcessAction =
   | ProcessSetProcessPlacesAction
   | ProcessSetCurrentPlaceAction
-  | ProcessSetCurrentPlaceActionsAction
+  | ProcessSetCurrentPlaceSelectOptionsAction
   | ProcessSetCurrentProcessDefinitionAction
   | ProcessSetCurrentProcessDefinitionStepAction
   | ProcessResetCurrentProcessDefinitionStepAction
-  | ProcessCreateNewStepAction;
+  | ProcessCreateNewSingleProcessDefinitionAction
+  | ProcessSubmitActionFormAction;
 
 export type ProcessDispatch = (action: ProcessAction) => void;
 
@@ -74,10 +84,10 @@ export const setCurrentPlace = (
   place,
 });
 
-export const setCurrentActions = (
-  actions: ProcessActionSingle,
-): ProcessSetCurrentPlaceActionsAction => ({
-  type: SET_CURRENT_ACTIONS,
+export const setCurrentPlaceSelectOptions = (
+  actions: ProcessActionSelectOptions,
+): ProcessSetCurrentPlaceSelectOptionsAction => ({
+  type: SET_CURRENT_PLACE_SELECT_OPTIONS,
   actions,
 });
 
@@ -88,8 +98,17 @@ export const setCurrentProcessDefinition = (
   process,
 });
 
-export const createNewStep = (): ProcessCreateNewStepAction => ({
-  type: CREATE_NEW_STEP,
+export const createNewSingleProcessDefinition = (): ProcessCreateNewSingleProcessDefinitionAction => ({
+  type: CREATE_NEW_PROCESS_DEFINITION,
+});
+
+export const submitActionForm = (
+  index: number,
+  value: ProcessDefinictionStep,
+): ProcessSubmitActionFormAction => ({
+  type: SUBMIT_ACTION_FORM,
+  index,
+  value,
 });
 
 export const resetCurrentProcessDefinitionStep = (): ProcessResetCurrentProcessDefinitionStepAction => ({

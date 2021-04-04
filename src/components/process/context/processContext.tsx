@@ -3,8 +3,9 @@ import { processReducer } from './processReducer';
 import { ProcessDispatch } from './processActions';
 
 import {
-  ProcessActionSingle,
+  ProcessActionSelectOptions,
   ProcessDefinictionResponse,
+  ProcessDefinictionStep,
   ProcessPlaceSingle,
   ProcessPlacesResoponse,
 } from 'types';
@@ -14,7 +15,8 @@ export type ProcessState = {
   selectedPlace: ProcessPlaceSingle | null;
   selectedProcessDefinition: ProcessDefinictionResponse | null;
   selectedProcessDefinitionStep: number | null;
-  selectedActions: ProcessActionSingle | null;
+  selectedProcessDefinitionItem: ProcessDefinictionStep | null;
+  selectedActions: ProcessActionSelectOptions | null;
 };
 
 export type ProcessProviderProps = {
@@ -34,6 +36,7 @@ const initialDefault: ProcessState = {
   selectedPlace: null,
   selectedProcessDefinition: null,
   selectedProcessDefinitionStep: null,
+  selectedProcessDefinitionItem: null,
   selectedActions: null,
 };
 

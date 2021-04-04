@@ -47,7 +47,7 @@ export type ProcessPlaceSingle = {
   Name: string;
 };
 export type ProcessPlacesResoponse = ProcessPlaceSingle[];
-export type ProcessActionSingle = {
+export type ProcessActionSelectOptions = {
   [key: string]: {
     [key: string]: {
       ToolNames: string[];
@@ -56,7 +56,7 @@ export type ProcessActionSingle = {
   };
 };
 export type ProcessActionResponse = {
-  AvailableActions: ProcessActionSingle;
+  AvailableActions: ProcessActionSelectOptions;
 };
 export type ProcessDefinitionAction = {
   Element: string;

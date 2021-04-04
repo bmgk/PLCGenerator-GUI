@@ -2,20 +2,31 @@ import { useEffect, useState } from 'react';
 import { getActions } from 'api/process/getActions';
 import { getProcessDefinition } from 'api/process/getPlace';
 import {
-  setCurrentActions,
+  setCurrentPlaceSelectOptions,
   useProcessDispatch,
   useProcessStore,
   setCurrentProcessDefinition,
+  submitActionForm,
+  resetCurrentProcessDefinitionStep,
 } from './context';
+import { ProcessDefinictionStep } from 'types';
 
 const useProcess = () => {
   const {
     selectedPlace,
     selectedProcessDefinitionStep,
+    selectedProcessDefinitionItem,
   } = useProcessStore();
   const dispatch = useProcessDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
+  const handleSetProcessDefinition = (index: number) => (
+    value: ProcessDefinictionStep,
+  ) => {
+    dispatch(resetCurrentProcessDefinitionStep());
+    dispatch(submitActionForm(index, value));
+  };
 
   useEffect(() => {
     if (!selectedPlace) return;
@@ -26,7 +37,9 @@ const useProcess = () => {
       getProcessDefinition(selectedPlace),
     ])
       .then(([actions, proces]) => {
-        dispatch(setCurrentActions(actions.AvailableActions));
+        dispatch(
+          setCurrentPlaceSelectOptions(actions.AvailableActions),
+        );
         dispatch(setCurrentProcessDefinition(proces));
       })
       .catch(() => {
@@ -38,6 +51,8 @@ const useProcess = () => {
   }, [selectedPlace]);
 
   return {
+    selectedProcessDefinitionItem,
+    setProcessDefinition: handleSetProcessDefinition,
     step: selectedProcessDefinitionStep,
     isSelected: !selectedPlace,
     isLoading,

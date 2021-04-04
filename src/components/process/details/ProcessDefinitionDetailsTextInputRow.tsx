@@ -1,7 +1,7 @@
 import React from 'react';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import ProcessInput from './Inputs/ProcessInput';
+import ProcessInput from '../Inputs/ProcessInput';
 import { ProcessDefinitionTable, useStyles } from './utils';
 
 type ProcessDefinitionStepDetailsTextInputRowProps = {

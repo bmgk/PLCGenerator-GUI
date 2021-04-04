@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 
 type ProcessDefinitionStepDetailsSubmitProps = {
   onSubmit: () => void;
+  disabled: boolean;
 };
 
 const useStyles = makeStyles(() => ({
@@ -15,7 +16,7 @@ const useStyles = makeStyles(() => ({
 const ProcessDefinitionStepDetailsSubmit: React.FC<ProcessDefinitionStepDetailsSubmitProps> = (
   props,
 ) => {
-  const { onSubmit } = props;
+  const { onSubmit, disabled } = props;
   const classes = useStyles();
 
   return (
@@ -25,6 +26,7 @@ const ProcessDefinitionStepDetailsSubmit: React.FC<ProcessDefinitionStepDetailsS
       color="primary"
       variant="contained"
       onClick={onSubmit}
+      disabled={disabled}
     >
       Submit
     </Button>

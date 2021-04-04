@@ -1,34 +1,42 @@
 import React, { useReducer } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
 
-import ProcessDefinitionBack from './ProcessDefinitionBack';
-import ProcessDefinitionStepDetailsHeader from './ProcessDefinitionStepDetailsHeader';
-import ProcessDefinitionStepDetailsTextInputRow from './ProcessDefinitionStepDetailsTextInputRow';
-import ProcessDefinitionStepDetailsNewAction from './ProcessDefinitionStepDetailsNewAction';
-import ProcessDefinitionStepDetailsActionList from './ProcessDefinitionStepDetailsActionList';
-import ProcessDefinitionStepDetailsSubmit from './ProcessDefinitionStepDetailsSubmit';
+import ProcessDefinitionBack from '../ProcessDefinitionBack';
+import ProcessDefinitionStepDetailsHeader from './ProcessDefinitionDetailsHeader';
+import ProcessDefinitionStepDetailsTextInputRow from './ProcessDefinitionDetailsTextInputRow';
+import ProcessDefinitionStepDetailsNewAction from './ProcessDefinitionDetailsNewAction';
+import ProcessDefinitionStepDetailsActionList from './ProcessDefinitionDetailsActionList';
+import ProcessDefinitionStepDetailsSubmit from './ProcessDefinitionDetailsSubmit';
 import {
   appendAction,
   createEmptyStep,
   ProcessDefinitionTable,
   reducer,
   setValue,
+  deleteAction,
+  editAction,
 } from './utils';
-import { ProcessDefinitionAction } from 'types';
+import {
+  ProcessDefinictionStep,
+  ProcessDefinitionAction,
+} from 'types';
 
-const useStyles = makeStyles(() => ({
-  tableContainer: {
-    minHeight: '40rem',
-  },
-}));
+type ProcessDefinitionDetailsProps = {
+  onSubmit: (value: ProcessDefinictionStep) => void;
+  initialValues: ProcessDefinictionStep | null;
+};
 
-const ProcessDefinitionStepDetails = () => {
-  const [state, dispatch] = useReducer(reducer, createEmptyStep());
-  const classes = useStyles();
+const ProcessDefinitionDetails: React.FC<ProcessDefinitionDetailsProps> = (
+  props,
+) => {
+  const { onSubmit, initialValues } = props;
+  const [state, dispatch] = useReducer(
+    reducer,
+    initialValues ? initialValues : createEmptyStep(),
+  );
 
   const handleChangeInput = (
     name: keyof Omit<ProcessDefinitionTable, 'Actions'>,
@@ -42,17 +50,27 @@ const ProcessDefinitionStepDetails = () => {
     dispatch(appendAction(value));
   };
 
-  const handleSubmit = () => {
-    console.log(state);
+  const handleEdit = (index: number) => (
+    value: ProcessDefinitionAction,
+  ) => {
+    dispatch(editAction(index, value));
   };
+
+  const handleDelete = (index: number) => () => {
+    dispatch(deleteAction(index));
+  };
+
+  const handleSubmit = () => {
+    onSubmit(state);
+  };
+
+  const isDisabled =
+    state.Comment === '' || state.ShortcutName === '';
 
   return (
     <>
       <ProcessDefinitionBack />
-      <TableContainer
-        className={classes.tableContainer}
-        component={Paper}
-      >
+      <TableContainer component={Paper}>
         <Table aria-label="process-definition-details">
           <ProcessDefinitionStepDetailsHeader />
           <TableBody>
@@ -70,6 +88,8 @@ const ProcessDefinitionStepDetails = () => {
             />
             <ProcessDefinitionStepDetailsActionList
               actions={state.Actions}
+              onEdit={handleEdit}
+              onDelete={handleDelete}
             />
             <ProcessDefinitionStepDetailsNewAction
               label="New Action"
@@ -77,10 +97,13 @@ const ProcessDefinitionStepDetails = () => {
             />
           </TableBody>
         </Table>
-        <ProcessDefinitionStepDetailsSubmit onSubmit={handleSubmit} />
+        <ProcessDefinitionStepDetailsSubmit
+          onSubmit={handleSubmit}
+          disabled={isDisabled}
+        />
       </TableContainer>
     </>
   );
 };
 
-export default ProcessDefinitionStepDetails;
+export default ProcessDefinitionDetails;
