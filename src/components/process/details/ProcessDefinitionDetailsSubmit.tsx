@@ -22,6 +22,7 @@ const ProcessDefinitionStepDetailsSubmit: React.FC<ProcessDefinitionStepDetailsS
   return (
     <Button
       type="submit"
+      aria-label="submit"
       className={classes.submit}
       color="primary"
       variant="contained"

@@ -14,6 +14,7 @@ const ProcessDefinition = () => {
     step,
     setProcessDefinition,
     selectedProcessDefinitionItem,
+    onBack,
   } = useProcessAction();
 
   if (isLoading) return <>Loading...</>;
@@ -33,6 +34,7 @@ const ProcessDefinition = () => {
           key={step}
           initialValues={selectedProcessDefinitionItem}
           onSubmit={setProcessDefinition(step)}
+          onBack={onBack}
         />
       ) : (
         <>

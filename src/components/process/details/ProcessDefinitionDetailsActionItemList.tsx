@@ -13,6 +13,7 @@ import ProcessDefinitionStepDetailsDeleteDialog from './ProcessDefinitionDetails
 
 import { useStyles } from './utils';
 import { ProcessDefinitionAction } from 'types';
+import CommonTableRow from 'components/common/table/CommonTableRow';
 
 type ProcessDefinitionStepDetailsTextInputRowProps = {
   action: ProcessDefinitionAction;
@@ -65,49 +66,39 @@ const ProcessDefinitionStepDetailsActionItemList: React.FC<ProcessDefinitionStep
         onClose={handleCloseDelete}
         onSubmit={handleDelete}
       />
-      <TableRow>
-        <TableCell
+      <CommonTableRow
+        label="process-definition-details-action-item"
+        name={label}
+        classes2={{
+          root: classes.actionCell,
+        }}
+      >
+        <Typography
           align="center"
-          component="td"
-          className={classes.cell}
+          component="span"
+          className={classes.displayAction}
         >
-          {label}
-        </TableCell>
-        <TableCell
-          align="center"
-          component="td"
-          className={classes.cell}
-          classes={{
-            root: classes.actionCell,
-          }}
-        >
-          <Typography
-            align="center"
-            component="span"
-            className={classes.displayAction}
+          {displayAction()}
+        </Typography>
+        <Box display="flex" flex="1" justifyContent="flex-end">
+          <IconButton
+            aria-label={`edit-${label}`}
+            className={classes.icon}
+            color="primary"
+            onClick={handleOpenEdit}
           >
-            {displayAction()}
-          </Typography>
-          <Box display="flex" flex="1" justifyContent="flex-end">
-            <IconButton
-              aria-label={`edit-${label}`}
-              className={classes.icon}
-              color="primary"
-              onClick={handleOpenEdit}
-            >
-              <EditIcon fontSize="large" />
-            </IconButton>
-            <IconButton
-              aria-label={`delete-${label}`}
-              className={classes.icon}
-              color="primary"
-              onClick={handleOpenDelete}
-            >
-              <DeleteIcon fontSize="large" />
-            </IconButton>
-          </Box>
-        </TableCell>
-      </TableRow>
+            <EditIcon fontSize="large" />
+          </IconButton>
+          <IconButton
+            aria-label={`delete-${label}`}
+            className={classes.icon}
+            color="primary"
+            onClick={handleOpenDelete}
+          >
+            <DeleteIcon fontSize="large" />
+          </IconButton>
+        </Box>
+      </CommonTableRow>
     </>
   );
 };

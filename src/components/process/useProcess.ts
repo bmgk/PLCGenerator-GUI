@@ -28,6 +28,10 @@ const useProcess = () => {
     dispatch(submitActionForm(index, value));
   };
 
+  const handleBack = () => {
+    dispatch(resetCurrentProcessDefinitionStep());
+  };
+
   useEffect(() => {
     if (!selectedPlace) return;
 
@@ -53,6 +57,7 @@ const useProcess = () => {
   return {
     selectedProcessDefinitionItem,
     setProcessDefinition: handleSetProcessDefinition,
+    onBack: handleBack,
     step: selectedProcessDefinitionStep,
     isSelected: !selectedPlace,
     isLoading,

@@ -16,6 +16,8 @@ const ProcessDefinitionStepDetailsActionModal: React.FC<ProcessDefinitionStepDet
     <Modal
       open={open}
       onClose={onClose}
+      role="dialog"
+      aria-label="create-action-form"
       aria-labelledby="create-action-form"
       aria-describedby="create-action-form"
       disableBackdropClick

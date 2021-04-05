@@ -1,8 +1,7 @@
 import React from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import ProcessInput from '../Inputs/ProcessInput';
-import { ProcessDefinitionTable, useStyles } from './utils';
+import CommonTableRow from 'components/common/table/CommonTableRow';
+import ProcessInput from '../inputs/ProcessInput';
+import { ProcessDefinitionTable } from './utils';
 
 type ProcessDefinitionStepDetailsTextInputRowProps = {
   value: string;
@@ -19,30 +18,19 @@ const ProcessDefinitionStepDetailsTextInputRow: React.FC<ProcessDefinitionStepDe
   props,
 ) => {
   const { value, name, label, onChangeInput } = props;
-  const classes = useStyles();
 
   return (
-    <TableRow>
-      <TableCell
-        className={classes.cell}
-        align="center"
-        component="td"
-      >
-        {label}
-      </TableCell>
-      <TableCell
-        className={classes.cell}
-        align="center"
-        component="td"
-      >
-        <ProcessInput
-          value={value}
-          name={name}
-          label={label}
-          handleChange={onChangeInput(name)}
-        />
-      </TableCell>
-    </TableRow>
+    <CommonTableRow
+      label="process-definition-text-input-row"
+      name={label}
+    >
+      <ProcessInput
+        value={value}
+        name={name}
+        label={label}
+        handleChange={onChangeInput(name)}
+      />
+    </CommonTableRow>
   );
 };
 

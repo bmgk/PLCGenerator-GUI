@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
+import CommonTableRow from 'components/common/table/CommonTableRow';
 import ProcessDefinitionStepDetailsActionModal from './ProcessDefinitionDetailsActionModal';
 import ProcessDefinitionStepDetailsActionForm from './ProcessDefinitionDetailsActionForm';
-import { useStyles } from './utils';
 import { ProcessDefinitionAction } from 'types';
 
 type ProcessDefinitionStepDetailsNewActionProps = {
@@ -18,7 +16,6 @@ const ProcessDefinitionStepDetailsNewAction: React.FC<ProcessDefinitionStepDetai
 ) => {
   const { label, onSubmit } = props;
   const [open, setOpen] = useState(false);
-  const classes = useStyles();
 
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -43,28 +40,18 @@ const ProcessDefinitionStepDetailsNewAction: React.FC<ProcessDefinitionStepDetai
           onSubmit={handleSubmit}
         />
       </ProcessDefinitionStepDetailsActionModal>
-      <TableRow>
-        <TableCell
-          className={classes.cell}
-          align="center"
-          component="td"
+      <CommonTableRow
+        label="process-definition-details-new-action"
+        name={label}
+      >
+        <IconButton
+          aria-label="create"
+          color="primary"
+          onClick={handleClick}
         >
-          {label}
-        </TableCell>
-        <TableCell
-          className={classes.cell}
-          align="center"
-          component="td"
-        >
-          <IconButton
-            aria-label="create"
-            color="primary"
-            onClick={handleClick}
-          >
-            <AddIcon fontSize="large" />
-          </IconButton>
-        </TableCell>
-      </TableRow>
+          <AddIcon fontSize="large" />
+        </IconButton>
+      </CommonTableRow>
     </>
   );
 };

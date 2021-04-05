@@ -16,6 +16,7 @@ import theme from './components/common/Theme';
 import Dashboard from './pages/Dashboard';
 import Home from './pages/Home';
 import './i18n/i18n';
+import 'react-toastify/dist/ReactToastify.css';
 
 const mainElement = document.createElement('div');
 mainElement.setAttribute('id', 'root');

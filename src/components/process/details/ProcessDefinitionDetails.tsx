@@ -26,13 +26,14 @@ import {
 
 type ProcessDefinitionDetailsProps = {
   onSubmit: (value: ProcessDefinictionStep) => void;
+  onBack: () => void;
   initialValues: ProcessDefinictionStep | null;
 };
 
 const ProcessDefinitionDetails: React.FC<ProcessDefinitionDetailsProps> = (
   props,
 ) => {
-  const { onSubmit, initialValues } = props;
+  const { onSubmit, onBack, initialValues } = props;
   const [state, dispatch] = useReducer(
     reducer,
     initialValues ? initialValues : createEmptyStep(),
@@ -69,7 +70,7 @@ const ProcessDefinitionDetails: React.FC<ProcessDefinitionDetailsProps> = (
 
   return (
     <>
-      <ProcessDefinitionBack />
+      <ProcessDefinitionBack onBack={onBack} />
       <TableContainer component={Paper}>
         <Table aria-label="process-definition-details">
           <ProcessDefinitionStepDetailsHeader />

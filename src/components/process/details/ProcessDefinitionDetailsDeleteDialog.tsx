@@ -24,6 +24,8 @@ const ProcessDefinitionStepDetailsDeleteDialog: React.FC<ProcessDefinitionStepDe
     <Dialog
       open={open}
       onClose={onClose}
+      role="dialog"
+      aria-label="delete-action-confirmation"
       aria-labelledby="delete-action-confirmation"
       aria-describedby="delete-action-confirmation"
     >

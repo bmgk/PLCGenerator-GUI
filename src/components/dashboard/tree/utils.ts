@@ -82,7 +82,6 @@ export const setInitialValues = (initialValues: any) => ({
 });
 
 export const reducer = (state: any, action: any): any => {
-  console.log(state, action);
   switch (action.type) {
     case SET_ALL_VALUES: {
       const { initialValues } = action;

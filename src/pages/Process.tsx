@@ -1,7 +1,14 @@
 import React from 'react';
+import ProcessDefinition from 'components/process/ProcessDefinition';
+import ProcessPlacesList from 'components/process/ProcessPlacesList';
 
 const Process = () => {
-  return <div></div>;
+  return (
+    <>
+      <ProcessPlacesList />
+      <ProcessDefinition />
+    </>
+  );
 };
 
 export default Process;

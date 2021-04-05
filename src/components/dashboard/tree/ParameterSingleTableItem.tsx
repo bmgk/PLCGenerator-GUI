@@ -1,9 +1,7 @@
 import React from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
+import CommonTableRow from 'components/common/table/CommonTableRow';
 import DashboardSelect from './Inputs/DashboardSelect';
 import DashboardInput from './Inputs/DashboardInput';
-import { useStyles } from './utils';
 
 import { HomeResponseTreeAvailableValues } from 'types';
 
@@ -29,37 +27,25 @@ const ParameterSingleTableItem: React.FC<ParameterSingleTableItemProps> = (
     onChangeSelect,
     onChangeInput,
   } = props;
-  const classes = useStyles();
-
   return (
-    <TableRow key={`${avaliableValues.Name}`}>
-      <TableCell
-        className={classes.cell}
-        align="center"
-        component="td"
-      >
-        {avaliableValues.Name}
-      </TableCell>
-      <TableCell
-        className={classes.cell}
-        align="center"
-        component="td"
-      >
-        {Array.isArray(avaliableValues.Value) ? (
-          <DashboardSelect
-            values={values}
-            avaliableValues={avaliableValues}
-            handleChange={onChangeSelect(avaliableValues.Name)}
-          />
-        ) : (
-          <DashboardInput
-            values={values}
-            avaliableValues={avaliableValues}
-            handleChange={onChangeInput(avaliableValues.Name)}
-          />
-        )}
-      </TableCell>
-    </TableRow>
+    <CommonTableRow
+      name={avaliableValues.Name}
+      label={'parameter-single-row'}
+    >
+      {Array.isArray(avaliableValues.Value) ? (
+        <DashboardSelect
+          values={values}
+          avaliableValues={avaliableValues}
+          handleChange={onChangeSelect(avaliableValues.Name)}
+        />
+      ) : (
+        <DashboardInput
+          values={values}
+          avaliableValues={avaliableValues}
+          handleChange={onChangeInput(avaliableValues.Name)}
+        />
+      )}
+    </CommonTableRow>
   );
 };
 
