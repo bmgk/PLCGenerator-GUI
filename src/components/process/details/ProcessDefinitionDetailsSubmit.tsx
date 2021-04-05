@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -17,6 +18,7 @@ const ProcessDefinitionStepDetailsSubmit: React.FC<ProcessDefinitionStepDetailsS
   props,
 ) => {
   const { onSubmit, disabled } = props;
+  const { t } = useTranslation();
   const classes = useStyles();
 
   return (
@@ -29,7 +31,7 @@ const ProcessDefinitionStepDetailsSubmit: React.FC<ProcessDefinitionStepDetailsS
       onClick={onSubmit}
       disabled={disabled}
     >
-      Submit
+      {t('process.details.actionForm.Submit')}
     </Button>
   );
 };

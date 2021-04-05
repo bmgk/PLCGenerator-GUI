@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import ProcessDefinitionStepDetailsActionItemList from './ProcessDefinitionDetailsActionItemList';
 import { ProcessDefinitionAction } from 'types';
 
@@ -12,14 +13,14 @@ const ProcessDefinitionStepDetailsActionList: React.FC<ProcessDefinitionStepDeta
   props,
 ) => {
   const { actions, onEdit, onDelete } = props;
-
+  const { t } = useTranslation();
   return (
     <>
       {actions.map((action, index) => (
         <ProcessDefinitionStepDetailsActionItemList
           key={action.Element}
           action={action}
-          label={`Action[${index}]`}
+          label={`${t('process.details.action.preffix')}[${index}]`}
           onEdit={onEdit(index)}
           onDelete={onDelete(index)}
         />

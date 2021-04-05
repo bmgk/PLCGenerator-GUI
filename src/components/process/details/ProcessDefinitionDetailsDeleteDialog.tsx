@@ -29,18 +29,20 @@ const ProcessDefinitionStepDetailsDeleteDialog: React.FC<ProcessDefinitionStepDe
       aria-labelledby="delete-action-confirmation"
       aria-describedby="delete-action-confirmation"
     >
-      <DialogTitle id="delete-action-confirmation">123</DialogTitle>
+      <DialogTitle id="delete-action-confirmation">
+        {t('process.details.deleteDialog.title')}
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="delete-action-confirmation">
-          456
+          {t('process.details.deleteDialog.content')}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={onSubmit} color="primary">
-          tak
+          {t('process.details.deleteDialog.accept')}
         </Button>
-        <Button onClick={onClose} color="primary">
-          nie
+        <Button onClick={onClose} color="secondary">
+          {t('process.details.deleteDialog.reject')}
         </Button>
       </DialogActions>
     </Dialog>

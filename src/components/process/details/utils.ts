@@ -98,7 +98,7 @@ export const useStyles = makeStyles((theme: Theme) => ({
   },
   cell: { width: '50%' },
   actionCell: {
-    width: '100%',
+    width: '100% !important',
     display: 'flex !important',
   },
   icon: {

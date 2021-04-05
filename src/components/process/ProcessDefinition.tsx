@@ -1,5 +1,7 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 import ProcessDefinitionDetails from './details/ProcessDefinitionDetails';
 import ProcessDefinitionCreateNewProcessDefinitionStep from './ProcessDefinitionCreateNewStep';
 import ProcessDefinitionStepsList from './ProcessDefinitionList';
@@ -16,10 +18,25 @@ const ProcessDefinition = () => {
     selectedProcessDefinitionItem,
     onBack,
   } = useProcessAction();
-
-  if (isLoading) return <>Loading...</>;
-  if (isError) return <>Error...</>;
-  if (isSelected) return <>Select item</>;
+  const { t } = useTranslation();
+  if (isLoading)
+    return (
+      <Typography variant="h1" align="center">
+        {t('process.definition.loading')}
+      </Typography>
+    );
+  if (isError)
+    return (
+      <Typography variant="h1" align="center">
+        {t('process.definition.error')}
+      </Typography>
+    );
+  if (isSelected)
+    return (
+      <Typography variant="h1" align="center">
+        {t('process.definition.selectItem')}
+      </Typography>
+    );
 
   return (
     <Box

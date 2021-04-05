@@ -1,8 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { useProcessStore } from './context';
 import { createPlace } from 'api/process/createStep';
+import { useProcessStore } from './context';
+import useNotification from 'components/common/useNotification';
+import { extractErrorRequest500 } from 'services/errorHandling/request';
 
 const useStyles = makeStyles(() => ({
   submit: {
@@ -11,6 +14,12 @@ const useStyles = makeStyles(() => ({
 }));
 
 const ProcessDefinitionSubmit = () => {
+  const { t } = useTranslation();
+  const {
+    errorNotification,
+    successNotification,
+  } = useNotification();
+
   const classes = useStyles();
   const {
     selectedProcessDefinition,
@@ -25,7 +34,13 @@ const ProcessDefinitionSubmit = () => {
       createPlace(
         selectedPlace,
         selectedProcessDefinition.Branches[0].Steps,
-      );
+      )
+        .then(() => {
+          successNotification();
+        })
+        .catch(() => {
+          errorNotification();
+        });
     }
   };
 
@@ -37,7 +52,7 @@ const ProcessDefinitionSubmit = () => {
       variant="contained"
       onClick={handleSubmit}
     >
-      Submit
+      {t('process.details.actionForm.Submit')}
     </Button>
   );
 };

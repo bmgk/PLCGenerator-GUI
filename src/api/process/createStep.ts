@@ -15,7 +15,7 @@ export const createPlace = (
       `${IP}/Api/Process/Place`,
       {
         Element,
-        Branches: { Steps },
+        Branches: [{ Steps }],
       },
       {
         headers: { 'Content-type': 'application/json' },

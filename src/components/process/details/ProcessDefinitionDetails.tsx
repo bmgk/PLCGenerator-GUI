@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { useTranslation } from 'react-i18next';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -34,6 +35,7 @@ const ProcessDefinitionDetails: React.FC<ProcessDefinitionDetailsProps> = (
   props,
 ) => {
   const { onSubmit, onBack, initialValues } = props;
+  const { t } = useTranslation();
   const [state, dispatch] = useReducer(
     reducer,
     initialValues ? initialValues : createEmptyStep(),
@@ -79,13 +81,13 @@ const ProcessDefinitionDetails: React.FC<ProcessDefinitionDetailsProps> = (
               name="ShortcutName"
               value={state.ShortcutName}
               onChangeInput={handleChangeInput}
-              label="ShortcutName"
+              label={t('process.details.ShortcutName')}
             />
             <ProcessDefinitionStepDetailsTextInputRow
               name="Comment"
               value={state.Comment}
               onChangeInput={handleChangeInput}
-              label="Comment"
+              label={t('process.details.Comment')}
             />
             <ProcessDefinitionStepDetailsActionList
               actions={state.Actions}
@@ -93,7 +95,7 @@ const ProcessDefinitionDetails: React.FC<ProcessDefinitionDetailsProps> = (
               onDelete={handleDelete}
             />
             <ProcessDefinitionStepDetailsNewAction
-              label="New Action"
+              label={t('process.details.NewAction')}
               onSubmit={handleAppendNewAction}
             />
           </TableBody>

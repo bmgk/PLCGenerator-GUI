@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Field, Form, Formik } from 'formik';
 import {
   Autocomplete,
@@ -46,6 +47,7 @@ const ProcessDefinitionStepDetailsActionForm: React.FC<ProcessDefinitionStepDeta
     onClose,
     initialValues = createEmptyAction(),
   } = props;
+  const { t } = useTranslation();
   const { selectedActions } = useProcessStore();
   const classes = useStyles();
 
@@ -96,7 +98,7 @@ const ProcessDefinitionStepDetailsActionForm: React.FC<ProcessDefinitionStepDeta
             <ChevronLeftOutlinedIcon fontSize="large" />
           </IconButton>
         }
-        title="Create new action"
+        title={t('process.details.actionForm.title')}
       />
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
         {({ values }) => (
@@ -109,7 +111,12 @@ const ProcessDefinitionStepDetailsActionForm: React.FC<ProcessDefinitionStepDeta
                 getOptionLabel={(option: string) => option}
                 renderInput={(
                   params: AutocompleteRenderInputParams,
-                ) => <TextField {...params} label="Element" />}
+                ) => (
+                  <TextField
+                    {...params}
+                    label={t('process.details.actionForm.Element')}
+                  />
+                )}
               />
             </FormControl>
             <FormControl className={classes.formControl}>
@@ -120,7 +127,12 @@ const ProcessDefinitionStepDetailsActionForm: React.FC<ProcessDefinitionStepDeta
                 getOptionLabel={(option: string) => option}
                 renderInput={(
                   params: AutocompleteRenderInputParams,
-                ) => <TextField {...params} label="Tool Type" />}
+                ) => (
+                  <TextField
+                    {...params}
+                    label={t('process.details.actionForm.ToolType')}
+                  />
+                )}
               />
             </FormControl>
             <FormControl className={classes.formControl}>
@@ -131,7 +143,12 @@ const ProcessDefinitionStepDetailsActionForm: React.FC<ProcessDefinitionStepDeta
                 getOptionLabel={(option: string) => option}
                 renderInput={(
                   params: AutocompleteRenderInputParams,
-                ) => <TextField {...params} label="Tool Name" />}
+                ) => (
+                  <TextField
+                    {...params}
+                    label={t('process.details.actionForm.ToolName')}
+                  />
+                )}
               />
             </FormControl>
             <FormControl className={classes.formControl}>
@@ -142,7 +159,12 @@ const ProcessDefinitionStepDetailsActionForm: React.FC<ProcessDefinitionStepDeta
                 getOptionLabel={(option: string) => option}
                 renderInput={(
                   params: AutocompleteRenderInputParams,
-                ) => <TextField {...params} label="Action Name" />}
+                ) => (
+                  <TextField
+                    {...params}
+                    label={t('process.details.actionForm.ActionName')}
+                  />
+                )}
               />
             </FormControl>
             <Button
@@ -151,7 +173,7 @@ const ProcessDefinitionStepDetailsActionForm: React.FC<ProcessDefinitionStepDeta
               color="primary"
               variant="contained"
             >
-              Submit
+              {t('process.details.actionForm.Submit')}
             </Button>
           </Form>
         )}
