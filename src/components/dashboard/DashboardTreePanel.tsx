@@ -7,13 +7,13 @@ import Box from '@material-ui/core/Box';
 import CardHeaderPanel from './tree/CardHeaderPanel';
 import CardSubmitPanel from './tree/CardSubmitPanel';
 import EmptyParametersPanel from './tree/EmptyTreePanel';
-import ParameterArrayTableBody from './tree/ParameterArrayTableBody';
+import ParameterArrayTable from './tree/ParameterArrayTable';
 import ParameterCreate from './tree/ParameterCreate';
-import ParameterSingleTableBody from './tree/ParameterSingleTableBody';
+import ParameterSingleTable from './tree/ParameterSingleTable';
 import RootTreePanel from './tree/RootTreePanel';
 
-import { acceptSingleParameter } from '../../api/dashboard';
-import { submitHomeFormTree } from '../../api/home';
+import { acceptSingleParameter } from 'api/dashboard';
+import { submitHomeFormTree } from 'api/home';
 
 import {
   appendNewAvaliableValues,
@@ -55,7 +55,7 @@ const extractInitialValue = (
   return initialValues;
 };
 
-export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
+const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
   props,
 ) => {
   const { selectedLeaf } = props;
@@ -112,7 +112,7 @@ export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
           {Array.isArray(initialValues) ? (
             initialValues.map(
               (singleInitialValues: any, index: number) => (
-                <ParameterArrayTableBody
+                <ParameterArrayTable
                   key={`${index}-${selectedLeaf.Name}`}
                   selectedLeaf={selectedLeaf}
                   initialValues={singleInitialValues}
@@ -122,7 +122,7 @@ export const DashboardTreePanel: React.FC<DashboardTreePanelProps> = (
               ),
             )
           ) : (
-            <ParameterSingleTableBody
+            <ParameterSingleTable
               selectedLeaf={selectedLeaf}
               initialValues={initialValues}
               carousele={carousele}

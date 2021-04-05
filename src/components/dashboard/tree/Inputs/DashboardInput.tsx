@@ -1,7 +1,7 @@
 import React from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { useStyles } from '../utils';
 import { HomeResponseTreeAvailableValues } from 'types';

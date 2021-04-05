@@ -1,17 +1,19 @@
 import React from 'react';
-import { Box } from '@material-ui/core';
-import DashboardNavigation from './../components/dashboard/DashboardNavigation';
-import DashboardTable from './../components/dashboard/DashboardTable';
-import DashboardTree from './../components/dashboard/DashboardTree';
+import Box from '@material-ui/core/Box';
+import RouteNavigation from 'components/route/RouteNavigation';
+import DashboardTable from 'components/dashboard/DashboardTable';
+import DashboardTree from 'components/dashboard/DashboardTree';
+import Process from '../components/process/Process';
 
 const Dashboard: React.FC = () => {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(2);
 
   return (
     <Box display="flex" flexDirection="column">
-      <DashboardNavigation value={value} setValue={setValue} />
+      <RouteNavigation value={value} setValue={setValue} />
       {value === 0 ? <DashboardTable /> : null}
       {value === 1 ? <DashboardTree /> : null}
+      {value === 2 ? <Process /> : null}
     </Box>
   );
 };

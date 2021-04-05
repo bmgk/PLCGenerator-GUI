@@ -3,18 +3,13 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogActions from '@material-ui/core/DialogActions';
-import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
 
-import { useDashboardStore } from './context';
+import DashboardSaveDraftDialog from 'components/dashboard/DashboardSaveDraftDialog';
+import { useDashboardStore } from '../dashboard/context';
 
-type DashboardMenuProps = {
+type RouteMenuProps = {
   submitStructure: () => void;
   saveDraft: () => void;
   showSettings: () => void;
@@ -36,7 +31,7 @@ const options = (t: TFunction) => [
 
 const ITEM_HEIGHT = 48;
 
-const DashboardMenu: React.FC<DashboardMenuProps> = (props) => {
+const RouteMenu: React.FC<RouteMenuProps> = (props) => {
   const {
     submitStructure,
     saveDraft,
@@ -51,7 +46,9 @@ const DashboardMenu: React.FC<DashboardMenuProps> = (props) => {
   );
 
   const handleMenuClick = (value: string) => {
-    if (value === 'SUBMIT_STRUCTURE') submitStructure();
+    if (value === 'SUBMIT_STRUCTURE') {
+      submitStructure();
+    }
     if (value === 'SAVE_DRAFT') {
       if (newAvaliableValues.length === 0) {
         saveDraft();
@@ -59,8 +56,12 @@ const DashboardMenu: React.FC<DashboardMenuProps> = (props) => {
         setOpen(true);
       }
     }
-    if (value === 'IMPORT_DRAFT') importDraft();
-    if (value === 'SETTINGS') showSettings();
+    if (value === 'IMPORT_DRAFT') {
+      importDraft();
+    }
+    if (value === 'SETTINGS') {
+      showSettings();
+    }
     setAnchorEl(null);
   };
 
@@ -83,29 +84,11 @@ const DashboardMenu: React.FC<DashboardMenuProps> = (props) => {
 
   return (
     <>
-      <Dialog
+      <DashboardSaveDraftDialog
         open={open}
         onClose={handleCloseDialog}
-        aria-labelledby="save-drat-confirmation"
-        aria-describedby="save-drat-confirmation-details"
-      >
-        <DialogTitle id="alert-dialog-slide-title">
-          {t('dashboard.menu.SAVE_DRAFT.confirmation.title')}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="save-drat-confirmation-details">
-            {t('dashboard.menu.SAVE_DRAFT.confirmation.description')}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleAcceptDialog} color="primary">
-            {t('dashboard.menu.SAVE_DRAFT.confirmation.accept')}
-          </Button>
-          <Button onClick={handleCloseDialog} color="primary">
-            {t('dashboard.menu.SAVE_DRAFT.confirmation.reject')}
-          </Button>
-        </DialogActions>
-      </Dialog>
+        onSubmit={handleAcceptDialog}
+      />
       <div>
         <IconButton
           aria-label="menu"
@@ -141,4 +124,4 @@ const DashboardMenu: React.FC<DashboardMenuProps> = (props) => {
   );
 };
 
-export default DashboardMenu;
+export default RouteMenu;

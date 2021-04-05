@@ -6,7 +6,6 @@ export const APPEND_NEW_VALUES = 'APPEND_NEW_VALUES';
 export const SET_TABLE = 'SET_TABLE';
 export const SET_SELECTED_LEAF = 'SET_SELECTED_LEAF';
 export const SET_WORKING_TREE = 'SET_WORKING_TREE';
-export const REPLACE_LEAF_IN_TREE = 'REPLACE_LEAF_IN_TREE';
 
 export type DashboardSetTreeAction = {
   type: typeof SET_TREE;
@@ -29,16 +28,11 @@ export type DashboardSetLeaf = {
   selectedLeaf: SelectedLeaf | null;
 };
 
-export type DashboardReplaceLeaf = {
-  type: typeof REPLACE_LEAF_IN_TREE;
-};
-
 export type DashboardAction =
   | DashboardSetTreeAction
   | DashboardAppendNewAvaliableValuesAction
   | DashboardSetRowsAction
-  | DashboardSetLeaf
-  | DashboardReplaceLeaf;
+  | DashboardSetLeaf;
 
 export type DashboardDispatch = (action: DashboardAction) => void;
 
@@ -70,8 +64,4 @@ export const setLeaf = (
 ): DashboardSetLeaf => ({
   type: SET_SELECTED_LEAF,
   selectedLeaf,
-});
-
-export const replaceLeafInTree = (): DashboardReplaceLeaf => ({
-  type: REPLACE_LEAF_IN_TREE,
 });

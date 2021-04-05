@@ -1,29 +1,13 @@
+import produce from 'immer';
 import {
   SET_SELECTED_LEAF,
   SET_TABLE,
   SET_TREE,
-  REPLACE_LEAF_IN_TREE,
   APPEND_NEW_VALUES,
   DashboardAction,
 } from './dashboardActions';
 
-import { DashboardState, SelectedLeaf } from './dashboardContext';
-import { HomeResponseTreeChildren } from 'types';
-
-const replace = (
-  nodes: HomeResponseTreeChildren,
-  selectedLeaf: SelectedLeaf,
-) => {
-  if (nodes.Name === selectedLeaf.Name) {
-    nodes.Parameters = selectedLeaf.Parameters;
-  }
-
-  Array.isArray(nodes.Children)
-    ? nodes.Children.map((node: HomeResponseTreeChildren) =>
-        replace(node, selectedLeaf),
-      )
-    : null;
-};
+import { DashboardState } from './dashboardContext';
 
 export const dashboardReducer = (
   state: DashboardState,
@@ -31,32 +15,29 @@ export const dashboardReducer = (
 ): DashboardState => {
   switch (action.type) {
     case SET_TREE: {
-      return { ...state, tree: action.tree };
+      return produce(state, (draft) => {
+        draft.tree = action.tree;
+      });
     }
     case APPEND_NEW_VALUES: {
-      const newAvaliableValues = new Set([
-        ...state.newAvaliableValues,
-        ...action.newAvaliableValues,
-      ]);
-      newAvaliableValues.delete(action.removeFromAvaliableValues);
-
-      return {
-        ...state,
-        newAvaliableValues: Array.from(newAvaliableValues),
-      };
+      return produce(state, (draft) => {
+        const newAvaliableValues = new Set([
+          ...state.newAvaliableValues,
+          ...action.newAvaliableValues,
+        ]);
+        newAvaliableValues.delete(action.removeFromAvaliableValues);
+        draft.newAvaliableValues = Array.from(newAvaliableValues);
+      });
     }
     case SET_TABLE: {
-      return { ...state, rows: action.rows };
+      return produce(state, (draft) => {
+        draft.rows = action.rows;
+      });
     }
     case SET_SELECTED_LEAF: {
-      return { ...state, selectedLeaf: action.selectedLeaf };
-    }
-    case REPLACE_LEAF_IN_TREE: {
-      if (state.selectedLeaf === null) return state;
-
-      const treeCopy = JSON.parse(JSON.stringify(state.tree));
-      replace(treeCopy, state.selectedLeaf);
-      return { ...state, tree: treeCopy };
+      return produce(state, (draft) => {
+        draft.selectedLeaf = action.selectedLeaf;
+      });
     }
     default: {
       throw new Error(

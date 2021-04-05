@@ -9,7 +9,8 @@ import userEvent from '@testing-library/user-event';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
-import { DashboardProvider } from '../../components/dashboard/context';
+import { DashboardProvider } from 'components/dashboard/context';
+import { ProcessProvider } from 'components/process/context';
 import Home from '../Home';
 
 describe('Home', () => {
@@ -19,9 +20,11 @@ describe('Home', () => {
 
     render(
       <DashboardProvider>
-        <Router history={history}>
-          <Home />
-        </Router>
+        <ProcessProvider>
+          <Router history={history}>
+            <Home />
+          </Router>
+        </ProcessProvider>
       </DashboardProvider>,
     );
     expect(screen.getByText('Project Name')).toBeInTheDocument();
@@ -33,9 +36,11 @@ describe('Home', () => {
 
     render(
       <DashboardProvider>
-        <Router history={history}>
-          <Home />
-        </Router>
+        <ProcessProvider>
+          <Router history={history}>
+            <Home />
+          </Router>
+        </ProcessProvider>
       </DashboardProvider>,
     );
 

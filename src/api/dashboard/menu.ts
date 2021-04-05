@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IP } from '../config';
+import { IP } from 'api/config';
 
 import { HomeFormTreeResponse } from 'types';
 

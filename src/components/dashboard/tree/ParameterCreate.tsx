@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import IconButton from '@material-ui/core/IconButton';
 
+import { cloneDeep } from 'utils/objectUtils';
 import {
   useDashboardDispatch,
   setLeaf,
@@ -26,9 +27,7 @@ const ParameterCreate: React.FC<ParameterCreateProps> = (props) => {
   );
 
   const handleSubmit = () => {
-    const selectedLeafClone: SelectedLeaf = JSON.parse(
-      JSON.stringify(selectedLeaf),
-    );
+    const selectedLeafClone = cloneDeep(selectedLeaf);
     if (
       Array.isArray(selectedLeafClone.Parameters[carousele].Value)
     ) {
