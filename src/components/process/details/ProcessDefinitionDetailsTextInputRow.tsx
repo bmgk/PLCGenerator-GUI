@@ -1,6 +1,6 @@
 import React from 'react';
 import CommonTableRow from 'components/common/table/CommonTableRow';
-import ProcessInput from '../inputs/ProcessInput';
+import ProcessInput from '../Inputs/ProcessInput';
 import { ProcessDefinitionTable } from './utils';
 
 type ProcessDefinitionStepDetailsTextInputRowProps = {
